@@ -1,0 +1,16 @@
+.row {
+    display:grid; 
+    flex-direction:row;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+.css-v6mo1y-MuiTimelineDot-root {
+    background-color: red !important;
+}
+
+.topbar-container {
+    height: 100dp;
+    width: 100dp;
+    background-color: red;
+}
