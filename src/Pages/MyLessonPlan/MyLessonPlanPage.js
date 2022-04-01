@@ -18,11 +18,9 @@ import Select from '@mui/material/Select';
 
 import Course from './Course.js'
 
-
 import './Styles/LessonPlan.css';
 
 import { useState, useEffect } from 'react';
-
 
 function createData(weekNo, date, topic, learningObjectives, litterature, pages) {
   return { weekNo, date, topic, learningObjectives, litterature, pages };
@@ -155,7 +153,7 @@ const handleChange = (event) => {
         <TableBody>
           {rows.map((row) => (
             <TableRow
-              key={row.weekNo}
+              key ={row.weekNo}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell align="center" component="th" scope="row">
