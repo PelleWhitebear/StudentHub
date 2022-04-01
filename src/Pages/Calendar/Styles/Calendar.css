@@ -1,5 +1,5 @@
 
-.row {
+.rows {
     display:flex; 
     flex-direction:row;
 }

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './LoginForm.css';
 
 const LoginForm = () => {
@@ -14,9 +15,9 @@ const LoginForm = () => {
                 </span>
             </div>
             <div>
-                <form action='/Calendar'>
-                    <input className='LoginButton' type="submit" value="Login" to="/Calendar"></input>
-                </form>
+                <Link to="/Calendar">
+                    <button className='LoginButton'>Login</button>
+                </Link>
             </div>
         </form>
     )

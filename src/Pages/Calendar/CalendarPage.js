@@ -48,7 +48,7 @@ const [currentViewName, setCurrentViewName] = useState('month');
   return (
     <>    
       <Paper >
-        <div className='row'>
+        <div className='rows'>
         {/*<SideBar />*/}
         <Scheduler 
         data={schedulerData}>
