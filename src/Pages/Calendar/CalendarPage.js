@@ -55,11 +55,12 @@ const [currentViewName, setCurrentViewName] = useState('month');
   return (
     <>    
       <Paper >
-        <div className='row'>
+        <div className='row'/>
 
           <AddAppointment/>
           
 
+        <div className='rows'>
         {/*<SideBar />*/}
         <Scheduler 
         data={schedulerData}>
@@ -108,7 +109,6 @@ const [currentViewName, setCurrentViewName] = useState('month');
 
         </div>
     </Paper>
-   
     </>
   )
 };
