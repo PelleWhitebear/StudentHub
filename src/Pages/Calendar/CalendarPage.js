@@ -16,6 +16,7 @@ import { createTheme } from '@mui/material';
 import './Styles/Calendar.css'
 import SideBar from './SideBar';
 import appointmentData from './appointmentData';
+import AddAppointment from './Styles/addAppointment';
 
 //const schedulerData = appointmentData.map(appointmentData => appointmentData.title);
 
@@ -39,19 +40,30 @@ const myAppointment = ({
   </Appointments.Appointment>
 );
 
+
+  
+
 const CalendarPage = () => {
   
 const [currentDate, setCurrentDate] = useState(Date().toLocaleString());
 
 const [currentViewName, setCurrentViewName] = useState('month');
 
+
+
+
   return (
     <>    
       <Paper >
         <div className='row'>
+
+          <AddAppointment/>
+          
+
         {/*<SideBar />*/}
         <Scheduler 
         data={schedulerData}>
+          
         <ViewState
           currentDate={currentDate}
           onCurrentDateChange={setCurrentDate}
@@ -83,12 +95,15 @@ const [currentViewName, setCurrentViewName] = useState('month');
         />
         <Appointments
          />
-        <Toolbar />
+        <Toolbar/>
+
         <ViewSwitcher />
         <DateNavigator />
+  
        
         <Appointments
         appointmentComponent={myAppointment} />
+        
       </Scheduler>
 
         </div>
