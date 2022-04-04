@@ -17,10 +17,10 @@ const StudyGuidance = () => {
     <h1 className='Welcome'>Study Guidance</h1>
     <div id="mySidepanel" class="sidepanel">
       <a href="javascript:void(0)" class="closebtn" onClick={closeNav}>&times;</a>
+      <h7 className='sidepanel_Header'>Book a meeting</h7>
     </div>
-
     <button class="openbtn" onClick={openNav}>Book a meeting</button>
-    <br></br>
+    <br></br> 
     <h4 className='minor_Tekst'>Number:  +45 45 25 11 99</h4>
     <h6 className='minor_Tekst'>Email:  studvejl@adm.dtu.dk</h6>
     <div class="textarea-container">
