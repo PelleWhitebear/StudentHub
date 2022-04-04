@@ -1,8 +1,8 @@
-import React from "react";
 import "./Styles/Announcements.css";
 import { useEffect, useState } from "react";
 import Announcement from "./Components/Announcement";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 const AnnouncementsPage = () => {
@@ -14,16 +14,18 @@ const AnnouncementsPage = () => {
 
   useEffect(() => {
     getAnnouncements();
-  }, [data]) 
+  }, []) 
 
   async function getAnnouncements() {
     
     try {
       
       // real request (axios)
+      let { data } = await axios.get("http://localhost:8080/api/announcements");
+      setAnnouncements(data);
     
       // Fake request
-      setTimeout(() => {
+      /*setTimeout(() => {
         //list of announcements
         let data = [
           {
@@ -51,7 +53,7 @@ const AnnouncementsPage = () => {
         //sets data in a useState
         setAnnouncements(data);
 
-      }, 20) //load time
+      }, 20) //load time*/
 
     } catch (error) { //catch if error in getting data.
       console.log(error)
