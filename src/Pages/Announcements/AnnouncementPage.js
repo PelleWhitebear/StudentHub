@@ -17,7 +17,7 @@ const AnnouncementPage = () => {
         setTimeout(() => {
             let data = 
                 {
-                    id: 1,
+                    id: id,
                     title: "Class meeting",
                     time: 12 + ":" + 30,
                     type: "meeting",
@@ -38,7 +38,7 @@ return (
     <>
         {loading && <p>indlæser announcement..</p>}
         {!loading && <div>
-            <h1>{data.type}</h1>
+            <h1>{data.id}</h1>
             <section className="borderBox">
             <p>{data.time}</p>
             <h3 className="title">{data.title}</h3>
