@@ -9,7 +9,7 @@ const AnnouncementPage = () => {
 
     useEffect(() => {
         getData();
-    }, [data])
+    },[])
 
     async function getData() {
         try{
