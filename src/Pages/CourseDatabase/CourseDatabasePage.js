@@ -1,27 +1,13 @@
-//Paper
 import Paper from '@mui/material/Paper';
-
-//Table
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-
-//MenutItem
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-
-import Course from '../MyLessonPlan/Course'
-
 import '../MyLessonPlan/Styles/LessonPlan.css';
-
-import { useState, useEffect } from 'react';
 import { Checkbox } from '@mui/material';
+import { useState, useEffect } from 'react';
 
 
 function createData(courseNumber, courseName, passingPct, avgGrade,  courseRating) {
@@ -53,43 +39,28 @@ const columns = [
 ];
 
 const rows = [
-  createData("62597", "backend", 100, 100, 89.3),
-  createData("CBS01", "ME", 59, 42, 89.3),
-  createData("CBS01dfddddf", "ME", 59, 42, 89.3),
-  createData("CBS01ddddd", "ME", 59, 42, 89.3),
-  createData("CBS01dfdf", "ME", 59, 42, 89.3),
-  createData("CBS01ddsddsv", "ME", 59, 42, 89.3),
-  createData("CBddfdfS01", "ME", 59, 42, 89.3),
-  createData("CBSdd01df", "ME", 59, 42, 89.3),
-  createData("CBSddd01", "ME", 59, 42, 89.3),
-  createData("CBS0dd1d", "ME", 59, 42, 89.3),
-  createData("CBS0dd1", "ME", 59, 42, 89.3),
-  createData("CBS01ddd", "ME", 59, 42, 89.3),
-  createData("CBdddS01", "ME", 59, 42, 89.3),
-  createData("CBS0ddddd1", "ME", 59, 42, 89.3),
-  createData("CBS0d1", "ME", 59, 42, 89.3),
-  createData("CBS01d", "ME", 59, 42, 89.3),
-  createData("CBSddeeeed01", "ME", 59, 42, 89.3),
-  createData("CBSeeee01", "ME", 59, 42,  89.3),
-  createData("CBeSe01", "ME", 59, 42, 89.3),
-  createData("CBSeee01", "ME", 59, 42, 89.3),
-  createData("CBSeeeeeee01", "ME", 59, 42, 89.3),
-  createData("CBS0eeee1", "ME", 59, 42, 89.3)
+  createData("62597", "Backend", 80.4, 7.30, 77.69),
+  createData("45678", "Front end", 100, 11.8, 100),
+  createData("65464", "sjovt kursus", 64.32, 6.4, 80.3),
+  createData("43465", "sjovere kursus", 89.1, 8.78, 95.6),
+  createData("45643", "kursus 1", 100, 11.8, 100),
+  createData("34567", "kursus 2", 56, 2, 100),
+  createData("12345", "kursus 3", 34, 4, 100),
+  createData("87654", "kursus 4", 23, 3, 100),
+  createData("54321", "kedeligt kursus", 59, 42, 22),
+  createData("89876", "kursus x", 59, 42, 13.2),
 ];
-
-const checkboxClicked = (e) => {
-  console.warn(e.target)
-}
 
 const CourseDatabasePage = () => {
   return (
     <>
     <div>
-    
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
+              <TableCell padding ="checkbox">
+              <Checkbox  color = "primary" value = "anil"/></TableCell>
               <TableCell align="center">Course number</TableCell>
               <TableCell align="left">Course name</TableCell>
               <TableCell align="left">Passing percentage</TableCell>
@@ -103,7 +74,8 @@ const CourseDatabasePage = () => {
                     key ={row.courseNumber}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   >
-
+                    <TableCell padding ="checkbox">
+                    <Checkbox  color = "primary" value = "anil"/></TableCell>
                     <TableCell align="center" component="th" scope="row">{row.courseNumber}</TableCell>
                     <TableCell align="left">{row.courseName}</TableCell>
                     <TableCell align="left">{row.passingPct}</TableCell>
