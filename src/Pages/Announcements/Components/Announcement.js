@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Styles/Announcements.css";
 
 function Announcement (props) {
   //constant for different values of the announcements(props)
-  const {id} = props;
+  const {id, read,} = props;
+  const [boolean, setBoolean] =  useState(false)
+  setBoolean(read)
 
     return (
-      <div onClick={props.onClick} className="Border">
-        <p>{id}</p>
+       <div onClick={props.onClick} className="Border" > 
+         <p>{id}</p>
             {/*<section className="Time">
             <p>{time}</p>
             </section>
@@ -17,7 +19,7 @@ function Announcement (props) {
             </section>
             <br/>
     <p>{text}</p>*/}
-      </div>
+      </div> 
     )
   };
   

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import "./Styles/Announcement.css";
 import { useEffect, useState } from "react";
+import axios from ('axios')
 
 const AnnouncementPage = () => {
     const { id } = useParams();
@@ -14,18 +15,9 @@ const AnnouncementPage = () => {
     async function getData() {
         try{
 
-        setTimeout(() => {
-            let data = 
-                {
-                    id: id,
-                    title: "Class meeting",
-                    time: 12 + ":" + 30,
-                    type: "meeting",
-                    text: "Hello we have a meeting today"
-                }
-            setData(data);
-            setLoading(false);
-        }, 1000)
+        let {data} = await axios.get(`http://localhost:8080/api/announcements/${id}`)
+        setData(data)
+        setLoading(false)
 
         }catch (error) { //catch if error in getting data.
             console.log(error);
@@ -36,6 +28,7 @@ const AnnouncementPage = () => {
 
 return (
     <>
+    
         {loading && <p>indlæser announcement..</p>}
         {!loading && <div>
             <h1>{data.id}</h1>
