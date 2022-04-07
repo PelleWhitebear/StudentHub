@@ -9,7 +9,6 @@ import '../MyLessonPlan/Styles/LessonPlan.css';
 import { Checkbox } from '@mui/material';
 import { useState, useEffect } from 'react';
 
-
 function createData(courseNumber, courseName, passingPct, avgGrade,  courseRating) {
   return { courseNumber, courseName, passingPct, avgGrade, courseRating };
 }
