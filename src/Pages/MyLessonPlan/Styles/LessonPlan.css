@@ -14,3 +14,10 @@
     width: 100dp;
     background-color: red;
 }
+
+.alignCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px
+}

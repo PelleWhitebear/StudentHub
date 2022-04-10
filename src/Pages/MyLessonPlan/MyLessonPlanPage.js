@@ -1,10 +1,28 @@
-import './Styles/TableHeader.css';
+//MenutItem
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
+import {useState, useEffect} from 'react';
+
+import './Styles/Table.css';
+
+  const headerData = [
+    { week: "Week", date: "Date", topic:"Topic", learningObjectives:"Learning Objectives", litterature: "Litterature", pages: "Pages" },
+  ]
+
+  /* 
+  Here comes table stuff
+  */
 
 function Table(props) {
     return <table>
         {props.children}
     </table>
 }
+
 function Header(props)  {
     return  <tr>
             <th> {props.week} </th>
@@ -14,14 +32,13 @@ function Header(props)  {
             <th> {props.litterature} </th>
             <th> {props.pages} </th>
         </tr>
-   
 }
 
-function TableRow(props, key, value) {
+function TableRow(props) {
     return <tr>
             <td> {props.week} </td>
             <td> {props.date} </td>
-            <td> Bippelop {props.topic} </td>
+            <td> {props.topic} </td>
             <td> {props.learningObjectives} </td>
             <td> {props.litterature} </td>
             <td> {props.pages} </td>
@@ -29,28 +46,84 @@ function TableRow(props, key, value) {
 }
 
 
-
-
-
 const MyLessonPlanPage = () => {
+
+  //useState for data of courses
+  const [data, setData] = useState([]);
+
+useEffect(() => {
+  getData();
+}, [data]) 
+
+
+async function getData() {
+  try {
+    // real request (axios)
+  
+    // Fake request
+    setTimeout(() => {
+      //list of courses
+      let thisData = [
+        { course: "Frontend", week: "1", date: "1/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
+        { course: "Backend", week: "2", date: "8/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
+        { course: "Frontend", week: "3", date: "15/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
+      ]
+      //sets data in a useState
+      setData(thisData);
+
+    }, 20) //load time
+
+  } catch (error) { //catch if error in getting data.
+    console.log(error)
+  }
+}
+
+function loadRowsToTable() {
+    return data.map(data =>  <TableRow key={data.course} {...data} />
+    );
+  }
+
+  const [courseTitle, setCourseTitle] = useState('');
+  const uniqueCourses = [...new Set(data.map(item => item.course))];
+  
+  function loadCourses() {
+  return uniqueCourses.map(uniqueCourses =>  <MenuItem key={uniqueCourses.course} value={uniqueCourses.course}> {uniqueCourses} </MenuItem> 
+     );
+}
+
+
+const handleChange = (event) => {
+  setCourseTitle(event.target.value);
+};
 
       return (
         <>
-        <Table>
+      
+            <div className="alignCenter">
+            <Box>
+            <FormControl sx={{ minWidth: 200 }}>
+                <InputLabel id="select-course-label">Course</InputLabel>
+                <Select
+                value={courseTitle}
+                label="Course"
+                onChange={handleChange}
+                >
+                {loadCourses()}
+                </Select>
+            </FormControl>
+        </Box>
+            </div>
+           
+<Table>
         <Header 
         week="Week" 
         date="Date" 
         topic="Topic"
         litterature="Litterature"
+        learningObjectives="LearningObjectives"
         pages="Pages"
          /> 
-        <TableRow
-        week="Week" 
-        date="Date" 
-        topic="Topic"
-        litterature="Litterature"
-        pages="Pages"
-        />
+        {loadRowsToTable()}
        </Table>
        
         </>
