@@ -98,7 +98,6 @@ const handleChange = (event) => {
 
       return (
         <>
-      
             <div className="alignCenter">
             <Box>
             <FormControl sx={{ minWidth: 200 }}>
@@ -113,7 +112,8 @@ const handleChange = (event) => {
             </FormControl>
         </Box>
             </div>
-           
+
+          <div className="alignCenter">
 <Table>
         <Header 
         week="Week" 
@@ -125,7 +125,7 @@ const handleChange = (event) => {
          /> 
         {loadRowsToTable()}
        </Table>
-       
+       </div> 
         </>
       )
     };
