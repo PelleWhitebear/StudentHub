@@ -1,9 +1,12 @@
 .row {
     display:grid; 
     flex-direction:row;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
+.column {
+    flex: 50%
+}
 
 .css-v6mo1y-MuiTimelineDot-root {
     background-color: red !important;
@@ -20,4 +23,8 @@
     justify-content: center;
     align-items: center;
     padding: 12px
+}
+
+.hide {
+    color: white;
 }
