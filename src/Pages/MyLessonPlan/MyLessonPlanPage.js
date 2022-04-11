@@ -1,3 +1,4 @@
+import axios from "axios";
 //MenutItem
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -10,7 +11,7 @@ import {useState, useEffect} from 'react';
 import './Styles/Table.css';
 
   const headerData = [
-    { week: "Week", date: "Date", topic:"Topic", learningObjectives:"Learning Objectives", litterature: "Litterature", pages: "Pages" },
+    { weekNo: "Week", date: "Date", topic:"Topic", learningObjectives:"Learning Objectives", litterature: "Litterature", pages: "Pages" },
   ]
 
   /* 
@@ -25,7 +26,7 @@ function Table(props) {
 
 function Header(props)  {
     return  <tr>
-            <th> {props.week} </th>
+            <th> {props.weekNo} </th>
             <th> {props.date} </th>
             <th> {props.topic} </th>
             <th> {props.learningObjectives} </th>
@@ -36,7 +37,7 @@ function Header(props)  {
 
 function TableRow(props) {
     return <tr>
-            <td> {props.week} </td>
+            <td> {props.weekNo} </td>
             <td> {props.date} </td>
             <td> {props.topic} </td>
             <td> {props.learningObjectives} </td>
@@ -53,14 +54,17 @@ const MyLessonPlanPage = () => {
 
 useEffect(() => {
   getData();
-}, [data]) 
+}, []) 
 
 
 async function getData() {
   try {
     // real request (axios)
   
-    // Fake request
+    let { data } = await axios.get("http://localhost:8080/api/lessonplan");
+    setData(data);
+      
+    /*// Fake request
     setTimeout(() => {
       //list of courses
       let thisData = [
@@ -71,7 +75,7 @@ async function getData() {
       //sets data in a useState
       setData(thisData);
 
-    }, 20) //load time
+    }, 20) //load time*/
 
   } catch (error) { //catch if error in getting data.
     console.log(error)
@@ -89,18 +93,17 @@ function loadRowsToTable() {
   function loadCourses() {
   return uniqueCourses.map(uniqueCourses =>  <MenuItem key={uniqueCourses.course} value={uniqueCourses.course}> {uniqueCourses} </MenuItem> 
      );
-}
+    }
 
 
 const handleChange = (event) => {
   setCourseTitle(event.target.value);
 };
-
       return (
         <>
             <div className="alignCenter">
             <Box>
-            <FormControl sx={{ minWidth: 200 }}>
+            <FormControl sx={{ minWidth: 500 }}>
                 <InputLabel id="select-course-label">Course</InputLabel>
                 <Select
                 value={courseTitle}
@@ -114,13 +117,13 @@ const handleChange = (event) => {
             </div>
 
           <div className="alignCenter">
-<Table>
+      <Table> 
         <Header 
-        week="Week" 
+        weekNo="Week" 
         date="Date" 
         topic="Topic"
         litterature="Litterature"
-        learningObjectives="LearningObjectives"
+        learningObjectives="Learning Objectives"
         pages="Pages"
          /> 
         {loadRowsToTable()}
