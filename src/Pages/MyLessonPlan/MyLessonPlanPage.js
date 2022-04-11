@@ -10,9 +10,8 @@ import {useState, useEffect} from 'react';
 
 import './Styles/Table.css';
 
-  const headerData = [
-    { weekNo: "Week", date: "Date", topic:"Topic", learningObjectives:"Learning Objectives", litterature: "Litterature", pages: "Pages" },
-  ]
+const headerData = 
+    { weekNo: "Week", date: "Date", topic:"Topic", learningObjectives:"Learning Objectives", litterature: "Litterature", pages: "Pages" };
 
   /* 
   Here comes table stuff
@@ -82,7 +81,7 @@ async function getData() {
   }
 }
 
-function loadRowsToTable() {
+function loadTableRows() {
     return data.map(data =>  <TableRow key={data.course} {...data} />
     );
   }
@@ -119,14 +118,14 @@ const handleChange = (event) => {
           <div className="alignCenter">
       <Table> 
         <Header 
-        weekNo="Week" 
-        date="Date" 
-        topic="Topic"
-        litterature="Litterature"
-        learningObjectives="Learning Objectives"
-        pages="Pages"
+        weekNo={headerData.weekNo}
+        date={headerData.date} 
+        topic={headerData.topic}
+        litterature={headerData.litterature}
+        learningObjectives={headerData.learningObjectives}
+        pages={headerData.pages}
          /> 
-        {loadRowsToTable()}
+        {loadTableRows()}
        </Table>
        </div> 
         </>
