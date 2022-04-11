@@ -145,7 +145,6 @@ const MyLessonPlanPage = () => {
         <p> ppppp </p>
         <p> ppppp </p>
         <p> ppppp </p>
-        <p> ppppp </p>
     </div>
   );
 
