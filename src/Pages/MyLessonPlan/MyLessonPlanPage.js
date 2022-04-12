@@ -1,182 +1,159 @@
-//Paper
-import Paper from '@mui/material/Paper';
-
-//Table
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-
+import axios from "axios";
 //MenutItem
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import OurTimeline from "./components/OurTimeline";
+import DummyBlock from "./components/DummyBlock"
 
-import Course from './Course.js'
 
-import './Styles/LessonPlan.css';
+import { useState, useEffect } from "react";
 
-import { useState, useEffect } from 'react';
+import "./Styles/Table.css";
 
-function createData(weekNo, date, topic, learningObjectives, litterature, pages) {
-  return { weekNo, date, topic, learningObjectives, litterature, pages };
+const weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+
+
+const headerData = {
+  weekNo: "Week",
+  date: "Date",
+  topic: "Topic",
+  learningObjectives: "Learning Objectives",
+  litterature: "Litterature",
+  pages: "Pages",
+};
+
+
+
+/* 
+  Here comes table stuff
+  */
+
+function Table(props) {
+  return <table>{props.children}</table>;
 }
 
+function Header(props) {
+  return (
+    <tr>
+      <th> {props.weekNo} </th>
+      <th> {props.date} </th>
+      <th> {props.topic} </th>
+      <th> {props.learningObjectives} </th>
+      <th> {props.litterature} </th>
+      <th> {props.pages} </th>
+    </tr>
+  );
+}
 
-const rows = [
-  createData('1', '3/2', 'UI', 'bla bla bla bla bla bla bla', 'Chapter 1-2', '100'),
-  createData('2', '10/2', 'UI', 'bla bla bla bla bla bla bla'),
-  createData('3', '17/2', 'UI', 'bla bla bla bla bla bla bla'),
-  createData('4', '24/2', 'UI', 'bla bla bla bla bla bla bla', 'Chapter 2-4', '52'),
-  createData('5', '3/3', 'UI', 'bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla', 'Chapter 4-5', '110'),
-  createData('6', '10/3', 'UI', 'bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla', 'Chapter 4-6', '230'),
-  createData('7', '17/3', 'UI', 'bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla', 'Chapter 7', '40'),
-  createData('8', '24/3', 'UI', 'bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla'),
-  createData('9', '31/3', 'UI', 'bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla'),
-  createData('10', '7/4', 'UI', 'bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla', 'Chapter 8', '13'),
-  createData('11', '14/4', 'UI', 'bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla', 'Chapter 10', '20'),
-  createData('12', '21/4', 'UI', 'bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla', 'Chapter 13', '15'),
-  createData('13', '28/4', 'UI', 'bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla'),
-];
-
-
+function TableRow(props) {
+  return (
+    <tr>
+      <td> {props.weekNo} </td>
+      <td> {props.date} </td>
+      <td> {props.topic} </td>
+      <td> {props.learningObjectives} </td>
+      <td> {props.litterature} </td>
+      <td> {props.pages} </td>
+    </tr>
+  );
+}
 
 const MyLessonPlanPage = () => {
-
   //useState for data of courses
-const [courseData, setCourses] = useState([]);
+  const [data, setData] = useState([]);
 
+  useEffect(() => {
+    getData();
+  }, []);
 
-useEffect(() => {
-  getCourses();
-}, [courseData]) 
+  async function getData() {
+    try {
+      // real request (axios)
 
+      let { data } = await axios.get("http://localhost:8080/api/lessonplan");
+      setData(data);
 
-  
-async function getCourses() {
-  try {
-    // real request (axios)
-  
-    // Fake request
+      /*// Fake request
     setTimeout(() => {
       //list of courses
-      let courseData = [
-        {
-            id: 1,
-            title: 'Frontend',
-        },
-        {
-            id: 2,
-            title: 'Backend',
-        },
-        {
-            id: 3,
-            title: 'Datacommunication',
-        },
-        {
-          id: 4,
-          title: 'Swift Development',
-        },
-        {
-        id: 5,
-        title: 'CDIO',
-        },
-        {
-          id: 6,
-          title: 'Algorithms',
-          }
+      let thisData = [
+        { course: "Frontend", week: "1", date: "1/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
+        { course: "Backend", week: "2", date: "8/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
+        { course: "Frontend", week: "3", date: "15/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
       ]
       //sets data in a useState
-      setCourses(courseData);
+      setData(thisData);
 
-    }, 20) //load time
-
-  } catch (error) { //catch if error in getting data.
-    console.log(error)
+    }, 20) //load time*/
+    } catch (error) {
+      //catch if error in getting data.
+      console.log(error);
+    }
   }
-} 
 
-function loadCourses() {
-  return courseData.map(courseData =>  <MenuItem key={courseData.id} value={courseData.title}> {courseData.title} </MenuItem> 
-     );
-}
+  function loadTableRows() {
+    return data.map((data) => <TableRow key={data.course} {...data} />);
+  }
 
+  const [courseTitle, setCourseTitle] = useState("");
+  const uniqueCourses = [...new Set(data.map((item) => item.course))];
 
-const [courseTitle, setCourseTitle] = useState('');
+  function loadCourses() {
+    return uniqueCourses.map((uniqueCourses) => (
+      <MenuItem key={uniqueCourses.course} value={uniqueCourses.course}>
+        {" "}
+        {uniqueCourses}{" "}
+      </MenuItem>
+    ));
+  }
 
-const handleChange = (event) => {
-  setCourseTitle(event.target.value);
-};
+  const handleChange = (event) => {
+    setCourseTitle(event.target.value);
+  };
+
 
   return (
     <>
+    <div className="row">
 
-<Paper>
-<Box>
-  <FormControl sx={{ minWidth: 200 }}>
-        <InputLabel id="select-course-label">Course</InputLabel>
-        
-        <Select
-          value={courseTitle}
-          label="Course"
-          onChange={handleChange}
-        >
-          {loadCourses()}
+      <div>
+      <DummyBlock />
+      <OurTimeline
+      weeks = {weeks}
+       />
+      </div>
+      <div>
+      <div className="alignCenter">
+        <Box>
+          <FormControl sx={{ minWidth: 500 }}>
+            <InputLabel id="select-course-label">Course</InputLabel>
+            <Select value={courseTitle} label="Course" onChange={handleChange}>
+              {loadCourses()}
+            </Select>
+          </FormControl>
+        </Box>
+      </div>
 
-        </Select>
-
-        
-      </FormControl>
-    </Box>
-
-<div className="row">
-  <div>
- 
-  </div>
-<div>
-<TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="center">Week</TableCell>
-            <TableCell align="left">Date</TableCell>
-            <TableCell align="left">Topic</TableCell>
-            <TableCell align="left">Learning Objectives</TableCell>
-            <TableCell align="left">Litterature</TableCell>
-            <TableCell align="left">Pages</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key ={row.weekNo}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell align="center" component="th" scope="row">
-                {row.weekNo}
-
-              </TableCell>
-              <TableCell align="left">{row.date}</TableCell>
-              <TableCell align="left">{row.topic}</TableCell>
-              <TableCell align="left">{row.learningObjectives}</TableCell>
-              <TableCell align="left">{row.litterature}</TableCell>
-              <TableCell align="left">{row.pages}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-</div>
-</div>
-</Paper>
-
-       
+      <div className="alignCenter">
+        <Table>
+        <Header 
+            weekNo={headerData.weekNo}
+            date={headerData.date}
+            topic={headerData.topic}
+            litterature={headerData.litterature}
+            learningObjectives={headerData.learningObjectives}
+            pages={headerData.pages}
+          />
+          {loadTableRows()}
+        </Table>
+      </div>
+      </div>
+      </div>
     </>
-  )
+  );
 };
 
 export default MyLessonPlanPage;

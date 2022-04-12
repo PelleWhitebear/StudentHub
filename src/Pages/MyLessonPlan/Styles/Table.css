@@ -1,0 +1,22 @@
+table {
+    width: 75%;
+    height: 100%;
+    padding: 16px;
+    border: 0.5px lightgrey solid;
+    border-radius: 10px;
+}
+
+
+th {
+    background-color: rgb(153,0,0);
+    color: white;
+    text-align: left;
+    font-size: 18px;
+  }
+
+td,th {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid lightgrey;
+}
+
