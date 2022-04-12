@@ -3,6 +3,9 @@ import './NavBarHeader.css';
 import { Link } from 'react-router-dom';
 import { signOut } from 'firebase/auth'
 import { auth } from '../../../firebase-config.js';
+import { useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+
 
 
     // https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css
@@ -22,6 +25,11 @@ import { auth } from '../../../firebase-config.js';
     ); */
 
     const NavBarHeader = () => {
+        const [user, setUser] = useState({});
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+          });
+
         const logout = async () => {
             await signOut(auth);
         }
@@ -39,7 +47,7 @@ import { auth } from '../../../firebase-config.js';
                             <Nav.Link as={Link} to="/Grades" className='navlink'>Grades</Nav.Link>
                         </Nav>
                         <Nav>
-                            <NavDropdown title="Pelle Andersen">
+                            <NavDropdown title= {user?.email}>
                                 <NavDropdown.Item as={Link} to="/Calendar">Settings</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/Calendar">hello</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/Calendar">:)</NavDropdown.Item>
