@@ -5,18 +5,16 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import OurTimeline from "./components/OurTimeline";
+import DummyBlock from "./components/DummyBlock"
 
-//Timeline mui
-import Timeline from "@mui/lab/Timeline";
-import TimelineItem from "@mui/lab/TimelineItem";
-import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import TimelineConnector from "@mui/lab/TimelineConnector";
-import TimelineContent from "@mui/lab/TimelineContent";
-import TimelineDot from "@mui/lab/TimelineDot";
 
 import { useState, useEffect } from "react";
 
 import "./Styles/Table.css";
+
+const weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+
 
 const headerData = {
   weekNo: "Week",
@@ -27,7 +25,7 @@ const headerData = {
   pages: "Pages",
 };
 
-const weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+
 
 /* 
   Here comes table stuff
@@ -112,50 +110,20 @@ const MyLessonPlanPage = () => {
     ));
   }
 
-  function skipLastTimelineItem(number) {
-    if (number != weeks.length) {
-      return <TimelineConnector />;
-    } else {
-      return;
-    }
-  }
-
-  const drawTimeline = weeks.map((number) => (
-    <div>
-      <TimelineItem>
-        <TimelineSeparator>
-          <TimelineDot />
-          {skipLastTimelineItem(number)}
-        </TimelineSeparator>
-        <TimelineContent>Week {number}</TimelineContent>
-      </TimelineItem>
-    </div>
-  ));
-
   const handleChange = (event) => {
     setCourseTitle(event.target.value);
   };
 
-  const DummyBlock = () => (
-    <div className="hide">
-        <p> ppppp </p>
-        <p> ppppp </p>
-        <p> ppppp </p>
-        <p> ppppp </p>
-        <p> ppppp </p>
-        <p> ppppp </p>
-        <p> ppppp </p>
-    </div>
-  );
 
   return (
     <>
     <div className="row">
+
       <div>
-      </div>
-      <div>
-        <DummyBlock />
-      {drawTimeline}
+      <DummyBlock />
+      <OurTimeline
+      weeks = {weeks}
+       />
       </div>
       <div>
       <div className="alignCenter">
@@ -171,7 +139,7 @@ const MyLessonPlanPage = () => {
 
       <div className="alignCenter">
         <Table>
-          <Header
+        <Header 
             weekNo={headerData.weekNo}
             date={headerData.date}
             topic={headerData.topic}
