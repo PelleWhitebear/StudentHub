@@ -5,7 +5,6 @@ import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword, 
     onAuthStateChanged,
-    signOut
 } from 'firebase/auth'
 import { auth } from '../../firebase-config.js';
 
@@ -36,14 +35,12 @@ const LoginForm = () => {
             const user = await signInWithEmailAndPassword(
                 auth, loginEmail, loginPassword
             );
+            console.log(user.email)
         } catch (error) {
             console.log(error.message);
         }
     }
-    
-    const logout = async () => {
-        await signOut(auth);
-    }
+
 
     return (
         
@@ -75,15 +72,6 @@ const LoginForm = () => {
                     className='LoginButton'
                     onClick={login}
                     >Login</button>
-                </Link>
-            </div>
-          
-            <div>
-                <Link to="/Calendar">
-                    <button 
-                    className='CreateUserButton'
-                    onClick={logout}
-                    >Logout</button>
                 </Link>
             </div>
         

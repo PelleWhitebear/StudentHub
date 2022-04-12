@@ -1,6 +1,9 @@
 import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import './NavBarHeader.css';
 import { Link } from 'react-router-dom';
+import { signOut } from 'firebase/auth'
+import { auth } from '../../../firebase-config.js';
+
 
     // https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css
 
@@ -19,6 +22,9 @@ import { Link } from 'react-router-dom';
     ); */
 
     const NavBarHeader = () => {
+        const logout = async () => {
+            await signOut(auth);
+        }
         return (
             <>
             <Navbar sticky="top" variant="dark" className="NBHeader">
@@ -38,7 +44,10 @@ import { Link } from 'react-router-dom';
                                 <NavDropdown.Item as={Link} to="/Calendar">hello</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/Calendar">:)</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item as={Link} to="/">Log out</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} 
+                                to="/"
+                                onClick={logout}
+                                >Log out</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                 </Container>
