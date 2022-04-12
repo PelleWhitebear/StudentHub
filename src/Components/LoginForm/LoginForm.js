@@ -1,30 +1,85 @@
-import { Link } from 'react-router-dom';
-import './LoginForm.css';
+import { Link } from "react-router-dom";
+import "./LoginForm.css";
+import { useState } from "react";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { auth } from "../../firebase-config.js";
+import Form from "./Form";
 
 const LoginForm = () => {
-    return (
-        <form action="#"> 
-            <div>
-                <span>
-                    <input className='InputBox' type="text" placeholder="Student-ID"></input>
-                </span>
-            </div>
-            <div>
-                <span>
-                    <input className='InputBox' type="password" placeholder="Password"></input>
-                </span>
-            </div>
-            <div>
-                <Link to="/Calendar">
-                    <button className='LoginButton'>Login</button>
-                </Link>
-            </div>
-        </form>
-    )
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [user, setUser] = useState({});
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+
+  const register = async () => {
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
   };
-  
-  export default LoginForm;
 
+  const login = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(
+        auth,
+        loginEmail,
+        loginPassword
+      );
+      console.log(user.email);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
+  return (
+    <>
+      <Form
+        firstInputPlaceholder="Student mail"
+        firstOnChange={(e) => setLoginEmail(e.target.value)}
+        secondInputPlaceholder="Password"
+        secondOnChange={(e) => setLoginPassword(e.target.value)}
+      />
 
+      <div>
+        <Link to="/Calendar">
+          <button className="LoginButton" onClick={login}>
+            Login
+          </button>
+        </Link>
+      </div>
+      {/*  <div>
+           <p> {user?.email} </p>
+            </div> */}
+      <Form
+        firstInputPlaceholder="Student mail"
+        firstOnChange={(e) => setRegisterEmail(e.target.value)}
+        secondInputPlaceholder="Password"
+        secondOnChange={(e) => setRegisterPassword(e.target.value)}
+      />
 
+      <div>
+        <Link to="/Calendar">
+          <button className="CreateUserButton" onClick={register}>
+            Create User
+          </button>
+        </Link>
+      </div>
+    </>
+  );
+};
+
+export default LoginForm;
