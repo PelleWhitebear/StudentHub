@@ -16,7 +16,6 @@ import "./Styles/Table.css";
 
 const weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
-
 const headerData = {
   weekNo: "Week",
   date: "Date",
@@ -118,9 +117,7 @@ const MyLessonPlanPage = () => {
 
   return (
     <>
-
-
-      <Paper>
+      <Paper >
       <div className="alignCenter">
         <Box>
           <FormControl sx={{ minWidth: 500 }}>
