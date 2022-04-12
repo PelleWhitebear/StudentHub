@@ -140,7 +140,7 @@ const MyLessonPlanPage = () => {
 
       <div className="alignCenter">
         <Table>
-          <Header
+          <Header 
             weekNo={headerData.weekNo}
             date={headerData.date}
             topic={headerData.topic}
