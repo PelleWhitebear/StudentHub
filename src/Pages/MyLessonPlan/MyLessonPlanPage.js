@@ -8,6 +8,7 @@ import Select from "@mui/material/Select";
 import OurTimeline from "./components/OurTimeline";
 import DummyBlock from "./components/DummyBlock"
 
+import Paper from '@mui/material/Paper';
 
 import { useState, useEffect } from "react";
 
@@ -117,15 +118,9 @@ const MyLessonPlanPage = () => {
 
   return (
     <>
-    <div className="row">
 
-      <div>
-      <DummyBlock />
-      <OurTimeline
-      weeks = {weeks}
-       />
-      </div>
-      <div>
+
+      <Paper>
       <div className="alignCenter">
         <Box>
           <FormControl sx={{ minWidth: 500 }}>
@@ -150,8 +145,7 @@ const MyLessonPlanPage = () => {
           {loadTableRows()}
         </Table>
       </div>
-      </div>
-      </div>
+      </Paper>
     </>
   );
 };

@@ -8,6 +8,7 @@ body {
   position: relative;
   height: 100%;
   overflow: auto;
+  background-image: url(./Resources/background_img.jpg);
 }
 
 code {
