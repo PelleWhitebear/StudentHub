@@ -1,6 +1,6 @@
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import {useState} from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import styled from 'styled-components';
 import ChooseDate from './ChooseDate';
 
@@ -38,8 +38,9 @@ function AddAppointmentOffCanvas () {
     let [endDate, setEndDate] = useState("");
     let [location, setLocation] = useState("");
 const addAppointment = () => {
-    Axios.post("http://localhost:3000/Calendar/create_event", {
-            appointmentTitle: appointmentTitle
+    axios.post("http://localhost:8080/api/appointment/createAppointment", {
+    studentId: "s205353",
+    appointmentTitle: appointmentTitle
     }).then(() => 
     console.log("Frontend post completed"))
 };
@@ -67,7 +68,7 @@ const addAppointment = () => {
                     />
                     <br/>
                     <br/>
-                    <ChooseDate />
+                    <ChooseDate  />
                    {/*  <label>Start Date</label>
                      <br/>
                     <Input
