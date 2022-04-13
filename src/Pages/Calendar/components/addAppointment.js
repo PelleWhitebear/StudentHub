@@ -11,21 +11,22 @@ const AddAppointmentBtn = styled.button`
     border-color: rgb(153,0,0);
     color: white;
     float: right;
+    border-radius: 4px;
+    padding: 8px;
 
     &:hover {
-        opacity: 85%;
+        opacity: 80%;
      }
 `;
-
 
 const Input = styled.input`
     border-color: rgb(153,0,0);
     color: rgb(153,0,0);
-    border-radius: 0px;
     box-sizing: border-box;
     width: 100%;
     padding: 5px;
-    border-radius: 1px;
+    border-radius: 4px;
+    border: 1px solid;
 `;
 
 
@@ -59,11 +60,7 @@ const addAppointment = () => {
                 <Offcanvas.Title>Create Appointment</Offcanvas.Title>
             </Offcanvas.Header>
                 <Offcanvas.Body>
-                    <div>
-                        <AddAppointmentBtn  onClick={addAppointment}>
-                             Add Appointment
-                        </AddAppointmentBtn>
-                    </div>
+             
 <br/>
                     <br/>
                      <label>Appointment Title</label>
@@ -76,7 +73,8 @@ const addAppointment = () => {
                     />
                     <br/>
                     <br/>
-                     <label>End Date</label>
+                    <ChooseDate />
+                   {/*  <label>Start Date</label>
                      <br/>
                     <Input
                         type="text" 
@@ -94,6 +92,7 @@ const addAppointment = () => {
                             setEndDate(event.target.value);
                         }}
                     />
+                    */}
                     <br/>
                     <br/>
                      <label>Location</label>
@@ -117,7 +116,15 @@ const addAppointment = () => {
                             setAppointmentTitle(event.target.value);
                         }}
                     />
+                    
                     </div>
+                    <br></br>
+                    <div>
+                        <AddAppointmentBtn  onClick={addAppointment}>
+                             Add Appointment
+                        </AddAppointmentBtn>
+                    </div>
+                    
                 </Offcanvas.Body>
         </Offcanvas>
      </div>

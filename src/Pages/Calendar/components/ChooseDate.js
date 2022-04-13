@@ -3,12 +3,12 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import { Stack, TextField } from '@mui/material';
 import { useState } from 'react';
 import { DatePicker } from '@mui/lab';
-
+import moment from 'moment';
  
 
 
 export const ChooseDate = () => {
-    let [selectedDate, setSelectedDate] = useState<Date | null>(null)
+    let [selectedDate, setSelectedDate] = useState(moment().format("DD-MM-YYYY"))
 
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
