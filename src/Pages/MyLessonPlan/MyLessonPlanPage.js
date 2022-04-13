@@ -5,10 +5,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import OurTimeline from "./components/OurTimeline";
-import DummyBlock from "./components/DummyBlock"
-
-import Paper from '@mui/material/Paper';
+import Paper from "@mui/material/Paper";
 
 import { useState, useEffect } from "react";
 
@@ -16,36 +13,12 @@ import "./Styles/Table.css";
 
 const weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
-const headerData = {
-  weekNo: "Week",
-  date: "Date",
-  topic: "Topic",
-  learningObjectives: "Learning Objectives",
-  litterature: "Litterature",
-  pages: "Pages",
-};
-
-
-
 /* 
   Here comes table stuff
   */
 
-function Table(props) {
-  return <table>{props.children}</table>;
-}
-
-function Header(props) {
-  return (
-    <tr>
-      <th className="tableHeader"> {props.weekNo} </th>
-      <th className="tableHeader"> {props.date} </th>
-      <th className="tableHeader"> {props.topic} </th>
-      <th className="tableHeader"> {props.learningObjectives} </th>
-      <th className="tableHeader"> {props.litterature} </th>
-      <th className="tableHeader"> {props.pages} </th>
-    </tr>
-  );
+function TableHeader(props) {
+  return <th>{props.value}</th>;
 }
 
 function TableRow(props) {
@@ -94,11 +67,43 @@ const MyLessonPlanPage = () => {
     }
   }
 
+  const headerData = [
+    "Week",
+    "Date",
+    "Topic",
+    "Learning Objectives",
+    "Litterature",
+    "Pages",
+  ];
+
   function loadTableRows() {
-    return data.map((data) => <TableRow key={data.course} {...data} />);
+    const tableRows = data.map((element) => (
+      <TableRow key={data.indexOf(element)} {...element} />
+    ));
+    return <tbody>{tableRows}</tbody>;
   }
 
-  const [courseTitle, setCourseTitle] = useState("");
+  function loadHeaderColumns() {
+    const headerColumns = headerData.map((element) => (
+      <TableHeader key={headerData.indexOf(element)} value={element}>
+        {" "}
+      </TableHeader>
+    ));
+    return (
+      <thead>
+        <tr className="tableHeader">{headerColumns}</tr>
+      </thead>
+    );
+  }
+  function loadTable() {
+    return (
+      <table>
+        {loadHeaderColumns()}
+        {loadTableRows()}
+      </table>
+    );
+  }
+
   const uniqueCourses = [...new Set(data.map((item) => item.course))];
 
   function loadCourses() {
@@ -110,38 +115,31 @@ const MyLessonPlanPage = () => {
     ));
   }
 
+  const [courseTitle, setCourseTitle] = useState(uniqueCourses[0]);
+
   const handleChange = (event) => {
     setCourseTitle(event.target.value);
   };
 
-
   return (
     <>
-      <Paper >
-      <div className="alignCenter">
-        <Box>
-          <FormControl sx={{ minWidth: 500 }}>
-            <InputLabel id="select-course-label">Course</InputLabel>
-            <Select value={courseTitle} label="Course" onChange={handleChange}>
-              {loadCourses()}
-            </Select>
-          </FormControl>
-        </Box>
-      </div>
+      <Paper>
+        <div className="alignCenter">
+          <Box>
+            <FormControl sx={{ minWidth: 500 }}>
+              <InputLabel id="select-course-label">Course</InputLabel>
+              <Select
+                value={courseTitle}
+                label="Course"
+                onChange={handleChange}
+              >
+                {loadCourses()}
+              </Select>
+            </FormControl>
+          </Box>
+        </div>
 
-      <div className="alignCenter">
-        <Table>
-        <Header 
-            weekNo={headerData.weekNo}
-            date={headerData.date}
-            topic={headerData.topic}
-            litterature={headerData.litterature}
-            learningObjectives={headerData.learningObjectives}
-            pages={headerData.pages}
-          />
-          {loadTableRows()}
-        </Table>
-      </div>
+        <div className="alignCenter">{loadTable()}</div>
       </Paper>
     </>
   );

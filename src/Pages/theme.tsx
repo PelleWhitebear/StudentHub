@@ -22,17 +22,6 @@ const theme = createTheme({
                 }
             },
 
-           /* MuiPaper: {
-                styleOverrides: {
-                    elevation1: {
-                        width: '80%',
-                        height: '50%',
-                        alignItems: 'right',
-                    }
-                }
-            }
-            */
-     
         }
 
         
