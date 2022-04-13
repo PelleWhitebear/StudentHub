@@ -7,7 +7,7 @@ table {
 }
 
 
-th {
+.tableHeader {
     background-color: rgb(153,0,0);
     color: white;
     text-align: left;

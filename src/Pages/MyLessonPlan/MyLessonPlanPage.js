@@ -38,12 +38,12 @@ function Table(props) {
 function Header(props) {
   return (
     <tr>
-      <th> {props.weekNo} </th>
-      <th> {props.date} </th>
-      <th> {props.topic} </th>
-      <th> {props.learningObjectives} </th>
-      <th> {props.litterature} </th>
-      <th> {props.pages} </th>
+      <th className="tableHeader"> {props.weekNo} </th>
+      <th className="tableHeader"> {props.date} </th>
+      <th className="tableHeader"> {props.topic} </th>
+      <th className="tableHeader"> {props.learningObjectives} </th>
+      <th className="tableHeader"> {props.litterature} </th>
+      <th className="tableHeader"> {props.pages} </th>
     </tr>
   );
 }
