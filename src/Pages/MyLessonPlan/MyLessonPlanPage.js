@@ -5,9 +5,6 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import OurTimeline from "./components/OurTimeline";
-import DummyBlock from "./components/DummyBlock"
-
 import Paper from '@mui/material/Paper';
 
 import { useState, useEffect } from "react";
@@ -21,14 +18,8 @@ const weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
   Here comes table stuff
   */
 
-function Table(props) {
-  return <table>{props.children}</table>;
-}
-
-function Header(props) {
-  return (
-      <th > {props.value} </th>
-  );
+function TableHeader(props) {
+  return <th>{props.value}</th>;
 }
 
 function TableRow(props) {
@@ -77,24 +68,29 @@ const MyLessonPlanPage = () => {
     }
   }
 
+  const headerData = ["Week", "Date", "Topic", "Learning Objectives", "Litterature", "Pages"];
+
   function loadTableRows() {
-    const tableRows = data.map((data) => 
-    <TableRow key={data.course} {...data} />);
+    const tableRows = data.map((element) => 
+    <TableRow key={data.indexOf(element)} {...element} />);
     return (
-      <tbody> {tableRows} </tbody>
+      <tbody>{tableRows}</tbody>
     );
   }
 
-  const headerData = ["Week", "Date", "Topic", "Learning Objectives", "Litterature", "Pages"];
-
   function loadHeaderColumns() {
     const headerColumns = headerData.map((element) =>
-     <Header value = {element}> </Header>);
+     <TableHeader key={headerData.indexOf(element)} value = {element}> </TableHeader>);
      return (
-       <thead className="tableHeader"> {headerColumns} </thead>
+       <thead><tr className="tableHeader">{headerColumns}</tr></thead>
      );
   } 
-
+  function loadTable() {
+    return <table>
+      {loadHeaderColumns()}
+      {loadTableRows()}
+    </table>;
+  }
 
   const [courseTitle, setCourseTitle] = useState("");
   const uniqueCourses = [...new Set(data.map((item) => item.course))];
@@ -112,6 +108,8 @@ const MyLessonPlanPage = () => {
     setCourseTitle(event.target.value);
   };
 
+  
+
 
   return (
     <>
@@ -128,10 +126,7 @@ const MyLessonPlanPage = () => {
       </div>
 
       <div className="alignCenter">
-        <Table>
-          {loadHeaderColumns()}
-          {loadTableRows()}
-        </Table>
+        {loadTable()}
       </div>
       </Paper>
     </>
