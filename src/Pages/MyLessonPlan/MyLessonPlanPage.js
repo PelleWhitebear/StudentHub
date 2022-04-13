@@ -5,14 +5,13 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Paper from '@mui/material/Paper';
+import Paper from "@mui/material/Paper";
 
 import { useState, useEffect } from "react";
 
 import "./Styles/Table.css";
 
 const weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-
 
 /* 
   Here comes table stuff
@@ -68,31 +67,43 @@ const MyLessonPlanPage = () => {
     }
   }
 
-  const headerData = ["Week", "Date", "Topic", "Learning Objectives", "Litterature", "Pages"];
+  const headerData = [
+    "Week",
+    "Date",
+    "Topic",
+    "Learning Objectives",
+    "Litterature",
+    "Pages",
+  ];
 
   function loadTableRows() {
-    const tableRows = data.map((element) => 
-    <TableRow key={data.indexOf(element)} {...element} />);
-    return (
-      <tbody>{tableRows}</tbody>
-    );
+    const tableRows = data.map((element) => (
+      <TableRow key={data.indexOf(element)} {...element} />
+    ));
+    return <tbody>{tableRows}</tbody>;
   }
 
   function loadHeaderColumns() {
-    const headerColumns = headerData.map((element) =>
-     <TableHeader key={headerData.indexOf(element)} value = {element}> </TableHeader>);
-     return (
-       <thead><tr className="tableHeader">{headerColumns}</tr></thead>
-     );
-  } 
+    const headerColumns = headerData.map((element) => (
+      <TableHeader key={headerData.indexOf(element)} value={element}>
+        {" "}
+      </TableHeader>
+    ));
+    return (
+      <thead>
+        <tr className="tableHeader">{headerColumns}</tr>
+      </thead>
+    );
+  }
   function loadTable() {
-    return <table>
-      {loadHeaderColumns()}
-      {loadTableRows()}
-    </table>;
+    return (
+      <table>
+        {loadHeaderColumns()}
+        {loadTableRows()}
+      </table>
+    );
   }
 
-  const [courseTitle, setCourseTitle] = useState("");
   const uniqueCourses = [...new Set(data.map((item) => item.course))];
 
   function loadCourses() {
@@ -104,30 +115,31 @@ const MyLessonPlanPage = () => {
     ));
   }
 
+  const [courseTitle, setCourseTitle] = useState(uniqueCourses[0]);
+
   const handleChange = (event) => {
     setCourseTitle(event.target.value);
   };
 
-  
-
-
   return (
     <>
-      <Paper >
-      <div className="alignCenter">
-        <Box>
-          <FormControl sx={{ minWidth: 500 }}>
-            <InputLabel id="select-course-label">Course</InputLabel>
-            <Select value={courseTitle} label="Course" onChange={handleChange}>
-              {loadCourses()}
-            </Select>
-          </FormControl>
-        </Box>
-      </div>
+      <Paper>
+        <div className="alignCenter">
+          <Box>
+            <FormControl sx={{ minWidth: 500 }}>
+              <InputLabel id="select-course-label">Course</InputLabel>
+              <Select
+                value={courseTitle}
+                label="Course"
+                onChange={handleChange}
+              >
+                {loadCourses()}
+              </Select>
+            </FormControl>
+          </Box>
+        </div>
 
-      <div className="alignCenter">
-        {loadTable()}
-      </div>
+        <div className="alignCenter">{loadTable()}</div>
       </Paper>
     </>
   );
