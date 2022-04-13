@@ -1,23 +1,20 @@
+import RoundBoxWithTitle from "./components/RoundBox";
 
-import "./Styles/ContactPage.css";
+const emails = [
+  "miadong01@yahoo.com",
+"pellehartvigandersen@gmail.com",
+"danieldiamant3@gmail.com",
+"sebassinding@gmail.com",
+"stevengordonpedersen@gmail.com"];
 
 const ContactPage = () => {
     return (
       <>
-      <div className="content DEh3">
-        <h1>Contact</h1>
-        <h3>Get in contact with the team of StudentHub!</h3>
-      </div>
-      <div className="DePageContent">
-          <h3>E-mail</h3>
-          <ul>
-            <li>pellehartvigandersen@gmail.com</li>
-            <li>danieldiamant3@gmail.com</li>
-            <li>miadong179@gmail.com</li>
-            <li>sebassinding@gmail.com</li>
-            <li>stevengordonpedersen@gmail.com</li>
-          </ul>
-      </div>
+      <RoundBoxWithTitle 
+      title="Contact"
+      subtitle="Contact the Team behind StudentHub"
+      secondSubtitle="Contact the Team"
+      data={emails}/>
       </>
     )
   };
