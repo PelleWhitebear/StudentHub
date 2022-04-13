@@ -1,0 +1,22 @@
+
+.TheTeamContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 60px 50px;
+}
+
+
+.TeamContent {
+    min-height: 1100px;
+}
+
+.h6width {
+    min-width: 400px;
+}
+
+.Box {
+    margin-bottom: 20px;
+
+}
