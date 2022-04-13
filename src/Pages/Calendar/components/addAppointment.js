@@ -50,11 +50,9 @@ const addAppointment = () => {
 
 
     return (
+        <>
+             <AddAppointmentBtn onClick = {handleShow}> Create Appointment </AddAppointmentBtn>
      <div>
-            <button onClick={handleShow}>
-             Create Appointment
-            </button>
-
         <Offcanvas show={show} onHide={handleClose} placement='end'>
         <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Create Appointment</Offcanvas.Title>
@@ -128,7 +126,7 @@ const addAppointment = () => {
                 </Offcanvas.Body>
         </Offcanvas>
      </div>
-
+     </>
     )
 };
 

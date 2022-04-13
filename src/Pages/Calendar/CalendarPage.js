@@ -56,6 +56,7 @@ const [currentViewName, setCurrentViewName] = useState('month');
   return (
     <>    
       <Paper >
+      
         <div className='row'/>
 
           <AddAppointment/>
