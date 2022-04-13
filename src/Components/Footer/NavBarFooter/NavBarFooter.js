@@ -4,7 +4,7 @@ import './NavBarFooter.css';
     const NavBarFooter = () => {
         return (
             <>
-            <Navbar variant='dark' className="NBFooter">
+            <Navbar sticky="bottom" variant='dark' className="NBFooter sticky-bottom">
                 <Container>
                     <Navbar.Text>
                     <Navbar.Brand>StudentHub.</Navbar.Brand>
