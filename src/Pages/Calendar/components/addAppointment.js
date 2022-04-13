@@ -29,10 +29,6 @@ const Input = styled.input`
     border: 1px solid;
 `;
 
-
-
-
-
 function AddAppointmentOffCanvas () {
     let [show, setShow] = useState(false);
     let handleClose = () => setShow(false);
