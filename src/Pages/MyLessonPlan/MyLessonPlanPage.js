@@ -16,16 +16,6 @@ import "./Styles/Table.css";
 
 const weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
-const headerData = {
-  weekNo: "Week",
-  date: "Date",
-  topic: "Topic",
-  learningObjectives: "Learning Objectives",
-  litterature: "Litterature",
-  pages: "Pages",
-};
-
-
 
 /* 
   Here comes table stuff
@@ -37,14 +27,7 @@ function Table(props) {
 
 function Header(props) {
   return (
-    <tr>
-      <th className="tableHeader"> {props.weekNo} </th>
-      <th className="tableHeader"> {props.date} </th>
-      <th className="tableHeader"> {props.topic} </th>
-      <th className="tableHeader"> {props.learningObjectives} </th>
-      <th className="tableHeader"> {props.litterature} </th>
-      <th className="tableHeader"> {props.pages} </th>
-    </tr>
+      <th > {props.value} </th>
   );
 }
 
@@ -95,8 +78,23 @@ const MyLessonPlanPage = () => {
   }
 
   function loadTableRows() {
-    return data.map((data) => <TableRow key={data.course} {...data} />);
+    const tableRows = data.map((data) => 
+    <TableRow key={data.course} {...data} />);
+    return (
+      <tbody> {tableRows} </tbody>
+    );
   }
+
+  const headerData = ["Week", "Date", "Topic", "Learning Objectives", "Litterature", "Pages"];
+
+  function loadHeaderColumns() {
+    const headerColumns = headerData.map((element) =>
+     <Header value = {element}> </Header>);
+     return (
+       <thead className="tableHeader"> {headerColumns} </thead>
+     );
+  } 
+
 
   const [courseTitle, setCourseTitle] = useState("");
   const uniqueCourses = [...new Set(data.map((item) => item.course))];
@@ -131,14 +129,7 @@ const MyLessonPlanPage = () => {
 
       <div className="alignCenter">
         <Table>
-        <Header 
-            weekNo={headerData.weekNo}
-            date={headerData.date}
-            topic={headerData.topic}
-            litterature={headerData.litterature}
-            learningObjectives={headerData.learningObjectives}
-            pages={headerData.pages}
-          />
+          {loadHeaderColumns()}
           {loadTableRows()}
         </Table>
       </div>
