@@ -25,7 +25,7 @@ const CourseDatabasePage = () => {
     try {
       // real request (axios)
 
-      let { data } = await axios.get("http://localhost:8080/api/lessonplan");
+      let { data } = await axios.get("http://localhost:8080/api/courseDatabase");
       setData(data);
 
       /*// Fake request
@@ -65,11 +65,11 @@ const CourseDatabasePage = () => {
                       /*The column names correspond 
                       to the ones in the database*/
                       <TableRow
-                        firstColumn={element.weekNo}
-                        secondColumn={element.date}
-                        thirdColumn={element.topic}
-                        fourthColumn={element.learningObjectives}
-                        fifthColumn={element.litterature}
+                        firstColumn={element.id}
+                        secondColumn={element.courseName}
+                        thirdColumn={element.courseDescription}
+                        fourthColumn={element.ects}
+                        fifthColumn={element.instructorId}
                         key={data.indexOf(element)}
                         {...element}
                       />
