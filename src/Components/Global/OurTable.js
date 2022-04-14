@@ -2,9 +2,9 @@ import TableHeader from './TableHeader'
 
 
 const OurTable = (props) => {
-
   return (
     <>
+    <div className="alignCenter">
       <table>
         <thead>
           <tr className="tableHeader">
@@ -17,10 +17,10 @@ const OurTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {" "}
           {props.children}
         </tbody>
       </table>
+      </div>
     </>
   );
 };

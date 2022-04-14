@@ -12,7 +12,7 @@ import TableRow from "../../Components/Global/OurTableRow";
 import { useState, useEffect } from "react";
 
 import "../../Components/Global/Styles/Table.css";
-
+import Title from "../../Components/Global/Title"
 const CourseDatabasePage = () => {
   //useState for data of courses
   const [data, setData] = useState([]);
@@ -45,8 +45,9 @@ const CourseDatabasePage = () => {
 
   return (
     <>
+      <Title
+        title="Course Database" />
       <Paper>
-        <div className="alignCenter">
           <OurTable headerData={headerData}>
             {data?.map((element) => (
               /*The column names correspond 
@@ -62,7 +63,6 @@ const CourseDatabasePage = () => {
               />
             ))}
           </OurTable>
-        </div>
       </Paper>
     </>
   );

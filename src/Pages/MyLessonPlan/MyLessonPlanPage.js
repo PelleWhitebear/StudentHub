@@ -8,6 +8,7 @@ import Select from "@mui/material/Select";
 import Paper from "@mui/material/Paper";
 import OurTable from "../../Components/Global/OurTable"
 import TableRow from "../../Components/Global/OurTableRow"
+import Title from "../../Components/Global/Title"
 
 import { useState, useEffect } from "react";
 
@@ -47,12 +48,12 @@ const MyLessonPlanPage = () => {
   }
 
   const headerData = [
-    "Week",
-    "Date",
-    "Topic",
-    "Learning Objectives",
-    "Litterature",
-    "Pages"
+    "  Week  ",
+    "  Date  ",
+    "  Topic  ",
+    "  Learning Objectives  ",
+    "  Litterature  ",
+    "  Pages  "
   ];
 
   const uniqueCourses = [...new Set(data.map((item) => item.course))];
@@ -80,6 +81,8 @@ const MyLessonPlanPage = () => {
 
   return (
     <>
+    <Title
+        title="My Lessonplan" />
       <Paper>
         <div className="alignCenter">
           <Box>
