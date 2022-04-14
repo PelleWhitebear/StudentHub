@@ -1,93 +1,107 @@
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import '../MyLessonPlan/Styles/LessonPlan.css';
-import { Checkbox } from '@mui/material';
-import { useState, useEffect } from 'react';
+import axios from "axios";
+//MenutItem
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import Paper from "@mui/material/Paper";
+import OurTable from "../../Components/Global/OurTable"
+import TableRow from "../../Components/Global/OurTableRow"
 
-function createData(courseNumber, courseName, passingPct, avgGrade,  courseRating) {
-  return { courseNumber, courseName, passingPct, avgGrade, courseRating };
-}
+import { useState, useEffect } from "react";
 
-const columns = [
-  { 
-    field: 'courseNumber',
-    headerName: 'Course number'
-  },
-  
-  { 
-    field: 'courseName',
-    headerName: 'Course name'
-  },
-  
-  { field: 'passingPct',
-    headerName: 'Passing percentage'
-  },
-  
-  { field: 'avgGrade',
-    headerName: 'Average grade'
-  },
-  
-  { field: 'courseRating',
-    headerName: 'Rating'
-  }
-];
-
-const rows = [
-  createData("62597", "Backend", 80.4, 7.30, 77.69),
-  createData("45678", "Front end", 100, 11.8, 100),
-  createData("65464", "sjovt kursus", 64.32, 6.4, 80.3),
-  createData("43465", "sjovere kursus", 89.1, 8.78, 95.6),
-  createData("45643", "kursus 1", 100, 11.8, 100),
-  createData("34567", "kursus 2", 56, 2, 100),
-  createData("12345", "kursus 3", 34, 4, 100),
-  createData("87654", "kursus 4", 23, 3, 100),
-  createData("54321", "kedeligt kursus", 59, 42, 22),
-  createData("89876", "kursus x", 59, 42, 13.2),
-];
+import "../../Components/Global/Styles/Table.css";
 
 const CourseDatabasePage = () => {
+  //useState for data of courses
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  async function getData() {
+    try {
+      // real request (axios)
+
+      let { data } = await axios.get("http://localhost:8080/api/lessonplan");
+      setData(data);
+
+      /*// Fake request
+    setTimeout(() => {
+      //list of courses
+      let thisData = [
+        { course: "Frontend", weekNo: "1", date: "1/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
+        { course: "Backend", weekNo: "2", date: "8/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
+        { course: "Frontend", weekNo: "3", date: "15/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
+      ]
+      //sets data in a useState
+      setData(thisData);
+
+    }, 20) //load time*/
+    } catch (error) {
+      //catch if error in getting data.
+      console.log(error);
+    }
+  }
+
+  const headerData = [
+    "Week",
+    "Date",
+    "Topic",
+    "Learning Objectives",
+    "Litterature",
+    "Pages"
+  ];
+
+  const uniqueCourses = [...new Set(data.map((item) => item.course))];
+
+  function loadCourses() {
+    return uniqueCourses.map((uniqueCourses) => (
+      <MenuItem key={uniqueCourses.course} value={uniqueCourses.course}>
+        {" "}
+        {uniqueCourses}{" "}
+      </MenuItem>
+    ));
+  }
+
+
+
+  const [courseTitle, setCourseTitle] = useState(uniqueCourses[0]);
+
+  useEffect(() => {
+    getData();
+  }, [data]) 
+  
+  const handleChange = (event) => {
+    setCourseTitle(event.target.value);
+  };
+
   return (
     <>
-    <div>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell padding ="checkbox">
-              <Checkbox  color = "primary" value = "anil"/></TableCell>
-              <TableCell align="center">Course number</TableCell>
-              <TableCell align="left">Course name</TableCell>
-              <TableCell align="left">Passing percentage</TableCell>
-              <TableCell align="left">Average grade</TableCell>
-              <TableCell align="left">Rating</TableCell>
-            </TableRow>
-          </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                  <TableRow
-                    key ={row.courseNumber}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  >
-                    <TableCell padding ="checkbox">
-                    <Checkbox  color = "primary" value = "anil"/></TableCell>
-                    <TableCell align="center" component="th" scope="row">{row.courseNumber}</TableCell>
-                    <TableCell align="left">{row.courseName}</TableCell>
-                    <TableCell align="left">{row.passingPct}</TableCell>
-                    <TableCell align="left">{row.avgGrade}</TableCell>
-                    <TableCell align="left">{row.courseRating}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-      </TableContainer>
-    </div>
+      <Paper>
+          <OurTable className="alignCenter"
+          headerData={headerData}>
+                    {data?.map((element) => (
+                      /*The column names correspond 
+                      to the ones in the database*/
+                      <TableRow
+                        firstColumn={element.weekNo}
+                        secondColumn={element.date}
+                        thirdColumn={element.topic}
+                        fourthColumn={element.learningObjectives}
+                        fifthColumn={element.litterature}
+                        sixthColumn={element.pages}
+                        key={data.indexOf(element)}
+                        {...element}
+                      />
+                    ))}
+         </OurTable>
+      
+      </Paper>
     </>
   );
-}
+};
 
 export default CourseDatabasePage;

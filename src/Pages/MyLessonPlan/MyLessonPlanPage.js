@@ -7,14 +7,11 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Paper from "@mui/material/Paper";
 import OurTable from "../../Components/Global/OurTable"
+import TableRow from "../../Components/Global/OurTableRow"
 
 import { useState, useEffect } from "react";
 
-import "./Styles/Table.css";
-
-const weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-
-
+import "../../Components/Global/Styles/Table.css";
 
 const MyLessonPlanPage = () => {
   //useState for data of courses
@@ -35,9 +32,9 @@ const MyLessonPlanPage = () => {
     setTimeout(() => {
       //list of courses
       let thisData = [
-        { course: "Frontend", week: "1", date: "1/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
-        { course: "Backend", week: "2", date: "8/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
-        { course: "Frontend", week: "3", date: "15/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
+        { course: "Frontend", weekNo: "1", date: "1/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
+        { course: "Backend", weekNo: "2", date: "8/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
+        { course: "Frontend", weekNo: "3", date: "15/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
       ]
       //sets data in a useState
       setData(thisData);
@@ -56,15 +53,6 @@ const MyLessonPlanPage = () => {
     "Learning Objectives",
     "Litterature",
     "Pages"
-  ];
-
-  const databaseHeaders = [
-    "weekNo",
-    "date",
-    "topic",
-    "learningObjectives",
-    "litterature",
-    "pages"
   ];
 
   const uniqueCourses = [...new Set(data.map((item) => item.course))];
@@ -86,7 +74,6 @@ const MyLessonPlanPage = () => {
     getData();
   }, [data]) 
   
-
   const handleChange = (event) => {
     setCourseTitle(event.target.value);
   };
@@ -111,16 +98,23 @@ const MyLessonPlanPage = () => {
         </div>
 
         <div className="alignCenter">
-          <OurTable 
-          headerData={headerData}
-          rowData={data}
-          firstColumn="weekNo"
-          secondColumn="date"
-          thirdColumn="topic"
-          fourthColumn="learningObjectives"
-          fifthColumn="litterature"
-          sixthColumn="pages"
-         /> 
+          <OurTable
+          headerData={headerData}>
+                    {data?.map((element) => (
+                      /*The column names correspond 
+                      to the ones in the database*/
+                      <TableRow
+                        firstColumn={element.weekNo}
+                        secondColumn={element.date}
+                        thirdColumn={element.topic}
+                        fourthColumn={element.learningObjectives}
+                        fifthColumn={element.litterature}
+                        sixthColumn={element.pages}
+                        key={data.indexOf(element)}
+                        {...element}
+                      />
+                    ))}
+         </OurTable>
         </div>
       </Paper>
     </>
