@@ -4,6 +4,7 @@ import Axios from 'axios';
 import styled from 'styled-components';
 import ChooseDate from './ChooseDate';
 import ChooseTime from './ChooseTime';
+import { Stack} from '@mui/material';
 
 const AddAppointmentBtn = styled.button`
     font-size: 15px;
@@ -75,13 +76,19 @@ const addAppointment = () => {
                     <br/>
                     <ChooseDate />
                     <br/>
-                    <br/>
+                    
+                
+                    <Stack direction="row" spacing={2}>
+                        <Stack direction='column'>
+                            <div>Start Time</div>
+                            <ChooseTime/>
+                        </Stack>
 
-                    <div>
-                        <ChooseTime/>
-                        <br/>
-                        <ChooseTime/>
-                    </div>
+                        <Stack direction='column'>
+                            <div>End Time</div>
+                            <ChooseTime/>
+                        </Stack>
+                    </Stack>
                    {/*  <label>Start Date</label>
                      <br/>
                     <Input
