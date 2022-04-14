@@ -47,41 +47,19 @@ const CourseDatabasePage = () => {
   }
 
   const headerData = [
-    "Week",
-    "Date",
-    "Topic",
-    "Learning Objectives",
-    "Litterature",
-    "Pages"
+    "ID",
+    "Title",
+    "Course Description",
+    "ECTS",
+    "Instructor"
   ];
-
-  const uniqueCourses = [...new Set(data.map((item) => item.course))];
-
-  function loadCourses() {
-    return uniqueCourses.map((uniqueCourses) => (
-      <MenuItem key={uniqueCourses.course} value={uniqueCourses.course}>
-        {" "}
-        {uniqueCourses}{" "}
-      </MenuItem>
-    ));
-  }
-
-
-
-  const [courseTitle, setCourseTitle] = useState(uniqueCourses[0]);
-
-  useEffect(() => {
-    getData();
-  }, [data]) 
-  
-  const handleChange = (event) => {
-    setCourseTitle(event.target.value);
-  };
 
   return (
     <>
-      <Paper>
-          <OurTable className="alignCenter"
+        <Paper>
+    <div className="alignCenter">
+
+          <OurTable 
           headerData={headerData}>
                     {data?.map((element) => (
                       /*The column names correspond 
@@ -92,14 +70,13 @@ const CourseDatabasePage = () => {
                         thirdColumn={element.topic}
                         fourthColumn={element.learningObjectives}
                         fifthColumn={element.litterature}
-                        sixthColumn={element.pages}
                         key={data.indexOf(element)}
                         {...element}
                       />
                     ))}
          </OurTable>
-      
-      </Paper>
+         </div>
+         </Paper>
     </>
   );
 };
