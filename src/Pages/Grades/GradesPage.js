@@ -1,57 +1,62 @@
+import axios from "axios";
+
+import Paper from "@mui/material/Paper";
+import OurTable from "../../Components/Global/OurTable";
+import TableRow from "../../Components/Global/OurTableRow";
 
 import { useState, useEffect } from "react";
-import Grades from "./Components/Grades";
 
+import "../../Components/Global/Styles/Table.css";
+import Title from "../../Components/Global/Title"
 const GradesPage = () => {
-const [gradesData, setGradeesData] = useState([])
+  //useState for data of courses
+  const [data, setData] = useState([]);
 
-useEffect(() => {
-  getGrades();
-}, []) 
+  useEffect(() => {
+    getData();
+  }, []);
 
+  async function getData() {
+    try {
+      // real request (axios)
 
-async function getGrades() {
-
-  try {
-
-    setTimeout(() => {
-
-      let grades = [{
-        id: 1,
-        courseId: 62332,
-        courseName: "Compiler",
-        grade: 7,
-        ETCS: 5
-      },
-      {
-        id: 2,
-        courseId: 62577,
-        courseName: "Data Koomunikation",
-        grade: 10,
-        ETCS: 5
-      }]
-
-      setGradeesData(grades)
-
-
-    }, 1000)
-  } catch (error){
-    console.log(error)
+      let { data } = await axios.get(
+        "http://localhost:8080/api/grades"
+      );
+      setData(data);
+    } catch (error) {
+      //catch if error in getting data.
+      console.log(error);
+    }
   }
-}
 
-function loadGrades() {
-  return gradesData.map(data => <Grades key={data.id}  {...data} />)
-}
-
+  const headerData = [
+    "Course ID",
+    "Course Title",
+    "Grade",
+    "International Grade"
+  ];
 
   return (
-    <div>
-      {loadGrades()}
-    </div>
-    
-  )
+    <>
+      <Title
+        title="Grades" />
+      <Paper>
+          <OurTable headerData={headerData}>
+            {data?.map((element) => (
+              /*The column names correspond 
+                      to the ones in the database*/
+              <TableRow
+                firstColumn={element.gradeDK}
+                secondColumn={element.courseId}
+                key={data.indexOf(element)}
+                {...element}
+              />
+            ))}
+          </OurTable>
+      </Paper>
+    </>
+  );
 };
-
 
 export default GradesPage;
