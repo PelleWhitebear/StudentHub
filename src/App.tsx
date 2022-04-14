@@ -9,6 +9,9 @@ import StudyGuidancePage from "./Pages/StudyGuidance/StudyGuidancePage";
 import GradesPage from "./Pages/Grades/GradesPage";
 import NoPages from "./Pages/NoPages/NoPages";
 import LoginPage from "./Pages/Login/LoginPage";
+import ContactPage from "./Pages/Contact/ContactPage";
+import TheTeamPage from "./Pages/TheTeam/TheTeamPage";
+import AboutPage from "./Pages/About/AboutPage";
 import AlternativeLayout from "./Components/Layouts/AlternativeLayout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
@@ -30,6 +33,9 @@ export default function App() {
             <Route path="Announcements/:id" element={<AnnouncementPage />} />
             <Route path="CourseDatabase" element={<CourseDatabasePage />} />
             <Route path="Grades" element={<GradesPage />} />
+            <Route path="Contact" element={<ContactPage />} />
+            <Route path="Team" element={<TheTeamPage />} />
+            <Route path="About" element={<AboutPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
