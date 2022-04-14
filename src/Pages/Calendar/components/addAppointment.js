@@ -25,16 +25,13 @@ const Input = styled.input`
     border-color: rgb(153,0,0);
     color: rgb(153,0,0);
     box-sizing: border-box;
+    height: 51px;
     width: 100%;
     padding: 5px;
     border-radius: 4px;
     border: 1px solid;
 `;
 
-const HorizontalContainer = styled.div`
-    display: inline-block;
-    vertical-align: middle;
-`;
 
 function AddAppointmentOffCanvas () {
     let [show, setShow] = useState(false);
