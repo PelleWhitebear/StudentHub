@@ -41,12 +41,13 @@ function AddAppointmentOffCanvas () {
     let [startDate, setStartDate] = useState("");
     let [endDate, setEndDate] = useState("");
     let [location, setLocation] = useState("");
-const addAppointment = () => {
-    Axios.post("http://localhost:3000/Calendar/create_event", {
-            appointmentTitle: appointmentTitle
-    }).then(() => 
-    console.log("Frontend post completed"))
-};
+    const addAppointment = () => {
+        Axios.post("http://localhost:8080/api/appointment/createAppointment", {
+        studentId: "s205353",
+        appointmentTitle: appointmentTitle
+        }).then(() => 
+        console.log("Frontend post completed"))
+    };
 
 
     return (
