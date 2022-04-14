@@ -3,6 +3,7 @@ import {useState} from 'react';
 import Axios from 'axios';
 import styled from 'styled-components';
 import ChooseDate from './ChooseDate';
+import ChooseTime from './ChooseTime';
 
 const AddAppointmentBtn = styled.button`
     font-size: 15px;
@@ -27,6 +28,11 @@ const Input = styled.input`
     padding: 5px;
     border-radius: 4px;
     border: 1px solid;
+`;
+
+const HorizontalContainer = styled.div`
+    display: inline-block;
+    vertical-align: middle;
 `;
 
 function AddAppointmentOffCanvas () {
@@ -55,7 +61,7 @@ const addAppointment = () => {
             </Offcanvas.Header>
                 <Offcanvas.Body>
              
-<br/>
+                    <br/>
                     <br/>
                      <label>Appointment Title</label>
                      <br/>
@@ -68,6 +74,14 @@ const addAppointment = () => {
                     <br/>
                     <br/>
                     <ChooseDate />
+                    <br/>
+                    <br/>
+
+                    <div>
+                        <ChooseTime/>
+                        <br/>
+                        <ChooseTime/>
+                    </div>
                    {/*  <label>Start Date</label>
                      <br/>
                     <Input
