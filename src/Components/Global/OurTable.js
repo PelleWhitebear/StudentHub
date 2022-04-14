@@ -1,6 +1,5 @@
-function TableHeader(headerData) {
-  return <th>{headerData.value}</th>;
-}
+import TableHeader from './TableHeader'
+
 
 const OurTable = (props) => {
 
