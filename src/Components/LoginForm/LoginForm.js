@@ -9,13 +9,13 @@ import { auth } from "../../firebase-config.js";
 import Form from "./Form";
 
 const LoginForm = () => {
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
+  //const [registerEmail, setRegisterEmail] = useState("");
+  //const [registerPassword, setRegisterPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
 
-  const register = async () => {
+  /*const register = async () => {
     try {
       const user = await createUserWithEmailAndPassword(
         auth,
@@ -25,7 +25,7 @@ const LoginForm = () => {
     } catch (error) {
       console.log(error.message);
     }
-  };
+  };*/
 
   const login = async () => {
     try {
@@ -59,16 +59,16 @@ const LoginForm = () => {
       {/*  <div>
            <p> {user?.email} </p>
             </div> */}
-      <Form
+      {/*<Form
         firstInputPlaceholder="Student mail"
         firstOnChange={(e) => setRegisterEmail(e.target.value)}
         secondInputPlaceholder="Password"
         secondOnChange={(e) => setRegisterPassword(e.target.value)}
-      />
+      />*/}
 
       <div>
-        <Link to="/Calendar">
-          <button className="CreateUserButton" onClick={register}>
+        <Link to="/CreateUser">
+          <button className="CreateUserButton" >
             Create User
           </button>
         </Link>
