@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import "./Styles/Announcement.css";
 import { useEffect, useState } from "react";
-import axios from ('axios')
+import axios from 'axios';
 
 const AnnouncementPage = () => {
     const { id } = useParams();
