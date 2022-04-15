@@ -23,7 +23,7 @@ const AnnouncementsPage = () => {
     try {
       
       // real request (axios)
-      let { data } = await axios.get("http://localhost:8080/api/announcements");
+      let { data } = await axios.get("http://localhost:8080/api/announcement/getAll");
       setAnnouncements(data);
 
     } catch (error) { //catch if error in getting data.
@@ -31,6 +31,7 @@ const AnnouncementsPage = () => {
     }
   } 
 
+  //update read
   async function updateRead(id) {
     try{
 
@@ -38,7 +39,7 @@ const AnnouncementsPage = () => {
       setRead(true)
 
       const updateData = {
-      read: read
+      isRead: read
       }
 
       await axios.put(`http://localhost:8080/api/announcements/${oneAnnouncement.id}`, updateData);
@@ -56,7 +57,7 @@ function loadAnnouncements() {
 //function for on click of announcements.
 function onAnnouncementClick(id) {
   //update read in the announcement
-  updateRead(id)
+  //updateRead(id)
 
   // Navigate to new page with this id
   let path = "/Announcements/" + id;
