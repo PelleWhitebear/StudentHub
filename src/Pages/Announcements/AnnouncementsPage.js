@@ -11,7 +11,7 @@ const AnnouncementsPage = () => {
 
   //useState for data of announcements
   const [data, setAnnouncements] = useState([]);
-  const [read, setRead] = useState(false);
+  const [read, setRead] = useState();
 
 
   useEffect(() => {
@@ -34,15 +34,13 @@ const AnnouncementsPage = () => {
   //update read
   async function updateRead(id) {
     try{
-
-      let {oneAnnouncement} = await axios.get(`http://localhost:8080/api/announcements/${id}`);
       setRead(true)
 
       const updateData = {
       isRead: read
       }
 
-      await axios.put(`http://localhost:8080/api/announcements/${oneAnnouncement.id}`, updateData);
+      await axios.put(`http://localhost:8080/api/announcement/update/${id}`, updateData);
 
     } catch (error) { //catch if error in getting data.
       console.log(error)
@@ -57,7 +55,7 @@ function loadAnnouncements() {
 //function for on click of announcements.
 function onAnnouncementClick(id) {
   //update read in the announcement
-  //updateRead(id)
+  updateRead(id)
 
   // Navigate to new page with this id
   let path = "/Announcements/" + id;

@@ -28,7 +28,7 @@ const AnnouncementPage = () => {
 
 return (
     <>
-    
+        
         {loading && <p>indlæser announcement..</p>}
         {!loading && <div>
             <h1>{data.id}</h1>

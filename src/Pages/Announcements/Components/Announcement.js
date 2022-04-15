@@ -1,22 +1,24 @@
-import React, { useState } from "react";
 import "../Styles/Announcements.css";
 
 function Announcement (props) {
   //constant for different values of the announcements(props)
-  const {id} = props;
-  const [boolean, setBoolean] =  useState(false);
-  //setBoolean(isRead)
+  const {title, message, sender, isRead} = props;
+  
 
     return (
       <>
-      {boolean && 
+      {isRead && 
       <div onClick={props.onClick} className="BorderRead" >
-        <p>{id}</p>
-        </div>}
-      {!boolean &&
-       <div onclick={props.onClick} className="BorderUnRead" > 
-         <p>{id}</p>
-      </div> }
+        <h2 className="TitelReadt">{title} - {sender}</h2>
+        <p>{message}</p>
+        </div>
+        }
+      {!isRead &&
+       <div onClick={props.onClick} className="BorderUnRead" > 
+        <h2 className="Titelf">{title} - {sender}</h2>
+        <p>{message}</p>
+        </div>
+      }
       </>
     )
   };

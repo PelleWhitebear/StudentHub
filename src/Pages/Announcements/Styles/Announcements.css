@@ -1,4 +1,4 @@
-.Titel h2 {
+.Titelf h2 {
     font-style: italic;
     color: darkblue;
     padding-top: 0px;
@@ -7,6 +7,18 @@
     margin-top: 0px;
     margin-bottom: 0px;
     margin-left: 0px;
+}
+
+.Titelt h2 {
+    font-style: italic;
+    font-weight: bold;
+    color: darkblue;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 100px;
 }
 
 .Time p{
@@ -32,7 +44,7 @@ h1 {
 }
 
 .BorderUnRead {
-    border: 1px solid grey;
+    border: 1px solid darkgrey;
     margin: 20px 20px 20px 20px;
     border-radius: 20px;
     padding-bottom: 20px;
