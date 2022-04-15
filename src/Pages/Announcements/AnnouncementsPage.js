@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Announcement from "./Components/Announcement";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Paper from '@mui/material/Paper';
 
 
 const AnnouncementsPage = () => {
@@ -72,12 +73,14 @@ function onAnnouncementClick(id) {
   nav(path);
 }
   return (
+    <Paper>
     <div className="content">
       <div>
         <h1>Announcements</h1>
         {loadAnnouncements()}
       </div>
     </div>
+    </Paper>
   );
 };
 

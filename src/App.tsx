@@ -12,6 +12,7 @@ import LoginPage from "./Pages/Login/LoginPage";
 import ContactPage from "./Pages/Contact/ContactPage";
 import TheTeamPage from "./Pages/TheTeam/TheTeamPage";
 import AboutPage from "./Pages/About/AboutPage";
+import UserSettingsPage from "./Pages/UserSettings/UserSettingsPage"
 import AlternativeLayout from "./Components/Layouts/AlternativeLayout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
@@ -36,6 +37,7 @@ export default function App() {
             <Route path="Contact" element={<ContactPage />} />
             <Route path="Team" element={<TheTeamPage />} />
             <Route path="About" element={<AboutPage />} />
+            <Route path="UserSettings" element={<UserSettingsPage/>} />
           </Route>
         </Routes>
       </BrowserRouter>
