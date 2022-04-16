@@ -13,9 +13,13 @@ const CreateUserForm = () => {
   const [valid, setValid] = useState(false);
 
   //regrex
-  /*const validEmail = new RegExp(
+  const validEmail = new RegExp(
+    '^[s][0-9]{6}@student.dtu.dk$'
+  )
 
-  )*/
+  const validPassword = new RegExp(
+    
+  )
 
   //register user
   const register = async () => {
