@@ -50,7 +50,7 @@ const CreateUserForm = () => {
         firstOnChange={(e) => setRegisterEmail(e.target.value)}
         secondInputPlaceholder="Password"
         secondOnChange={(e) => setRegisterPassword(e.target.value)}
-        thirdInputPlaceholder="Same Password"
+        thirdInputPlaceholder="Repeat Password"
         secondOnChange={(e) => setSamePassword(e.target.value)}
       />
       
