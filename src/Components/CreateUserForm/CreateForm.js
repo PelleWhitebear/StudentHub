@@ -7,8 +7,28 @@ const Form = (props) => (
             <input 
             className='InputBox' 
             type="text" 
-            placeholder= { props.firstInputPlaceholder }
-            onChange={ props.firstOnChange }
+            placeholder= { props.mailInputPlaceholder }
+            onChange={ props.mailOnChange }
+            ></input>
+        </span>
+    </div>
+    <div>
+        <span>
+            <input 
+            className='InputBox' 
+            type="text" 
+            placeholder= { props.firstNameInputPlaceholder }
+            onChange={ props.firstNameOnChange }
+            ></input>
+        </span>
+    </div>
+    <div>
+        <span>
+            <input 
+            className='InputBox' 
+            type="text" 
+            placeholder= { props.lastNameInputPlaceholder }
+            onChange={ props.lastNameOnChange }
             ></input>
         </span>
     </div>
@@ -17,8 +37,8 @@ const Form = (props) => (
             <input 
             className='InputBox' 
             type="password" 
-            placeholder= { props.secondInputPlaceholder }
-            onChange={ props.secondOnChange }
+            placeholder= { props.passwordInputPlaceholder }
+            onChange={ props.passwordOnChange }
             ></input>
         </span>
     </div>
@@ -27,8 +47,8 @@ const Form = (props) => (
             <input 
             className='InputBox' 
             type="password" 
-            placeholder= { props.thirdInputPlaceholder }
-            onChange={ props.thirdOnChange }
+            placeholder= { props.repeatPasswordInputPlaceholder }
+            onChange={ props.repeatPasswordOnChange }
             ></input>
         </span>
     </div>

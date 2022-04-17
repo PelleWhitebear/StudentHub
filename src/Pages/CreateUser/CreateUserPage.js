@@ -7,7 +7,7 @@ const CreateUserPage = () => {
       <>    
       <div className="Bg">
         <div className='LoginPageContent'>
-          <h1 className='LoginPageH1'>StudentHub.</h1>
+          <h1 className='LoginPageH1'>StudentHub</h1>
           <h2 className='LoginPageH2'>Create User</h2>
           <CreateUserForm />
         </div>

@@ -12,13 +12,13 @@ const CreateUserForm = () => {
   const [samePassword, setSamePassword] = useState("");
   const [valid, setValid] = useState(false);
 
-  //regrex
+  //regex for validating mail and password
   const validEmail = new RegExp(
     '^[s][0-9]{6}@student.dtu.dk$'
   )
 
   const validPassword = new RegExp(
-    
+    '^[A-Z+a-z+0-9+]$'
   )
 
   //register user
@@ -46,12 +46,14 @@ const CreateUserForm = () => {
     return (
         <form action="#"> 
           <CreateForm
-        firstInputPlaceholder="Student mail"
-        firstOnChange={(e) => setRegisterEmail(e.target.value)}
-        secondInputPlaceholder="Password"
-        secondOnChange={(e) => setRegisterPassword(e.target.value)}
-        thirdInputPlaceholder="Repeat Password"
-        secondOnChange={(e) => setSamePassword(e.target.value)}
+        mailInputPlaceholder="Student mail"
+        mailOnChange={(e) => setRegisterEmail(e.target.value)}
+        firstNameInputPlaceholder="First Name"
+        lastNameInputPlaceholder="Last Name"
+        passwordInputPlaceholder="Password"
+        passwordOnChange={(e) => setRegisterPassword(e.target.value)}
+        repeatPasswordInputPlaceholder="Repeat Password"
+        repeatPasswordOnChange={(e) => setSamePassword(e.target.value)}
       />
       
         <div>
