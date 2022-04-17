@@ -43,6 +43,13 @@ h1 {
     margin-left: 20px;
 }
 
+/*.Border{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(auto-fit, minmax(100px , auto));
+    gap: 1em;
+}*/
+
 .BorderUnRead {
     border: 1px solid darkgrey;
     margin: 20px 20px 20px 20px;
