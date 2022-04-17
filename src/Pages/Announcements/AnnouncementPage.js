@@ -31,12 +31,12 @@ return (
         
         {loading && <p>indlæser announcement..</p>}
         {!loading && <div>
-            <h1>{data.id}</h1>
-            <section className="borderBox">
-            <p>{data.time}</p>
+            <h1>Announcement</h1>
+            <div className="borderBox">
             <h3 className="title">{data.title}</h3>
-            <p>{data.text}</p>
-            </section>
+            <h4 className="sender">{data.sender}</h4>
+            <p>{data.message}</p>
+            </div>
             </div>}
     </>
 );
