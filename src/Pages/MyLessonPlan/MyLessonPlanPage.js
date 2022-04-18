@@ -73,7 +73,7 @@ const MyLessonPlanPage = () => {
     try {
       // real request (axios)
 
-      let { data } = await axios.get("http://localhost:8080/api/lessonplan");
+      let { data } = await axios.get("http://130.225.170.78/:8080/api/lessonplan");
       setData(data);
 
       /*// Fake request
