@@ -64,7 +64,6 @@ const [currentViewName, setCurrentViewName] = useState('month');
 
         <div className='rows'>
         <div>
-        <DummyBlock />
         <SideBar />
         </div>
         <Scheduler 
