@@ -22,7 +22,7 @@ const AnnouncementsPage = () => {
     
     try {
       
-      // real request (axios)
+      // real request (axios) 
       let { data } = await axios.get("http://localhost:8080/api/announcements/getAll");
       setAnnouncements(data);
 
