@@ -1,6 +1,6 @@
 import '../LoginForm/LoginForm.css';
 
-const Form = (props) => (
+const CreateForm = (props) => (
     <form action={props.action}> 
     <div>
         <span>
@@ -53,4 +53,4 @@ const Form = (props) => (
         </span>
     </div>
 </form>);
-  export default Form;
+  export default CreateForm;

@@ -1,6 +1,7 @@
 
 import '../Login/Styles/LoginPage.css';
 import CreateUserForm from '../../Components/CreateUserForm/CreateUserForm';
+import './Styles/CreateUserPage.css';
 
 const CreateUserPage = () => {
     return (
@@ -9,7 +10,9 @@ const CreateUserPage = () => {
         <div className='LoginPageContent'>
           <h1 className='LoginPageH1'>StudentHub</h1>
           <h2 className='LoginPageH2'>Create User</h2>
-          <CreateUserForm />
+          <div className='border'>
+            <CreateUserForm />
+          </div>
         </div>
       </div>
       </>
