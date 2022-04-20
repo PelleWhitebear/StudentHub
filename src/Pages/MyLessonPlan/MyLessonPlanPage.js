@@ -83,10 +83,12 @@ const MyLessonPlanPage = () => {
     <>
     <Title
         title="My Lessonplan" />
-      <Paper>
         <div className="alignCenter">
           <Box>
-            <FormControl sx={{ minWidth: 500 }}>
+            <FormControl className="shadow" sx={{ 
+              minWidth: 500, 
+              backgroundColor: 'white'
+               }}>
               <InputLabel id="select-course-label">Course</InputLabel>
               <Select
                 value={courseTitle}
@@ -119,7 +121,6 @@ const MyLessonPlanPage = () => {
                     ))}
          </OurTable>
         </div>
-      </Paper>
     </>
   );
 };
