@@ -73,7 +73,7 @@ const MyLessonPlanPage = () => {
     try {
       // real request (axios)
 
-      let { data } = await axios.get("https://www.studenthub.bhsi.xyz:8080/api/lessonplan");
+      let { data } = await axios.get("http://www.studenthub.bhsi.xyz:8080/api/lessonplan");
       setData(data);
 
       /*// Fake request
