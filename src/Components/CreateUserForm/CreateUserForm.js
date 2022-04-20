@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import CreateForm from './CreateForm'
 import {
@@ -13,7 +13,9 @@ const CreateUserForm = () => {
   const [registerLastName, setRegisterLastName] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [samePassword, setSamePassword] = useState("");
-  const [valid, setValid] = useState(false);
+  const [emailValite, setEmailValite] = useState(false);
+
+  const nav = useNavigate();
 
   //regex for validating mail and password
   const validEmail = new RegExp(
@@ -21,21 +23,28 @@ const CreateUserForm = () => {
   )
 
   const validPassword = new RegExp(
-    '^[A-Z+a-z+0-9+]$'
   )
-
+  
   //register user
   const registerStudent = async () => {
-      const data = {
-        id: registerEmail.substring(0,7),
-        firstName: registerFirstName,
-        lastName: registerLastName,
-        mail: registerEmail,
-        studyclassId: ""
-      }
-    //try {
-      await axios.post("http://localhost:8080/api/student/createStudent", data).
-      then((result) => {
+    const data = {
+      id: registerEmail.substring(0,7),
+      firstName: registerFirstName,
+      lastName: registerLastName,
+      mail: registerEmail,
+      studyclassId: ""
+    }
+
+    try {
+      await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      );
+
+
+      await axios.post("http://localhost:8080/api/student/createStudent", data)
+      .then((result) => {
         console.log(result.data)
       }).catch((error) =>{
         if(error.response){
@@ -46,24 +55,33 @@ const CreateUserForm = () => {
           console.log(error.request)
         }
       })
-      /*await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPassword
-      );*/
-    /*} catch (error) {
+    } catch (error) {
       console.log(error.message);
-    }*/
+    }
   };
 
-  //check if the inputs are valid
-  /*function checkUser(){
-        if(registerPassword == samePassword){
-            register()
-        } else {
-            console.log("not the same password")
-        }
-  }*/
+  const eventHandler = () =>{
+    validate()
+
+    if(emailValite && registerPassword === samePassword){
+      registerStudent()
+      let path = "/loginPage"
+      nav(path);
+    } else if(!emailValite){
+      console.log("email not valid")
+    } else if(registerPassword !== samePassword){
+      console.log("be sure to write the same password")
+    }
+  }
+  
+  function validate(){
+    if(!validEmail.test(registerEmail)){
+      setEmailValite(false)
+    }else if(validEmail.test(registerEmail)){
+      setEmailValite(true)
+    }
+
+  }
 
     return (
         <form action="#"> 
@@ -81,10 +99,8 @@ const CreateUserForm = () => {
       />
       
         <div>
-        <Link to="/LoginPage">
-          <button className="LoginButton" onClick={registerStudent}>Create User</button>
-        </Link>
-      </div>
+          <button className="LoginButton" onClick={eventHandler}>Create User</button>
+        </div>
             
         </form>
     )
