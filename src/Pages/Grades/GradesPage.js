@@ -41,7 +41,6 @@ const GradesPage = () => {
     <>
       <Title
         title="Grades" />
-      <Paper>
           <OurTable headerData={headerData}>
             {data?.map((element) => (
               /*The column names correspond 
@@ -54,7 +53,6 @@ const GradesPage = () => {
               />
             ))}
           </OurTable>
-      </Paper>
     </>
   );
 };
