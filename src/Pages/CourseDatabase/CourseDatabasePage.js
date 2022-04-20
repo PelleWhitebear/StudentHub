@@ -26,7 +26,7 @@ const CourseDatabasePage = () => {
       // real request (axios)
 
       let { data } = await axios.get(
-        "http://localhost:8080/api/courseDatabase"
+        "http://www.studenthub.bhsi.xyz:8080/api/courseDatabase"
       );
       setData(data);
     } catch (error) {
@@ -59,7 +59,6 @@ const CourseDatabasePage = () => {
                 fourthColumn={element.ects}
                 fifthColumn={element.instructorId}
                 key={data.indexOf(element)}
-                {...element}
               />
             ))}
           </OurTable>

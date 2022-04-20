@@ -6,8 +6,8 @@ const OurTable = (props) => {
     <>
     <div className="alignCenter">
       <table>
-        <thead>
-          <tr className="tableHeader">
+        <thead className="tableHeader">
+          <tr>
             {props.headerData?.map((element) => (
               <TableHeader
                 key={props.headerData.indexOf(element)}
