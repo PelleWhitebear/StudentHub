@@ -1,9 +1,6 @@
-import {Checkbox, FormGroup, FormControlLabel} from '@mui/material';
-import {useState, React} from 'react'
+import {Checkbox, FormGroup, FormControlLabel, Box, Drawer, Toolbar, Divider, List, Stack } from '@mui/material';
+import { useState } from 'react'
 import './Styles/SideBar.css'
-
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-
 
 const SideBar = () => {
 
@@ -11,12 +8,42 @@ const SideBar = () => {
   
       return (
         <>    
-      <FormGroup>
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Course 1" />
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Course 2" />
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Course 3" />
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Course 4" />
-      </FormGroup>
+        <div className = "SideBar">
+        <br/>
+          <Stack direction="column" spacing={2}>
+            <br/>
+            <Stack>
+              <div>
+                <FormControlLabel control={<Checkbox defaultChecked />} label="Course 1"  />
+              </div>
+            </Stack>
+            <Stack>
+              <div>
+                <FormControlLabel control={<Checkbox defaultChecked />} label="Course 2"  />
+              </div>
+            </Stack>
+            <Stack>
+              <div>
+                <FormControlLabel control={<Checkbox defaultChecked />} label="Course 3"  />
+              </div>
+            </Stack>
+            <Stack>
+              <div>
+                <FormControlLabel control={<Checkbox defaultChecked />} label="Course 4"  />
+              </div>
+            </Stack>
+            <Stack>
+              <div>
+                <FormControlLabel control={<Checkbox defaultChecked />} label="Course 5"  />
+              </div>
+            </Stack>
+            <Stack>
+              <div>
+                <FormControlLabel control={<Checkbox defaultChecked />} label="My appointments"  />
+              </div>
+            </Stack>
+          </Stack>
+        </div>
         </>
       )
     };

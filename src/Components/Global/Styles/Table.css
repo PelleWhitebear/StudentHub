@@ -4,19 +4,26 @@ table {
     padding: 16px;
     border: 0.5px lightgrey solid;
     border-radius: 10px;
+    table-layout: auto;
 }
 
 
-th {
+.tableHeader {
     background-color: rgb(153,0,0);
     color: white;
     text-align: left;
-    font-size: 18px;
+    font-size: 15px;
   }
 
 td,th {
     text-align: left;
-    padding: 12px;
-    border-bottom: 1px solid lightgrey;
+    padding: 10px;
+    border-bottom: 1px solid light
 }
 
+.alignCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px
+}

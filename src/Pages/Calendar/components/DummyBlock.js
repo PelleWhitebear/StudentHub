@@ -5,8 +5,6 @@ const DummyBlock = () => (
         <p> ppppp </p>
         <p> ppppp </p>
         <p> ppppp </p>
-        <p> ppppp </p>
-        <p> ppppp </p>
     </div>
   );
   export default DummyBlock;

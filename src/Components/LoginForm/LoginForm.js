@@ -4,7 +4,6 @@ import { useState } from "react";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../../firebase-config.js";
 import Form from "./Form";
@@ -14,11 +13,7 @@ const LoginForm = () => {
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [user, setUser] = useState({});
 
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
 
   const register = async () => {
     try {

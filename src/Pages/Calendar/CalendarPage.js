@@ -16,7 +16,8 @@ import { createTheme } from '@mui/material';
 import './Styles/Calendar.css'
 import SideBar from './SideBar';
 import appointmentData from './appointmentData';
-import AddAppointment from './Styles/addAppointment';
+import AddAppointment from './components/addAppointment';
+import DummyBlock from './components/DummyBlock'
 
 //const schedulerData = appointmentData.map(appointmentData => appointmentData.title);
 
@@ -55,13 +56,16 @@ const [currentViewName, setCurrentViewName] = useState('month');
   return (
     <>    
       <Paper >
+      
         <div className='row'/>
 
           <AddAppointment/>
           
 
         <div className='rows'>
-        {/*<SideBar />*/}
+        <div>
+        <SideBar />
+        </div>
         <Scheduler 
         data={schedulerData}>
           

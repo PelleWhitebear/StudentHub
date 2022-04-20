@@ -5,61 +5,14 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import OurTimeline from "./components/OurTimeline";
-import DummyBlock from "./components/DummyBlock"
-
+import Paper from "@mui/material/Paper";
+import OurTable from "../../Components/Global/OurTable"
+import TableRow from "../../Components/Global/OurTableRow"
+import Title from "../../Components/Global/Title"
 
 import { useState, useEffect } from "react";
 
-import "./Styles/Table.css";
-
-const weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-
-
-const headerData = {
-  weekNo: "Week",
-  date: "Date",
-  topic: "Topic",
-  learningObjectives: "Learning Objectives",
-  litterature: "Litterature",
-  pages: "Pages",
-};
-
-
-
-/* 
-  Here comes table stuff
-  */
-
-function Table(props) {
-  return <table>{props.children}</table>;
-}
-
-function Header(props) {
-  return (
-    <tr>
-      <th> {props.weekNo} </th>
-      <th> {props.date} </th>
-      <th> {props.topic} </th>
-      <th> {props.learningObjectives} </th>
-      <th> {props.litterature} </th>
-      <th> {props.pages} </th>
-    </tr>
-  );
-}
-
-function TableRow(props) {
-  return (
-    <tr>
-      <td> {props.weekNo} </td>
-      <td> {props.date} </td>
-      <td> {props.topic} </td>
-      <td> {props.learningObjectives} </td>
-      <td> {props.litterature} </td>
-      <td> {props.pages} </td>
-    </tr>
-  );
-}
+import "../../Components/Global/Styles/Table.css";
 
 const MyLessonPlanPage = () => {
   //useState for data of courses
@@ -80,9 +33,9 @@ const MyLessonPlanPage = () => {
     setTimeout(() => {
       //list of courses
       let thisData = [
-        { course: "Frontend", week: "1", date: "1/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
-        { course: "Backend", week: "2", date: "8/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
-        { course: "Frontend", week: "3", date: "15/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
+        { course: "Frontend", weekNo: "1", date: "1/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
+        { course: "Backend", weekNo: "2", date: "8/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
+        { course: "Frontend", weekNo: "3", date: "15/4", topic:"Components", learningObjectives:"How to reuse components", litterature: "chapter 1-2", pages:20 },
       ]
       //sets data in a useState
       setData(thisData);
@@ -94,11 +47,15 @@ const MyLessonPlanPage = () => {
     }
   }
 
-  function loadTableRows() {
-    return data.map((data) => <TableRow key={data.course} {...data} />);
-  }
+  const headerData = [
+    "  Week  ",
+    "  Date  ",
+    "  Topic  ",
+    "  Learning Objectives  ",
+    "  Litterature  ",
+    "  Pages  "
+  ];
 
-  const [courseTitle, setCourseTitle] = useState("");
   const uniqueCourses = [...new Set(data.map((item) => item.course))];
 
   function loadCourses() {
@@ -110,48 +67,59 @@ const MyLessonPlanPage = () => {
     ));
   }
 
+
+
+  const [courseTitle, setCourseTitle] = useState(uniqueCourses[0]);
+
+  useEffect(() => {
+    getData();
+  }, [data]) 
+  
   const handleChange = (event) => {
     setCourseTitle(event.target.value);
   };
 
-
   return (
     <>
-    <div className="row">
+    <Title
+        title="My Lessonplan" />
+      <Paper>
+        <div className="alignCenter">
+          <Box>
+            <FormControl sx={{ minWidth: 500 }}>
+              <InputLabel id="select-course-label">Course</InputLabel>
+              <Select
+                value={courseTitle}
+                label="Course"
+                onChange={handleChange}
+                onSelect = {handleChange}
+              >
+                {loadCourses()}
+              </Select>
+            </FormControl>
+          </Box>
+        </div>
 
-      <div>
-      <DummyBlock />
-      <OurTimeline
-      weeks = {weeks}
-       />
-      </div>
-      <div>
-      <div className="alignCenter">
-        <Box>
-          <FormControl sx={{ minWidth: 500 }}>
-            <InputLabel id="select-course-label">Course</InputLabel>
-            <Select value={courseTitle} label="Course" onChange={handleChange}>
-              {loadCourses()}
-            </Select>
-          </FormControl>
-        </Box>
-      </div>
-
-      <div className="alignCenter">
-        <Table>
-        <Header 
-            weekNo={headerData.weekNo}
-            date={headerData.date}
-            topic={headerData.topic}
-            litterature={headerData.litterature}
-            learningObjectives={headerData.learningObjectives}
-            pages={headerData.pages}
-          />
-          {loadTableRows()}
-        </Table>
-      </div>
-      </div>
-      </div>
+        <div className="alignCenter">
+          <OurTable
+          headerData={headerData}>
+                    {data?.map((element) => (
+                      /*The column names correspond 
+                      to the ones in the database*/
+                      <TableRow
+                        firstColumn={element.weekNo}
+                        secondColumn={element.date}
+                        thirdColumn={element.topic}
+                        fourthColumn={element.learningObjectives}
+                        fifthColumn={element.litterature}
+                        sixthColumn={element.pages}
+                        key={data.indexOf(element)}
+                        {...element}
+                      />
+                    ))}
+         </OurTable>
+        </div>
+      </Paper>
     </>
   );
 };
