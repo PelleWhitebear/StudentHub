@@ -47,7 +47,6 @@ const CourseDatabasePage = () => {
     <>
       <Title
         title="Course Database" />
-      <Paper>
           <OurTable headerData={headerData}>
             {data?.map((element) => (
               /*The column names correspond 
@@ -62,7 +61,6 @@ const CourseDatabasePage = () => {
               />
             ))}
           </OurTable>
-      </Paper>
     </>
   );
 };
