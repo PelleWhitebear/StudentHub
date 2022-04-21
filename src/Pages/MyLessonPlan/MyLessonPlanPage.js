@@ -26,7 +26,7 @@ const MyLessonPlanPage = () => {
     try {
       // real request (axios)
 
-      let { data } = await axios.get("http://www.studenthub.bhsi.xyz/api/lessonplan");
+      let { data } = await axios.get("https://www.studenthub.bhsi.xyz/api/lessonplan");
       setData(data);
 
       /*// Fake request
