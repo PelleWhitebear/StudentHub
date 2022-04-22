@@ -7,7 +7,7 @@ import moment from 'moment';
  
 
 
-export const ChooseDate = () => {
+export const ChooseDate = (props) => {
     let [selectedDate, setSelectedDate] = useState(moment().format("DD-MM-YYYY"))
 
     return (
@@ -18,7 +18,8 @@ export const ChooseDate = () => {
                     renderInput={(params) => <TextField {...params}/>}
                     value={selectedDate}
                     onChange={(newValue) => {
-                     setSelectedDate(newValue)
+                     setSelectedDate(newValue);
+                     props.onChangeMethod(newValue) 
                      }}
                 />
             </Stack>
