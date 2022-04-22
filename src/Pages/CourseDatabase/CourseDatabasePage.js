@@ -8,6 +8,7 @@ import Select from "@mui/material/Select";
 import Paper from "@mui/material/Paper";
 import OurTable from "../../Components/Global/OurTable";
 import TableRow from "../../Components/Global/OurTableRow";
+import Searchbar from "../../Components/Global/Searchbar";
 
 import { useState, useEffect } from "react";
 
@@ -26,7 +27,7 @@ const CourseDatabasePage = () => {
       // real request (axios)
 
       let { data } = await axios.get(
-        "http://www.studenthub.bhsi.xyz:8080/api/courseDatabase"
+        "https://www.studenthub.bhsi.xyz/api/courseDatabase"
       );
       setData(data);
     } catch (error) {
@@ -47,6 +48,7 @@ const CourseDatabasePage = () => {
     <>
       <Title
         title="Course Database" />
+        <Searchbar />
           <OurTable headerData={headerData}>
             {data?.map((element) => (
               /*The column names correspond 

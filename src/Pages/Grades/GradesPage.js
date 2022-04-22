@@ -21,7 +21,7 @@ const GradesPage = () => {
       // real request (axios)
 
       let { data } = await axios.get(
-        "http://www.studenthub.bhsi.xyz:8080/api/grades"
+        "https://www.studenthub.bhsi.xyz/api/grades"
       );
       setData(data);
     } catch (error) {

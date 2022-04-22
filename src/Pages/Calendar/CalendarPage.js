@@ -12,13 +12,10 @@ import {
   ViewSwitcher,
   Appointments,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { createTheme } from '@mui/material';
 import './Styles/Calendar.css'
-import SideBar from './SideBar';
-import appointmentData from './appointmentData';
+import SideBar from '../../Components/Global/SideBar';
 import AddAppointment from './components/addAppointment';
-import DummyBlock from './components/DummyBlock'
-
+import '../../Components/Global/Styles/SideBar.css';
 //const schedulerData = appointmentData.map(appointmentData => appointmentData.title);
 
 const schedulerData = [
@@ -55,17 +52,24 @@ const [currentViewName, setCurrentViewName] = useState('month');
 
   return (
     <>    
+    <div className='rows'>
+    <div>  
+        <SideBar
+        firstCourse="Backend Development"
+        secondCourse="Frontend"
+        thirdCourse="CDIO"
+        fourthCourse="Swift Development"
+        fifthCourse="Course 5"
+        myAppointments="My mail"/>
+      
+        </div>
       <Paper >
       
-        <div className='row'/>
 
-          <AddAppointment/>
+      <AddAppointment/>
           
 
-        <div className='rows'>
-        <div>
-        <SideBar />
-        </div>
+
         <Scheduler 
         data={schedulerData}>
           
@@ -111,8 +115,9 @@ const [currentViewName, setCurrentViewName] = useState('month');
         
       </Scheduler>
 
-        </div>
+       
     </Paper>
+    </div>
     </>
   )
 };

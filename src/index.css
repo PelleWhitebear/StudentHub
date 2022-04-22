@@ -10,6 +10,7 @@ body {
   height: 100%;
   overflow: auto;
   background-image: url(./Resources/background_img.jpg);
+  background-size: cover;
 }
 
 code {
