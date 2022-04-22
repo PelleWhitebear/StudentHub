@@ -1,15 +1,14 @@
-import RoundedBoxWithTitle from "../Contact/components/RoundBox"
-
+import Paper from "@mui/material/Paper";
+import './Styles/UserSettings.css'
 
 const UserSettingsPage = () => {
   return (
     <>
-    <RoundedBoxWithTitle
-    title="About Studenthub"
-    text="StudentHub is a mandatory group project in the course '02363 - Front End Web Technology' (spring 2022),
-    at the Technical University of Denmark (DTU). The project is created by 5 DTU students based in Copenhagen (Denmark), 
-    who's studying IT and Economics and Software Technology, respectively."
-    />
+    <Paper> 
+      <div className="box"> 
+        <p> My settings </p>
+      </div>
+    </Paper>
     </>
   )
 };
