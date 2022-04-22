@@ -2,3 +2,8 @@
     width: 80%;
     height: 400px;
 }
+
+.centerItems {
+    text-align: center;
+    align-content: center;
+}
