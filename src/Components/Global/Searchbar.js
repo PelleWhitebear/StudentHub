@@ -9,8 +9,8 @@ const Searchbar = (props) => {
             <input 
             className='Searchbar' 
             type="input" 
-            placeholder= { props.secondInputPlaceholder }
-            onChange={ props.secondOnChange }
+            placeholder= {props.helperText }
+            onChange={ props.onChangeMethod }
             ></input>
     </div>
 </form>

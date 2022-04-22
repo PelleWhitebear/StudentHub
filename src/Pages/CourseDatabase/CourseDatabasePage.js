@@ -13,18 +13,14 @@ import Searchbar from "../../Components/Global/Searchbar";
 import { useState, useEffect } from "react";
 
 import "../../Components/Global/Styles/Table.css";
-import Title from "../../Components/Global/Title"
+import Title from "../../Components/Global/Title";
 const CourseDatabasePage = () => {
-
   const [clicked, setClicked] = useState(false);
 
-  const handleClick = (courseId) => {
+  function handleClick(courseId) {
     let url = "https://kurser.dtu.dk/course/".concat(courseId);
-    if (clicked) {
-      window.open(url);
-    }
+    window.open(url);
   }
-
 
   //useState for data of courses
   const [data, setData] = useState([]);
@@ -52,30 +48,35 @@ const CourseDatabasePage = () => {
     "Course Title",
     "Course Description",
     "ECTS",
-    "Instructor",
+    "Instructor ID",
+    "Instructor name",
   ];
+
+  const [filter, setFilter] = useState("");
 
   return (
     <>
-      <Title
-        title="Course Database" />
-        <Searchbar />
-          <OurTable headerData={headerData}>
-            {data?.map((element) => (
-              /*The column names correspond 
-                      to the ones in the database*/
+      <Title title="Course Database" />
+      <Searchbar
+        helperText="Enter course title or ID"
+        onChangeMethod={(e) => setFilter(e.target.value)}
+      />
+      <OurTable headerData={headerData}>
+        {data?.map((element) => {
+          if (element?.courseName.toLowerCase().includes(filter.toLowerCase()))
+            return (
               <TableRow
                 firstColumn={element.id}
-                method={handleClick(element.id)}
+                method={() => handleClick(element.id)}
                 secondColumn={element.courseName}
                 thirdColumn={element.courseDescription}
                 fourthColumn={element.ects}
                 fifthColumn={element.instructorId}
                 key={data.indexOf(element)}
               />
-            ))}
-     
-          </OurTable>
+            );
+        })}
+      </OurTable>
     </>
   );
 };
