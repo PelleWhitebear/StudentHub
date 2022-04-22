@@ -2,7 +2,7 @@ import {Checkbox, FormGroup, FormControlLabel, Box, Drawer, Toolbar, Divider, Li
 import { useState } from 'react'
 import './Styles/SideBar.css'
 
-const SideBar = () => {
+const SideBar = (props) => {
 
   const [checkedStatus, setCheckedStatus] = useState('');
   
@@ -10,36 +10,36 @@ const SideBar = () => {
         <>    
         <div className = "SideBar">
         <br/>
-          <Stack direction="column" spacing={2}>
+          <Stack direction="column" spacing={4}>
             <br/>
             <Stack>
               <div>
-                <FormControlLabel control={<Checkbox defaultChecked />} label="Course 1"  />
+                <FormControlLabel control={<Checkbox defaultChecked />} label={props.firstCourse}  />
               </div>
             </Stack>
             <Stack>
               <div>
-                <FormControlLabel control={<Checkbox defaultChecked />} label="Course 2"  />
+                <FormControlLabel control={<Checkbox defaultChecked />} label={props.secondCourse}  />
               </div>
             </Stack>
             <Stack>
               <div>
-                <FormControlLabel control={<Checkbox defaultChecked />} label="Course 3"  />
+                <FormControlLabel control={<Checkbox defaultChecked />} label={props.thirdCourse}  />
               </div>
             </Stack>
             <Stack>
               <div>
-                <FormControlLabel control={<Checkbox defaultChecked />} label="Course 4"  />
+                <FormControlLabel control={<Checkbox defaultChecked />} label={props.fourthCourse}  />
               </div>
             </Stack>
             <Stack>
               <div>
-                <FormControlLabel control={<Checkbox defaultChecked />} label="Course 5"  />
+                <FormControlLabel control={<Checkbox defaultChecked />} label={props.fifthCourse}  />
               </div>
             </Stack>
             <Stack>
               <div>
-                <FormControlLabel control={<Checkbox defaultChecked />} label="My appointments"  />
+                <FormControlLabel control={<Checkbox defaultChecked />} label={props.myAppointments}  />
               </div>
             </Stack>
           </Stack>

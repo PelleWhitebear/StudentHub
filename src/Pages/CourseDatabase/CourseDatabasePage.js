@@ -26,7 +26,7 @@ const CourseDatabasePage = () => {
       // real request (axios)
 
       let { data } = await axios.get(
-        "http://www.studenthub.bhsi.xyz:8080/api/courseDatabase"
+        "https://www.studenthub.bhsi.xyz/api/courseDatabase"
       );
       setData(data);
     } catch (error) {

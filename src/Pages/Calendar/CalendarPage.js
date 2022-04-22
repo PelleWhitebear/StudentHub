@@ -19,6 +19,7 @@ import appointmentData from './appointmentData';
 import AddAppointment from './components/addAppointment';
 import '../../Components/Global/Styles/SideBar.css';
 //const schedulerData = appointmentData.map(appointmentData => appointmentData.title);
+import { auth } from "../../firebase-config.js";
 
 const schedulerData = [
   { startDate: '2022-03-14T09:45', endDate: '2022-03-14T11:00', title: "Doctor's appointment" },
@@ -56,7 +57,14 @@ const [currentViewName, setCurrentViewName] = useState('month');
     <>    
     <div className='rows'>
     <div>  
-        <SideBar />
+        <SideBar
+        firstCourse="Backend Development"
+        secondCourse="Frontend"
+        thirdCourse="CDIO"
+        fourthCourse="Swift Development"
+        fifthCourse="Course 5"
+        myAppointments={"My mail"}/>
+      
         </div>
       <Paper >
       
