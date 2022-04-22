@@ -10,6 +10,9 @@ const StudyGuidance = () => {
   const closeNav = () => {
     document.getElementById("mySidepanel").style.width = "0";
   } 
+  const checker = (e) => {
+    if  (window.confirm('Are you sure you wish to send your email?', 'Confirmation')) this.onCancel(e.target.value)
+  }
   
 
     return (
@@ -25,7 +28,7 @@ const StudyGuidance = () => {
     <h6 className='minor_Tekst'>Email:  studvejl@adm.dtu.dk</h6>
     <div class="textarea-container">
       <textarea name="foo">Dear Study Guidance</textarea>
-      <button id = "send_btn">Send</button>
+      <button id = "send_btn" onClick={checker} >Send</button>
     </div>
     </>
     )
