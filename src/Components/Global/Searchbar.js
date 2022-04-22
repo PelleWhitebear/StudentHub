@@ -8,8 +8,8 @@ const Searchbar = (props) => {
     <div className="alignCenter">
             <input 
             className='Searchbar' 
-            type="input" 
-            placeholder= {props.helperText }
+            type="search" 
+            placeholder= {props.helperText}
             onChange={ props.onChangeMethod }
             ></input>
     </div>
