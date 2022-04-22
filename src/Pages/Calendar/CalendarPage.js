@@ -14,11 +14,10 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { createTheme } from '@mui/material';
 import './Styles/Calendar.css'
-import SideBar from './SideBar';
+import SideBar from '../../Components/Global/SideBar';
 import appointmentData from './appointmentData';
 import AddAppointment from './components/addAppointment';
-import DummyBlock from './components/DummyBlock'
-
+import '../../Components/Global/Styles/SideBar.css';
 //const schedulerData = appointmentData.map(appointmentData => appointmentData.title);
 
 const schedulerData = [
@@ -55,17 +54,17 @@ const [currentViewName, setCurrentViewName] = useState('month');
 
   return (
     <>    
-      <Paper >
-      
-        <div className='row'/>
-
-          <AddAppointment/>
-          
-
-        <div className='rows'>
-        <div>
+    <div className='rows'>
+    <div>  
         <SideBar />
         </div>
+      <Paper >
+      
+
+      <AddAppointment/>
+          
+
+
         <Scheduler 
         data={schedulerData}>
           
@@ -111,8 +110,9 @@ const [currentViewName, setCurrentViewName] = useState('month');
         
       </Scheduler>
 
-        </div>
+       
     </Paper>
+    </div>
     </>
   )
 };
