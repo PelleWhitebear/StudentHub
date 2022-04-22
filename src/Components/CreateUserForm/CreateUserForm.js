@@ -24,6 +24,27 @@ const CreateUserForm = () => {
 
   const validPassword = new RegExp(
   )
+
+  const eventHandler = () =>{
+    validate()
+
+    if(emailValite && registerPassword === samePassword){
+      registerStudent()
+    } else if(!emailValite){
+      console.log("email not valid")
+    } else if(registerPassword !== samePassword){
+      console.log("be sure to write the same password")
+    }
+  }
+
+  const validate = () =>{
+    if(!validEmail.test(registerEmail)){
+      return setEmailValite(false)
+    }else if(validEmail.test(registerEmail)){
+      return setEmailValite(true)
+    }
+
+  }
   
   //register user
   const registerStudent = async () => {
@@ -55,36 +76,16 @@ const CreateUserForm = () => {
           console.log(error.request)
         }
       })
+      let path = "/loginPage"
+      nav(path);
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  const eventHandler = () =>{
-    validate()
-
-    if(emailValite && registerPassword === samePassword){
-      registerStudent()
-      let path = "/loginPage"
-      nav(path);
-    } else if(!emailValite){
-      console.log("email not valid")
-    } else if(registerPassword !== samePassword){
-      console.log("be sure to write the same password")
-    }
-  }
-  
-  function validate(){
-    if(!validEmail.test(registerEmail)){
-      setEmailValite(false)
-    }else if(validEmail.test(registerEmail)){
-      setEmailValite(true)
-    }
-
-  }
 
     return (
-        <form action="#"> 
+        <div action="#"> 
           <CreateForm
         mailInputPlaceholder="Student mail"
         mailOnChange={(e) => setRegisterEmail(e.target.value)}
@@ -102,7 +103,7 @@ const CreateUserForm = () => {
           <button className="LoginButton" onClick={eventHandler}>Create User</button>
         </div>
             
-        </form>
+        </div>
     )
   };
   

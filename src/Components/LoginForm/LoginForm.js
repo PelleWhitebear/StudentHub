@@ -1,31 +1,18 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { useState } from "react";
 import {
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../../firebase-config.js";
 import Form from "./Form";
 
 const LoginForm = () => {
-  //const [registerEmail, setRegisterEmail] = useState("");
-  //const [registerPassword, setRegisterPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
-
-  /*const register = async () => {
-    try {
-      const user = await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPassword
-      );
-    } catch (error) {
-      console.log(error.message);
-    }
-  };*/
+  const nav = useNavigate();
 
   const login = async () => {
     try {
@@ -34,7 +21,8 @@ const LoginForm = () => {
         loginEmail,
         loginPassword
       );
-      console.log(user.email);
+      let path = "Calendar";
+      nav(path);
     } catch (error) {
       console.log(error.message);
     }
@@ -50,22 +38,13 @@ const LoginForm = () => {
       />
 
       <div>
-        <Link to="/Calendar">
           <button className="LoginButton" onClick={login}>
             Login
           </button>
-        </Link>
       </div>
       {/*  <div>
            <p> {user?.email} </p>
             </div> */}
-      {/*<Form
-        firstInputPlaceholder="Student mail"
-        firstOnChange={(e) => setRegisterEmail(e.target.value)}
-        secondInputPlaceholder="Password"
-        secondOnChange={(e) => setRegisterPassword(e.target.value)}
-      />*/}
-
       <div>
         <Link to="/CreateUser">
           <button className="CreateUserButton" >
