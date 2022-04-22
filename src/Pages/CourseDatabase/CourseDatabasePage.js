@@ -15,6 +15,17 @@ import { useState, useEffect } from "react";
 import "../../Components/Global/Styles/Table.css";
 import Title from "../../Components/Global/Title"
 const CourseDatabasePage = () => {
+
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = (courseId) => {
+    let url = "https://kurser.dtu.dk/course/".concat(courseId);
+    if (clicked) {
+      window.open(url);
+    }
+  }
+
+
   //useState for data of courses
   const [data, setData] = useState([]);
 
@@ -55,6 +66,7 @@ const CourseDatabasePage = () => {
                       to the ones in the database*/
               <TableRow
                 firstColumn={element.id}
+                method={handleClick(element.id)}
                 secondColumn={element.courseName}
                 thirdColumn={element.courseDescription}
                 fourthColumn={element.ects}
@@ -62,6 +74,7 @@ const CourseDatabasePage = () => {
                 key={data.indexOf(element)}
               />
             ))}
+     
           </OurTable>
     </>
   );
