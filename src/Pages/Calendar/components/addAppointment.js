@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import ChooseDate from './ChooseDate';
 import ChooseTime from './ChooseTime';
 import { Stack} from '@mui/material';
+import { addAppointmentToFirebase } from './Firebase'
 
 const AddAppointmentBtn = styled.button`
     font-size: 15px;
@@ -33,21 +34,28 @@ const Input = styled.input`
 `;
 
 
+
+
 function AddAppointmentOffCanvas () {
     let [show, setShow] = useState(false);
     let handleClose = () => setShow(false);
     let handleShow = () => setShow(true);
+
     let [appointmentTitle, setAppointmentTitle] = useState("");
-    let [startDate, setStartDate] = useState("");
-    let [endDate, setEndDate] = useState("");
+    let [Date, setDate] = useState("");
+    let [startTime, setStartTime] = useState("");
+    let [endTime, setEndTime] = useState("");
     let [location, setLocation] = useState("");
-    const addAppointment = () => {
+    
+
+    /*const addAppointment = () => {
         Axios.post("http://localhost:8080/api/appointment/createAppointment", {
         studentId: "s205353",
         appointmentTitle: appointmentTitle
         }).then(() => 
         console.log("Frontend post completed"))
-    };
+        
+    };*/
 
 
     return (
@@ -72,19 +80,19 @@ function AddAppointmentOffCanvas () {
                     />
                     <br/>
                     <br/>
-                    <ChooseDate />
+                    <ChooseDate onChangeMethod={setDate}/>
                     <br/>
                     
                 
                     <Stack direction="row" spacing={2}>
                         <Stack direction='column'>
                             <div>Start Time</div>
-                            <ChooseTime/>
+                            <ChooseTime onChangeMethod={setStartTime}/>
                         </Stack>
 
                         <Stack direction='column'>
                             <div>End Time</div>
-                            <ChooseTime/>
+                            <ChooseTime onChangeMethod={setEndTime}/>
                         </Stack>
                     </Stack>
                    {/*  <label>Start Date</label>
@@ -117,24 +125,16 @@ function AddAppointmentOffCanvas () {
                         }}
                     />
 
-
-                    <div>
-                    <br/>
-                    <br/>
-                     <label>Repeat</label>
-                     <br/>
-                    <Input
-                        type="text" 
-                        onChange={(event) => {
-                            setAppointmentTitle(event.target.value);
-                        }}
-                    />
-                    
-                    </div>
                     <br></br>
                     <div>
-                        <AddAppointmentBtn  onClick={addAppointment}>
-                             Add Appointment
+                        <AddAppointmentBtn  onClick={addAppointmentToFirebase(
+                            appointmentTitle,
+                            Date,
+                            startTime,
+                            endTime,
+                            location)}
+                            >
+                                Add Appointment
                         </AddAppointmentBtn>
                     </div>
                     
