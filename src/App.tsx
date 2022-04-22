@@ -16,6 +16,7 @@ import AlternativeLayout from "./Components/Layouts/AlternativeLayout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import customTheme from "./Pages/theme";
+import UserSettingsPage from "./Pages/UserSettings/UserSettingsPage";
 
 export default function App() {
     return (
@@ -36,6 +37,7 @@ export default function App() {
             <Route path="Contact" element={<ContactPage />} />
             <Route path="Team" element={<TheTeamPage />} />
             <Route path="About" element={<AboutPage />} />
+            <Route path="UserSettings" element={<UserSettingsPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

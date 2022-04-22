@@ -48,9 +48,7 @@ import { onAuthStateChanged } from "firebase/auth";
                         </Nav>
                         <Nav>
                             <NavDropdown title= {user?.email}>
-                                <NavDropdown.Item as={Link} to="/Calendar">Settings</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/Calendar">hello</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/Calendar">:)</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/UserSettings">Settings</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item as={Link} 
                                 to="/"
