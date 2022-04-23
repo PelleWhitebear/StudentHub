@@ -63,7 +63,7 @@ const CourseDatabasePage = () => {
       />
       <OurTable headerData={headerData}>
         {data?.map((element) => {
-          if (element?.courseName.toLowerCase().includes(filter.toLowerCase()))
+          if (element?.courseName.toLowerCase().includes(filter.toLowerCase()) || element?.id.toLowerCase().includes(filter.toLowerCase()))
             return (
               <TableRow
                 firstColumn={element.id}
