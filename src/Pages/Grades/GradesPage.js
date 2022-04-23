@@ -34,7 +34,8 @@ const GradesPage = () => {
     "Course ID",
     "Course Title",
     "Grade",
-    "International Grade"
+    "International Grade",
+    " "
   ];
 
   return (
