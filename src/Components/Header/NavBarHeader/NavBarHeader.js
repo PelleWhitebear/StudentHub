@@ -35,6 +35,7 @@ import { onAuthStateChanged } from "firebase/auth";
         }
         return (
             <>
+           
             <Navbar variant="dark" className="NBHeader">
                 <Container>
                     <Navbar.Brand as={Link} to="/Calendar">StudentHub.</Navbar.Brand>
@@ -46,11 +47,10 @@ import { onAuthStateChanged } from "firebase/auth";
                             <Nav.Link as={Link} to="/CourseDatabase" className='navlink'>Course Database</Nav.Link>
                             <Nav.Link as={Link} to="/Grades" className='navlink'>Grades</Nav.Link>
                         </Nav>
+                        
                         <Nav>
                             <NavDropdown title= {user?.email}>
-                                <NavDropdown.Item as={Link} to="/Calendar">Settings</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/Calendar">hello</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/Calendar">:)</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/UserSettings">Settings</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item as={Link} 
                                 to="/"
@@ -59,7 +59,10 @@ import { onAuthStateChanged } from "firebase/auth";
                             </NavDropdown>
                         </Nav>
                 </Container>
+                
             </Navbar>
+
+         
             </>
             )
           };

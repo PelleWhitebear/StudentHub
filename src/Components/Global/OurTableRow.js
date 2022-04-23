@@ -1,7 +1,9 @@
-const TableRow = (rowData) => {
+const TableRow = (rowData, props) => {
  return (
     <tr>
-      <td> {rowData.firstColumn} </td>
+      <td className="redirectStyle"
+      onClick={props.onChange}> 
+      {rowData.firstColumn} </td>
       <td> {rowData.secondColumn} </td>
       <td> {rowData.thirdColumn} </td>
       <td> {rowData.fourthColumn} </td>
