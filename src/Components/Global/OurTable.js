@@ -16,8 +16,9 @@ const OurTable = (props) => {
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody >
           {props.children}
+          
         </tbody>
       </table>
       </div>

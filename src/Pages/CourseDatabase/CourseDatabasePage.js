@@ -58,7 +58,7 @@ const CourseDatabasePage = () => {
     <>
       <Title title="Course Database" />
       <Searchbar
-        helperText="       Enter course title or ID"
+        helperText="Enter course title or ID"
         onChangeMethod={(e) => setFilter(e.target.value)}
       />
       <OurTable headerData={headerData}>
