@@ -10,11 +10,13 @@ const emails = [
 const ContactPage = () => {
     return (
       <>
+      <div className="minHeight"> 
       <RoundBoxWithTitle 
       title="Contact"
       subtitle="Contact the Team behind StudentHub"
       secondSubtitle="Contact the Team"
       data={emails}/>
+      </div>
       </>
     )
   };

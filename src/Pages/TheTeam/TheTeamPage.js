@@ -14,6 +14,7 @@ import "./Styles/TheTeamPage.css";
 const TheTeamPage = () => {
     return (
       <>
+      <div className="minHeight">
       <div className='TeamContent'>
         <div className="content DEh3">
           <h1>The team</h1>
@@ -131,6 +132,7 @@ const TheTeamPage = () => {
             </Card>
           </div>
         </div>
+      </div>
       </div>
       </>
     )
