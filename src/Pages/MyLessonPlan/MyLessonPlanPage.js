@@ -5,9 +5,9 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import OurTable from "../../Components/Global/OurTable"
-import TableRow from "../../Components/Global/OurTableRow"
-import Title from "../../Components/Global/Title"
+import OurTable from "../../Components/Global/OurTable";
+import TableRow from "../../Components/Global/OurTableRow";
+import Title from "../../Components/Global/Title";
 
 import { useState, useEffect } from "react";
 
@@ -52,74 +52,80 @@ const MyLessonPlanPage = () => {
     "  Topic  ",
     "  Learning Objectives  ",
     "  Litterature  ",
-    "  Pages  "
+    "  Pages  ",
   ];
 
   const uniqueCourses = [...new Set(data.map((item) => item.course))];
 
   function loadCourses() {
-    return uniqueCourses.map((uniqueCourses) => (
-      <MenuItem key={uniqueCourses.course} value={uniqueCourses.course}>
+    return uniqueCourses.map((uniqueCourse) => (
+      <MenuItem
+        key={uniqueCourses.indexOf(uniqueCourse)}
+        value={uniqueCourse.course}
+      >
         {" "}
-        {uniqueCourses}{" "}
+        {uniqueCourse}{" "}
       </MenuItem>
     ));
   }
 
-
-
-  const [courseTitle, setCourseTitle] = useState(uniqueCourses[0]);
+  const [courseTitle, setCourseTitle] = useState("Frontend Development");
 
   useEffect(() => {
     getData();
-  }, [data]) 
-  
-  const handleChange = (event) => {
-    setCourseTitle(event.target.value);
-  };
+  }, [data]);
 
   return (
     <>
-    <Title
-        title="My Lessonplan" />
-        <div className="alignCenter">
-          <Box>
-            <FormControl className="shadow" sx={{ 
-              minWidth: 500, 
-              backgroundColor: 'white'
-               }}>
-              <InputLabel id="select-course-label">Course</InputLabel>
-              <Select
-                value={courseTitle}
-                label="Course"
-                onChange={handleChange}
-                onSelect = {handleChange}
-              >
-                {loadCourses()}
-              </Select>
-            </FormControl>
-          </Box>
-        </div>
+      <Title title="My Lessonplan" />
+      <div className="alignCenter">
+        <Box>
+          <FormControl
+            className="shadow"
+            sx={{
+              minWidth: 500,
+              backgroundColor: "white",
+            }}
+          >
+            <InputLabel id="select-course-label">Course</InputLabel>
+            <Select
+              value={courseTitle}
+              label="Course"
+              onChange={(e) => setCourseTitle(e.target.value)}
+            >
+              {uniqueCourses.map((uniqueCourse) => (
+                <MenuItem
+                  key={uniqueCourses.indexOf(uniqueCourse)}
+                  value={uniqueCourse}
+                >
+                  {" "}
+                  {uniqueCourse}{" "}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Box>
+      </div>
 
-        <div className="alignCenter">
-          <OurTable
-          headerData={headerData}>
-                    {data?.map((element) => (
-                      /*The column names correspond 
-                      to the ones in the database*/
-                      <TableRow
-                        firstColumn={element.weekNo}
-                        secondColumn={element.date}
-                        thirdColumn={element.topic}
-                        fourthColumn={element.learningObjectives}
-                        fifthColumn={element.litterature}
-                        sixthColumn={element.pages}
-                        key={data.indexOf(element)}
-                        {...element}
-                      />
-                    ))}
-         </OurTable>
-        </div>
+      <div className="alignCenter">
+        <OurTable headerData={headerData}>
+          {data?.map((element) => {
+            if (element?.course === courseTitle)
+              return (
+                <TableRow
+                  firstColumn={element.weekNo}
+                  secondColumn={element.date}
+                  thirdColumn={element.topic}
+                  fourthColumn={element.learningObjectives}
+                  fifthColumn={element.litterature}
+                  sixthColumn={element.pages}
+                  key={data.indexOf(element)}
+                  {...element}
+                />
+              );
+          })}
+        </OurTable>
+      </div>
     </>
   );
 };
