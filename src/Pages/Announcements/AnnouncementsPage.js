@@ -72,7 +72,7 @@ function onAnnouncementClick(id) {
   nav(path);
 }
   return (
-    <div className="content">
+    <div className="content minHeight">
       <div>
         <h1>Announcements</h1>
         {loadAnnouncements()}

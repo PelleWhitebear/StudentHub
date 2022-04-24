@@ -7,7 +7,7 @@ import TableRow from "../../Components/Global/OurTableRow";
 import { useState, useEffect } from "react";
 
 import "../../Components/Global/Styles/Table.css";
-import Title from "../../Components/Global/Title"
+import Title from "../../Components/Global/Title";
 const GradesPage = () => {
   //useState for data of courses
   const [data, setData] = useState([]);
@@ -21,8 +21,7 @@ const GradesPage = () => {
       // real request (axios)
 
       let { data } = await axios.get(
-        "http://localhost:8080"
-        //"https://www.studenthub.bhsi.xyz/api/grades"
+        "https://www.studenthub.bhsi.xyz/api/grades"
       );
       setData(data);
     } catch (error) {
@@ -36,25 +35,26 @@ const GradesPage = () => {
     "Course Title",
     "Grade",
     "International Grade",
-    " "
+    " ",
   ];
 
   return (
     <>
-      <Title
-        title="Grades" />
-          <OurTable headerData={headerData}>
-            {data?.map((element) => (
-              /*The column names correspond 
+      <div className="minHeight">
+        <Title title="Grades" />
+        <OurTable headerData={headerData}>
+          {data?.map((element) => (
+            /*The column names correspond 
                       to the ones in the database*/
-              <TableRow
-                firstColumn={element.gradeDK}
-                secondColumn={element.courseId}
-                key={data.indexOf(element)}
-                {...element}
-              />
-            ))}
-          </OurTable>
+            <TableRow
+              firstColumn={element.gradeDK}
+              secondColumn={element.courseId}
+              key={data.indexOf(element)}
+              {...element}
+            />
+          ))}
+        </OurTable>
+      </div>
     </>
   );
 };

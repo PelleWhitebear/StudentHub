@@ -77,6 +77,7 @@ const MyLessonPlanPage = () => {
 
   return (
     <>
+    <div className="minHeight">
       <Title title="My Lessonplan" />
       <div className="alignCenter">
         <Box>
@@ -125,6 +126,7 @@ const MyLessonPlanPage = () => {
               );
           })}
         </OurTable>
+      </div>
       </div>
     </>
   );
