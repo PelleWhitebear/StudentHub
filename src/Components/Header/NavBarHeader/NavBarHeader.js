@@ -37,8 +37,8 @@ import { onAuthStateChanged } from "firebase/auth";
             <>
            
             <Navbar variant="dark" className="NBHeader">
-                <Container>
-                    <Navbar.Brand as={Link} to="/Calendar">StudentHub.</Navbar.Brand>
+                <Container className="alignCenter">
+                    <Navbar.Brand as={Link} to="/Calendar">Hehe</Navbar.Brand>
                         <Nav>
                             <Nav.Link as={Link} to="/Calendar" className='navlink'>Calendar</Nav.Link>
                             <Nav.Link as={Link} to="/MyLessonPlan" className='navlink'>My Lesson Plan</Nav.Link>
