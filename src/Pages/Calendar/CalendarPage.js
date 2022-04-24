@@ -51,7 +51,8 @@ const [currentViewName, setCurrentViewName] = useState('month');
 
 
   return (
-    <>    
+    <> 
+    <div className="minHeight">  
     <div className='rows'>
     <div>  
         <SideBar
@@ -118,6 +119,7 @@ const [currentViewName, setCurrentViewName] = useState('month');
        
     </Paper>
     </div>
+    </div> 
     </>
   )
 };

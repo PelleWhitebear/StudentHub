@@ -19,6 +19,7 @@ import { ThemeProvider } from "@mui/material";
 import customTheme from "./Pages/theme";
 import UserSettingsPage from "./Pages/UserSettings/UserSettingsPage";
 
+
 export default function App() {
     return (
       <ThemeProvider theme = {customTheme}>

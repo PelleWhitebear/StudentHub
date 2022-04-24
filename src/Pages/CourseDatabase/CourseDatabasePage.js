@@ -1,11 +1,4 @@
 import axios from "axios";
-//MenutItem
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import Paper from "@mui/material/Paper";
 import OurTable from "../../Components/Global/OurTable";
 import TableRow from "../../Components/Global/OurTableRow";
 import Searchbar from "../../Components/Global/Searchbar";
@@ -56,6 +49,7 @@ const CourseDatabasePage = () => {
 
   return (
     <>
+          <div className="minHeight">
       <Title title="Course Database" />
       <Searchbar
         helperText="Enter course title or ID"
@@ -77,6 +71,7 @@ const CourseDatabasePage = () => {
             );
         })}
       </OurTable>
+      </div>
     </>
   );
 };

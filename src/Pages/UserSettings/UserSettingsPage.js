@@ -8,6 +8,7 @@ import CreateForm from '../../Components/CreateUserForm/CreateForm'
 const UserSettingsPage = () => {
   return (
     <>
+    <div className="minHeight"> 
     <h1> My settings </h1>
     <div className='alignCenter'>
       <ImageBox imageSrc='https://firebasestorage.googleapis.com/v0/b/dtustudenthub.appspot.com/o/miadong.jpg?alt=media&token=b8a1d722-999a-47ce-894e-ce12fc12594a'/>
@@ -20,6 +21,7 @@ const UserSettingsPage = () => {
       <br/>
       </div>
     </Paper>
+    </div>
     </>
   )
 };
