@@ -27,7 +27,7 @@ const CourseDatabasePage = () => {
       // real request (axios)
 
       let { data } = await axios.get(
-        "http://130.225.170.88:8080/api/courseDatabase"
+        "https://www.studenthub.bhsi.xyz/api/courseDatabase"
       );
       setData(data);
     } catch (error) {
@@ -42,7 +42,7 @@ const CourseDatabasePage = () => {
     "Course Description",
     "ECTS",
     "Instructor ID",
-    "Instructor name",
+    " ",
   ];
 
   const [filter, setFilter] = useState("");
