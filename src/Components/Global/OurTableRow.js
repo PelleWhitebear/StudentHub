@@ -1,9 +1,10 @@
-const TableRow = (rowData, props) => {
+const TableRow = (rowData) => {
  return (
     <tr>
-      <td className="redirectStyle"
-      onClick={props.onChange}> 
-      {rowData.firstColumn} </td>
+      <td> 
+      <a href={rowData.url} 
+      target="_blank"
+      rel="noopener noreferrer">{rowData.firstColumn}</a> </td>
       <td> {rowData.secondColumn} </td>
       <td> {rowData.thirdColumn} </td>
       <td> {rowData.fourthColumn} </td>

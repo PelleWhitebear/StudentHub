@@ -7,13 +7,9 @@ import { useState, useEffect } from "react";
 
 import "../../Components/Global/Styles/Table.css";
 import Title from "../../Components/Global/Title";
-const CourseDatabasePage = () => {
-  const [clicked, setClicked] = useState(false);
 
-  function handleClick(courseId) {
-    let url = "https://kurser.dtu.dk/course/".concat(courseId);
-    window.open(url);
-  }
+
+const CourseDatabasePage = () => {
 
   //useState for data of courses
   const [data, setData] = useState([]);
@@ -61,7 +57,8 @@ const CourseDatabasePage = () => {
             return (
               <TableRow
                 firstColumn={element.id}
-                method={() => handleClick(element.id)}
+                url={"https://kurser.dtu.dk/course/".concat(element.id)}
+                methodInput={element.id}
                 secondColumn={element.courseName}
                 thirdColumn={element.courseDescription}
                 fourthColumn={element.ects}
