@@ -44,12 +44,19 @@ const [currentDate, setCurrentDate] = useState(Date().toLocaleString());
 
 const [currentViewName, setCurrentViewName] = useState('week');
 
-const sideBarData = [
+const [newCourse, setNewCourse] = useState('');
+
+const [sideBarData, setSideBarData] = useState([
   "Course1",
   "Course2",
   "Backend development ",
   "Frontend development"
-];
+])
+
+const addCourseToSideBar = () => {
+  setSideBarData([...sideBarData, newCourse]);
+  setNewCourse('');
+}
 
   return (
     <> 
@@ -58,7 +65,9 @@ const sideBarData = [
     <div>  
         <SideBar
         symbol="+"
-        courses={sideBarData}/>
+        onChange={(e) => setNewCourse(e.target.value)}
+        onClick={() => addCourseToSideBar()}
+        data={sideBarData}/>
         </div>
       <Paper >
         
