@@ -1,6 +1,6 @@
 import { Checkbox, FormControlLabel, Stack } from "@mui/material";
 import "./Styles/SideBar.css";
-import Button from "./SymbolButton";
+import SymbolButton from "./SymbolButton";
 import AddAppointment from "../../Pages/Calendar/components/addAppointment";
 
 const SideBar = (props) => {
@@ -16,7 +16,7 @@ const SideBar = (props) => {
           <h3>My Calendars</h3>
           {props?.courses?.map((element) => {
             return (
-              <Stack>
+              <Stack key={props?.courses?.indexOf(element)}>
                 <FormControlLabel
                   control={<Checkbox defaultChecked />}
                   label={element}
@@ -25,7 +25,7 @@ const SideBar = (props) => {
             );
           })}
         </Stack>
-        <Button 
+        <SymbolButton 
         symbol={props.symbol} />
       </div>
     </>

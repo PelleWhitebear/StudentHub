@@ -45,10 +45,11 @@ const [currentDate, setCurrentDate] = useState(Date().toLocaleString());
 const [currentViewName, setCurrentViewName] = useState('week');
 
 const sideBarData = [
-  "  Course1  ",
-  "  Course2  "
+  "Course1",
+  "Course2",
+  "Backend development ",
+  "Frontend development"
 ];
-
 
   return (
     <> 
@@ -61,7 +62,6 @@ const sideBarData = [
         </div>
       <Paper >
         
-
         <Scheduler 
         data={schedulerData}>
           
