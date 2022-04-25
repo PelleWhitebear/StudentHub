@@ -1,17 +1,21 @@
-import {Checkbox, FormGroup, FormControlLabel, Box, Drawer, Toolbar, Divider, List, Stack } from '@mui/material';
-import { useState } from 'react'
+import {Checkbox, FormControlLabel, Stack } from '@mui/material';
 import './Styles/SideBar.css'
+import Button from './SymbolButton'
+import AddAppointment from '../../Pages/Calendar/components/addAppointment'
+
 
 const SideBar = (props) => {
 
-  const [checkedStatus, setCheckedStatus] = useState('');
-  
       return (
         <>    
         <div className = "SideBar">
         <br/>
+        <br/>
+        <AddAppointment/>
           <Stack direction="column" spacing={4}>
             <br/>
+            <br />
+            <h3>My Calendars</h3>
             <Stack>
               <div>
                 <FormControlLabel control={<Checkbox defaultChecked />} label={props.firstCourse}  />
@@ -43,6 +47,7 @@ const SideBar = (props) => {
               </div>
             </Stack>
           </Stack>
+          <Button symbol="+" />
         </div>
         </>
       )
