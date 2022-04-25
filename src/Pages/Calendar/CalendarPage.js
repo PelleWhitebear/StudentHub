@@ -56,6 +56,7 @@ const sideBarData = [
     <div className='rows'>
     <div>  
         <SideBar
+        symbol="+"
         courses={sideBarData}/>
         </div>
       <Paper >

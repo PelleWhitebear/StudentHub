@@ -25,7 +25,8 @@ const SideBar = (props) => {
             );
           })}
         </Stack>
-        <Button symbol="+" />
+        <Button 
+        symbol={props.symbol} />
       </div>
     </>
   );
