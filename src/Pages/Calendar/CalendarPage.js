@@ -65,6 +65,7 @@ const addCourseToSideBar = () => {
     <div>  
         <SideBar
         symbol="+"
+        inputLabel="Enter course title"
         onChange={(e) => setNewCourse(e.target.value)}
         onClick={() => addCourseToSideBar()}
         data={sideBarData}/>

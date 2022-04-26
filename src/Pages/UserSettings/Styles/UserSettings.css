@@ -7,3 +7,15 @@
     text-align: center;
     align-content: center;
 }
+
+.button {
+    padding: 5px 10px 5px 10px;
+    border: 0px;
+    border-radius: 4px; 
+    color: white;
+    background-color: rgb(131, 12, 12);
+}
+
+.button:hover {
+    opacity: 0.5;
+}

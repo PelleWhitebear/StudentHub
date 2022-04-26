@@ -3,14 +3,8 @@ import "./Styles/SideBar.css";
 import AddAppointment from "../../Pages/Calendar/components/addAppointment";
 import SymbolButton from './SymbolButton'
 import '../LoginForm/LoginForm.css'
+import InputField from './InputField'
 
-const InputField = (props) => {
-  return (
-    <input onChange={props.onChange} type="input"></input>
-    
-  );
-
-};
 const SideBar = (props) => {
 
   return (
@@ -19,7 +13,8 @@ const SideBar = (props) => {
         <br />
         <br />
         <AddAppointment />
-        <Stack direction="column" spacing={2}>
+        <Stack direction="column" spacing={1}>
+          <br />
           <br />
           <br />
           <h3>My Calendars</h3>
@@ -35,10 +30,12 @@ const SideBar = (props) => {
           })}
         </Stack>
         <InputField
+        inputLabel={props.inputLabel}
         onChange={props.onChange} />
         <SymbolButton
         onClick={props.onClick}
         symbol={props.symbol} />
+
       </div>
     </>
   );
