@@ -28,6 +28,7 @@ const UserSettingsPage = () => {
   return (
     
     <>
+    <div className="rows">
     <div className="minHeight box"> 
     <Title title="My Settings" />
     <div className='alignCenter'>
@@ -57,6 +58,9 @@ const UserSettingsPage = () => {
       </div>
     </Paper>
     </div>
+    <img className="imageSize" src="https://firebasestorage.googleapis.com/v0/b/dtustudenthub.appspot.com/o/dtu.jpg?alt=media&token=21b1f706-623a-4ef2-911c-2f82a34a168b" alt="" />
+    </div>
+  
     </>
   )
 };

@@ -1,7 +1,8 @@
 .box {
-    width: 500px;
-    height: 400px;
+    width: 600px;
+    height: 80%;
     align-items: center;
+    padding: 20px;
 }
 
 .centerItems {
@@ -19,4 +20,8 @@
 
 .button:hover {
     opacity: 0.5;
+}
+
+.imageSize {
+    object-fit: cover;
 }
