@@ -1,6 +1,7 @@
 .box {
-    width: 80%;
+    width: 500px;
     height: 400px;
+    align-items: center;
 }
 
 .centerItems {
