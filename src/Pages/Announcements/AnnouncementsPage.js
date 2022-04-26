@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Announcement from "./Components/Announcement";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Paper from '@mui/material/Paper';
 
 
 const AnnouncementsPage = () => {
@@ -59,17 +60,35 @@ function onAnnouncementClick(id , isRead) {
   updateRead(id)
   }
 
+  
   // Navigate to new page with this id
   let path = "/Announcements/" + id;
   nav(path);
 }
+
+let imgs = [
+  'https://www.inside.dtu.dk/gimage.ashx?i=VHJ1ZV9ffHxfX2h0dHBzOi8vd3d3Lmluc2lkZS5kdHUuZGsvLy0vbWVkaWEvRFRVLUluc2lkZS9VbmRlcnZpc25pbmcvRm9yc2lkZS1iYW5uZXJlL0Jhbm5lcl80NjB4MjMwX0t1cnN1c19FdmFsdWVyaW5nLmFzaHhfX3x8X180NjBfX3x8X18yMzBfX3x8X19UcnVlX198fF9fRmFsc2VfX3x8X19GYWxzZV9ffHxfXzBfX3x8X19fX3x8X18w',
+  
+]
+
   return (
-    <div className="content">
-      <div>
+    
+    <Paper>
+    <div className="split left">
+      <div >
         <h1>Announcements</h1>
         {loadAnnouncements()}
       </div>
     </div>
+
+    <div className="split right">
+      <div >
+      <h1>News</h1>
+      <img src={imgs[0]} alt="new"/>
+    </div>
+  </div>
+  </Paper>
+  
   );
 };
 
