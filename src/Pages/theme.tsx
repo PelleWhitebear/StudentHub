@@ -1,7 +1,7 @@
 import {createTheme} from '@mui/material';
 import {red, orange, yellow} from '@mui/material/colors';
 
-const primaryColor = red[700]
+const primaryColor = red[900]
 const secondaryColor = orange[500]
 
 const theme = createTheme({
@@ -22,17 +22,6 @@ const theme = createTheme({
                 }
             },
 
-           /* MuiPaper: {
-                styleOverrides: {
-                    elevation1: {
-                        width: '80%',
-                        height: '50%',
-                        alignItems: 'right',
-                    }
-                }
-            }
-            */
-     
         }
 
         

@@ -1,6 +1,19 @@
 
 .Header {
+    position: static;
+    left: 0;
+    top: 0;
     margin: 0px;
     padding: 0px;
+    width: 100%;
     text-align: center;
+}
+
+.topHeader {
+    color: white;
+    padding-top: 1rem;
+}
+
+.backgroundColor {
+    background-color: rgb(153,0,0);
 }

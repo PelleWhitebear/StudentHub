@@ -4,25 +4,20 @@
     flex-direction:row;
 }
 
-
-/* 
-.css-fcw82u-MuiTableCell-root {
-    background-color: red;
-    font-size: 12px;
+.Btn {
+  color: palevioletred;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
 }
 
-.css-3nejl.Appointment-appointment {
-    background-color: red !important; 
+
+.SideBar {
+    padding: 10px;
 }
 
-.HorizontalAppointment-content.css-vr6fpo {
-    background-color: red;
+.space {
+  padding: 30px;
 }
-
-.css-fcw82u-MuiTableCell-root.Cell-dayOfWeek{
-    font-size: 1rem;
-}
-
-.css-fcw82u-MuiTableCell-root{
-    font-size: 1rem;
-} */

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useState } from 'react';
 import Paper from '@mui/material/Paper';
 import { ViewState } from '@devexpress/dx-react-scheduler';
@@ -12,16 +11,13 @@ import {
   ViewSwitcher,
   Appointments,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { createTheme } from '@mui/material';
 import './Styles/Calendar.css'
-import SideBar from './SideBar';
-import appointmentData from './appointmentData';
-
-//const schedulerData = appointmentData.map(appointmentData => appointmentData.title);
+import SideBar from '../../Components/Global/SideBar';
+import '../../Components/Global/Styles/SideBar.css';
 
 const schedulerData = [
-  { startDate: '2022-03-14T09:45', endDate: '2022-03-14T11:00', title: "Doctor's appointment" },
-  { startDate: '2022-03-14T13:00', endDate: '2022-03-14T17:00', title: 'Front end web development' },
+  { startDate: '2022-04-25T09:45', endDate: '2022-04-25T11:00', title: "Doctor's appointment" },
+  { startDate: '2022-04-25T13:00', endDate: '2022-04-25T17:00', title: 'Front end web development' },
 ];
 
 const myAppointment = ({
@@ -39,19 +35,45 @@ const myAppointment = ({
   </Appointments.Appointment>
 );
 
+
+  
+
 const CalendarPage = () => {
   
 const [currentDate, setCurrentDate] = useState(Date().toLocaleString());
 
-const [currentViewName, setCurrentViewName] = useState('month');
+const [currentViewName, setCurrentViewName] = useState('week');
+
+const [newCourse, setNewCourse] = useState('');
+
+const [sideBarData, setSideBarData] = useState([
+  "Course1",
+  "Course2",
+  "Backend development ",
+  "Frontend development"
+])
+
+const addCourseToSideBar = () => {
+  setSideBarData([...sideBarData, newCourse]);
+  setNewCourse('');
+}
 
   return (
-    <>    
+    <> 
+    <div className="minHeight">  
+    <div className='rows'>
+    <div>  
+        <SideBar
+        symbol="+"
+        onChange={(e) => setNewCourse(e.target.value)}
+        onClick={() => addCourseToSideBar()}
+        data={sideBarData}/>
+        </div>
       <Paper >
-        <div className='rows'>
-        {/*<SideBar />*/}
+        
         <Scheduler 
         data={schedulerData}>
+          
         <ViewState
           currentDate={currentDate}
           onCurrentDateChange={setCurrentDate}
@@ -83,17 +105,21 @@ const [currentViewName, setCurrentViewName] = useState('month');
         />
         <Appointments
          />
-        <Toolbar />
+        <Toolbar/>
+
         <ViewSwitcher />
         <DateNavigator />
+  
        
         <Appointments
         appointmentComponent={myAppointment} />
+        
       </Scheduler>
 
-        </div>
+       
     </Paper>
-   
+    </div>
+    </div> 
     </>
   )
 };

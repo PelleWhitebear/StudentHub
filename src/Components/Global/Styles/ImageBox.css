@@ -1,0 +1,13 @@
+.imageBox {
+    width: 150px; /* width of container */
+    height: 150px; /* height of container */
+    overflow: hidden;
+    border-radius: 75px;
+    background-color: white;
+}
+
+extraPadding {
+    padding: 10px;
+}
+
+
