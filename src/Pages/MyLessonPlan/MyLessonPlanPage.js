@@ -1,8 +1,6 @@
 import { Box, InputLabel, MenuItem, FormControl, Select } from "@mui/material";
-import { OurTable, TableRow, TableHeader } from "../../Components/Global/OurTable";
-import Title from "../../Components/Global/Title";
+import { OurTable, TableRow, Title } from "../../index";
 import { getData } from "../../backendClient";
-
 import { useState, useEffect } from "react";
 
 import "../../Components/Global/Styles/Table.css";

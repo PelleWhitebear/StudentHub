@@ -1,8 +1,5 @@
-import { OurTable, TableRow } from "../../Components/Global/OurTable";
 import { useEffect , useState } from 'react';
-import "../../Components/Global/Styles/Table.css";
-import Title from "../../Components/Global/Title";
-
+import { OurTable, TableRow, Title } from "../../index";
 import { getData } from "../../backendClient";
 
 const GradesPage = () => {
