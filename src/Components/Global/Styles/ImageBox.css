@@ -10,4 +10,8 @@ extraPadding {
     padding: 10px;
 }
 
+.regularImage {
+    border-radius: 10px;
+}
+
 
