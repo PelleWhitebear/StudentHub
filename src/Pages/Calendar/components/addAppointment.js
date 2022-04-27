@@ -10,8 +10,8 @@ import { addAppointmentToFirebase } from './Firebase'
 const AddAppointmentBtn = styled.button`
     font-size: 15px;
     text-align: center;
-    background-color: rgb(153,0,0);
-    border-color: rgb(153,0,0);
+    background-color: var(--primaryColor);
+    border-color: var(--primaryColor);
     color: white;
     float: right;
     border-radius: 4px;
@@ -23,8 +23,8 @@ const AddAppointmentBtn = styled.button`
 `;
 
 const Input = styled.input`
-    border-color: rgb(153,0,0);
-    color: rgb(153,0,0);
+    border-color: var(--primaryColor);
+    color: var(--primaryColor);
     box-sizing: border-box;
     height: 51px;
     width: 100%;

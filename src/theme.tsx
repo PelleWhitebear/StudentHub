@@ -1,5 +1,5 @@
 import {createTheme} from '@mui/material';
-import {red, orange, yellow} from '@mui/material/colors';
+import {red, orange, yellow, brown} from '@mui/material/colors';
 
 const primaryColor = red[900]
 const secondaryColor = orange[500]

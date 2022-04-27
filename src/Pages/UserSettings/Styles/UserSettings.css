@@ -15,7 +15,7 @@
     border: 0px;
     border-radius: 4px; 
     color: white;
-    background-color: rgb(131, 12, 12);
+    background-color: var(--primaryColor);
 }
 
 .button:hover {
