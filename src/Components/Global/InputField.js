@@ -4,7 +4,7 @@ const InputField = (props) => {
     return (
         <div>
             <label className="alignLeft">{props.inputLabel}</label>
-            <input className="inputBox" onChange={props.onChange} type="input"></input>
+            <input className="inputBox" value={props.value} onChange={props.onChange} type="input" disabled={props.disabled}></input>
         </div>
       
     );
