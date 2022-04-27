@@ -5,6 +5,7 @@ import { signOut } from 'firebase/auth'
 import { auth } from '../../../firebase-config.js';
 import { useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
+import DtuLogo from "../../../Resources/DTU_Logo.png";
 
 
 
@@ -38,7 +39,15 @@ import { onAuthStateChanged } from "firebase/auth";
            
             <Navbar variant="dark" className="NBHeader">
                 <Container className="alignCenter">
-                    <Navbar.Brand as={Link} to="/Calendar">*LOGO HER*</Navbar.Brand>
+                        <Navbar.Brand as={Link} to="/Calendar">
+                        <img 
+                            src={DtuLogo}
+                            alt="DTU logo"
+                            height="60px"
+                            width="50px"
+                            className='dtu-logo'
+                        /> 
+                    </Navbar.Brand>
                         <Nav>
                             <Nav.Link as={Link} to="/Calendar" className='navlink'>Calendar</Nav.Link>
                             <Nav.Link as={Link} to="/MyLessonPlan" className='navlink'>My Lesson Plan</Nav.Link>
