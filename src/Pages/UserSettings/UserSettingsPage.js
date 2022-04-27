@@ -39,12 +39,26 @@ const UserSettingsPage = () => {
               <div className="centerItems">
                 {!editState && (
                   <>
-                    <h2>
-                      {" "}
-                      {firstName} {lastName}{" "}
-                    </h2>
-                    <h3> {study} </h3>
-                    <h3>{studentId}</h3>
+                    <InputField
+                    value={firstName}
+                    disabled="true"
+                      inputLabel="First Name"
+                    />
+                    <InputField
+                    value={lastName}
+                    disabled="true"
+                      inputLabel="Last Name"
+                    />
+                    <InputField
+                    value={studentId}
+                    disabled="true"
+                      inputLabel="Student ID"
+                    />
+                    <InputField
+                    value={study}
+                    disabled="true"
+                      inputLabel="Study Field"
+                    />
                     <div className="alignCenter">
                       <SymbolButton
                         symbol="✏️"
@@ -56,18 +70,22 @@ const UserSettingsPage = () => {
                 {editState && (
                   <>
                     <InputField
+                    value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
                       inputLabel="First Name"
                     />
                     <InputField
+                    value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
                       inputLabel="Last Name"
                     />
                     <InputField
+                    value={studentId}
                       onChange={(e) => setStudentId(e.target.value)}
                       inputLabel="Student ID"
                     />
                     <InputField
+                    value={study}
                       onChange={(e) => setStudy(e.target.value)}
                       inputLabel="Study Field"
                     />
