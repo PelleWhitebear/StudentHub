@@ -11,7 +11,9 @@ const Button = (props) => {
   return(
     <>
     <br />
-    <button className="button">{props.buttonText}</button>
+    <button onClick={props.onClick} className="button">
+      {props.buttonText}
+      </button>
     <br />
     </>
   )
@@ -25,6 +27,7 @@ const UserSettingsPage = () => {
   const [studentId, setStudentId] = useState('s205353');
   const [study, setStudy] = useState('BEng IT and Economics');
 
+  const [editState, setEditState] = useState(false);
 
   return (
     
@@ -38,10 +41,21 @@ const UserSettingsPage = () => {
     <Paper > 
       <br />
       <div className="centerItems" > 
+      {!editState && (
+        <div>
       <h2> {firstName} {lastName} </h2>
       <h3> {study} </h3>
       <h3>{studentId}</h3>
-      <InputField
+      <Button
+      onClick={() => setEditState(true)}
+      buttonText="Edit profile" />
+      <br />
+      </div>
+      )
+     }
+     {editState && (
+       <div>
+               <InputField
       onChange={(e) => setFirstName(e.target.value)}
       inputLabel="First Name" />
       <InputField
@@ -54,8 +68,13 @@ const UserSettingsPage = () => {
       onChange={(e) => setStudy(e.target.value)}
       inputLabel="Study Field" />
       <Button
+      onClick={() => setEditState(false)}
       buttonText="Save changes" />
       <br/>
+       </div>
+     )}
+
+
       </div>
     </Paper>
     </div>
