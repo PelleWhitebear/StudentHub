@@ -8,7 +8,7 @@ import './NavBarFooter.css';
                 <Container>
                     <Navbar.Text>
                     <Navbar.Brand>StudentHub.</Navbar.Brand>
-                    By the students, for the students.
+                    By students, for students.
                     </Navbar.Text>               
                         <Nav>
                             <Nav.Link href="/Contact">Contact</Nav.Link>
