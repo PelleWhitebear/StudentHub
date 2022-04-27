@@ -4,6 +4,7 @@ import '../../Components/Global/Styles/ImageBox.css';
 import ImageBox from '../../Components/Global/ImageBox';
 import Title from '../../Components/Global/Title';
 import InputField from '../../Components/Global/InputField';
+import Image from '../../Components/Global/Image';
 import {React, useState} from 'react';
 
 const Button = (props) => {
@@ -58,7 +59,12 @@ const UserSettingsPage = () => {
       </div>
     </Paper>
     </div>
-    <img className="imageSize" src="https://firebasestorage.googleapis.com/v0/b/dtustudenthub.appspot.com/o/dtu.jpg?alt=media&token=21b1f706-623a-4ef2-911c-2f82a34a168b" alt="" />
+    <Image
+    imageSrc="https://firebasestorage.googleapis.com/v0/b/dtustudenthub.appspot.com/o/dtu.jpg?alt=media&token=21b1f706-623a-4ef2-911c-2f82a34a168b" 
+    imageWidth="200%"
+    imageHeight="100%" />
+    {/*    <img className="imageSize" src="https://firebasestorage.googleapis.com/v0/b/dtustudenthub.appspot.com/o/dtu.jpg?alt=media&token=21b1f706-623a-4ef2-911c-2f82a34a168b" alt="" />
+*/}
     </div>
   
     </>

@@ -10,8 +10,12 @@ extraPadding {
     padding: 10px;
 }
 
-.regularImage {
-    border-radius: 10px;
+img {
+    border-radius: 50%;
+    object-fit: none;
 }
 
+.alignVertically {
+    vertical-align: middle;
+}
 

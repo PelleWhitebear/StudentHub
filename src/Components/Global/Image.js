@@ -3,12 +3,12 @@ import './Styles/ImageBox.css';
 const Image = (props) => {
     return (
       <>
-          <div className="regularImage">
+          <div className="regularImage alignVertically">
           <img
-          src={props.imageSrc} 
+          src={props.imageSrc}
           alt="Sorry! An internal server error occured"
-          width="300"
-          height="300"
+          width={props.imageWidth}
+          height={props.imageHeight}
            />
           </div>
       </>
