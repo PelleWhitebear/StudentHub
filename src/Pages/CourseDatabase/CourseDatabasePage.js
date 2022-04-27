@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 import "../../Components/Global/Styles/Table.css";
 import Title from "../../Components/Global/Title";
-
+import { getData } from "../../backendClient"
 
 const CourseDatabasePage = () => {
 
@@ -15,10 +15,15 @@ const CourseDatabasePage = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    getData();
+    const fetchData = async (url) => {
+      let { data } = await getData(url);
+      setData(data)
+    }
+    fetchData("CourseDatabase");
+    
   }, []);
 
-  async function getData() {
+  /*async function getData() {
     try {
       // real request (axios)
 
@@ -30,7 +35,7 @@ const CourseDatabasePage = () => {
       //catch if error in getting data.
       console.log(error);
     }
-  }
+  }*/
 
   const headerData = [
     "ID",
