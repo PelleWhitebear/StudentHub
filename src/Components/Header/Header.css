@@ -15,5 +15,5 @@
 }
 
 .backgroundColor {
-    background-color: rgb(153,0,0);
+    background-color: var(--transparentColor)
 }

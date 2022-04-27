@@ -8,7 +8,7 @@ table {
 }
 
 .tableHeader {
-    background-color: rgb(153,0,0);
+    background-color: var(--primaryColor);
     color: white;
     text-align: left;
     font-size: 15px;

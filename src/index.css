@@ -11,6 +11,9 @@ body {
   overflow: auto;
   background-image: url(./Resources/background_img.jpg);
   background-size: cover;
+  --primaryColor: rgb(136, 0, 0);
+  --secondaryColor: rgba(60, 96, 255, 0.75);
+  --transparentColor: rgba(127, 38, 38, 0.705);
 }
 
 code {
@@ -23,16 +26,13 @@ code {
 }
 
 a {
-  color: rgb(138, 5, 5);
+  color: var(--primaryColor);
   font-weight: bold;
   text-decoration: none;
 }
 
 a:hover {
-  opacity: 0.5;
   cursor: pointer;
-  color:rgb(138, 5, 5);
+  color: var(--transparentColor)
 }
-
-
 

@@ -16,7 +16,7 @@ import CreateUserPage from "./Pages/CreateUser/CreateUserPage";
 import AlternativeLayout from "./Components/Layouts/AlternativeLayout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
-import customTheme from "./Pages/theme";
+import customTheme from "./theme";
 import UserSettingsPage from "./Pages/UserSettings/UserSettingsPage";
 
 

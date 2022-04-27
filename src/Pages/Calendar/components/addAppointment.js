@@ -6,12 +6,14 @@ import ChooseDate from './ChooseDate';
 import ChooseTime from './ChooseTime';
 import { Stack} from '@mui/material';
 import { addAppointmentToFirebase } from './Firebase'
+import Button from "../../../Components/Global/Button"
+
 
 const AddAppointmentBtn = styled.button`
     font-size: 15px;
     text-align: center;
-    background-color: rgb(153,0,0);
-    border-color: rgb(153,0,0);
+    background-color: var(--primaryColor);
+    border-color: var(--primaryColor);
     color: white;
     float: right;
     border-radius: 4px;
@@ -23,8 +25,8 @@ const AddAppointmentBtn = styled.button`
 `;
 
 const Input = styled.input`
-    border-color: rgb(153,0,0);
-    color: rgb(153,0,0);
+    border-color: var(--primaryColor);
+    color: var(--primaryColor);
     box-sizing: border-box;
     height: 51px;
     width: 100%;
@@ -60,7 +62,10 @@ function AddAppointmentOffCanvas () {
 
     return (
         <>
-             <AddAppointmentBtn onClick = {handleShow}> Create Appointment </AddAppointmentBtn>
+        <Button 
+        onClick = {handleShow}
+        buttonText="Create Appointment" />
+         {/*<AddAppointmentBtn onClick = {handleShow}> Create Appointment </AddAppointmentBtn>*/}
      <div>
         <Offcanvas show={show} onHide={handleClose} placement='end'>
         <Offcanvas.Header closeButton>

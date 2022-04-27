@@ -1,0 +1,23 @@
+.inputBox {
+    padding: 2px;
+    color: black;
+    font-size: small;
+    text-decoration: none;
+    text-align: left;
+    border: 1px solid rgba(182, 182, 182, 182);
+    width: 80%;
+    border-radius: 4px;
+    transition: 0.50s;
+}   
+
+.inputBox:hover {
+    border: 1px solid black;
+    transition: 0.50s;
+}
+
+.alignLeft {
+    padding: 5px;
+    padding-top: 10px;
+    font-size: small;
+    align-self: left;
+}

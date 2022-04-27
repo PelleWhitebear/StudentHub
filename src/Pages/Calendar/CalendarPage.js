@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Paper from '@mui/material/Paper';
+import Paper from '../../Components/Global/Paper'
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,
@@ -65,6 +65,7 @@ const addCourseToSideBar = () => {
     <div>  
         <SideBar
         symbol="+"
+        inputLabel="Enter course title"
         onChange={(e) => setNewCourse(e.target.value)}
         onClick={() => addCourseToSideBar()}
         data={sideBarData}/>
