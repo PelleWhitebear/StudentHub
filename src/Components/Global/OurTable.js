@@ -1,7 +1,26 @@
-import TableHeader from './TableHeader'
+export const TableHeader = (headerData) => {
+  return (
+     <th>{headerData.value}</th>
+   );
+ };
 
+export const TableRow = (rowData) => {
+  return (
+     <tr>
+       <td> 
+       <a href={rowData.url} 
+       target="_blank"
+       rel="noopener noreferrer">{rowData.firstColumn}</a> </td>
+       <td> {rowData.secondColumn} </td>
+       <td> {rowData.thirdColumn} </td>
+       <td> {rowData.fourthColumn} </td>
+       <td> {rowData.fifthColumn} </td>
+       <td> {rowData.sixthColumn} </td>
+     </tr>
+   );
+ };
 
-const OurTable = (props) => {
+export const OurTable = (props) => {
   return (
     <>
     <div className="alignCenter">

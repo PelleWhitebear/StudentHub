@@ -20,7 +20,6 @@ import customTheme from "./theme";
 import UserSettingsPage from "./Pages/UserSettings/UserSettingsPage";
 
 
-
 export const App = () => {
 
 

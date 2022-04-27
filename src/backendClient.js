@@ -1,21 +1,13 @@
 import axios from "axios";
-import { BACKEND_SERVICE_URL } from "./index";
+
+const BACKEND_SERVICE_URL = "https://www.studenthub.bhsi.xyz/api/";
 
 export const getData = async (url) => {
-    try {
-      let { data } = await axios.get(BACKEND_SERVICE_URL.concat(url));
-      return { data };
-    } catch (error) {
-      console.log(error);
-      console.log("Error with fetching data from backend server");
-    }
-  };
-
-const BackendClient = (props) => {
-    return (
-        <div></div>
-    )
-  };
-  export default BackendClient;
-  
-
+  try {
+    let { data } = await axios.get(BACKEND_SERVICE_URL.concat(url));
+    return { data };
+  } catch (error) {
+    console.log(error);
+    console.log("Error with fetching data from backend server");
+  }
+};
