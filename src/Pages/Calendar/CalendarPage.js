@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Paper from '@mui/material/Paper';
+import Paper from '../../Components/Global/Paper'
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,

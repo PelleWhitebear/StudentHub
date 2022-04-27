@@ -10,13 +10,8 @@ const SideBar = (props) => {
   return (
     <>
       <div className="SideBar">
-        <br />
-        <br />
         <AddAppointment />
         <Stack direction="column" spacing={1}>
-          <br />
-          <br />
-          <br />
           <h3>My Calendars</h3>
           {props?.data?.map((element) => {
             return (
