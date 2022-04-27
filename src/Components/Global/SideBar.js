@@ -1,51 +1,39 @@
-import {Checkbox, FormGroup, FormControlLabel, Box, Drawer, Toolbar, Divider, List, Stack } from '@mui/material';
-import { useState } from 'react'
-import './Styles/SideBar.css'
+import { Checkbox, FormControlLabel, Stack } from "@mui/material";
+import "./Styles/SideBar.css";
+import AddAppointment from "../../Pages/Calendar/components/addAppointment";
+import SymbolButton from './SymbolButton'
+import '../LoginForm/LoginForm.css'
+import InputField from './InputField'
 
 const SideBar = (props) => {
 
-  const [checkedStatus, setCheckedStatus] = useState('');
-  
-      return (
-        <>    
-        <div className = "SideBar">
-        <br/>
-          <Stack direction="column" spacing={4}>
-            <br/>
-            <Stack>
-              <div>
-                <FormControlLabel control={<Checkbox defaultChecked />} label={props.firstCourse}  />
-              </div>
-            </Stack>
-            <Stack>
-              <div>
-                <FormControlLabel control={<Checkbox defaultChecked />} label={props.secondCourse}  />
-              </div>
-            </Stack>
-            <Stack>
-              <div>
-                <FormControlLabel control={<Checkbox defaultChecked />} label={props.thirdCourse}  />
-              </div>
-            </Stack>
-            <Stack>
-              <div>
-                <FormControlLabel control={<Checkbox defaultChecked />} label={props.fourthCourse}  />
-              </div>
-            </Stack>
-            <Stack>
-              <div>
-                <FormControlLabel control={<Checkbox defaultChecked />} label={props.fifthCourse}  />
-              </div>
-            </Stack>
-            <Stack>
-              <div>
-                <FormControlLabel control={<Checkbox defaultChecked />} label={props.myAppointments}  />
-              </div>
-            </Stack>
-          </Stack>
-        </div>
-        </>
-      )
-    };
-    
-    export default SideBar;
+  return (
+    <>
+      <div className="SideBar">
+        <AddAppointment />
+        <Stack direction="column" spacing={1}>
+          <h3>My Calendars</h3>
+          {props?.data?.map((element) => {
+            return (
+              <Stack key={props?.courses?.indexOf(element)}>
+                <FormControlLabel
+                  control={<Checkbox defaultChecked />}
+                  label={element}
+                />
+              </Stack>
+            );
+          })}
+        </Stack>
+        <InputField
+        inputLabel={props.inputLabel}
+        onChange={props.onChange} />
+        <SymbolButton
+        onClick={props.onClick}
+        symbol={props.symbol} />
+
+      </div>
+    </>
+  );
+};
+
+export default SideBar;

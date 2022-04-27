@@ -21,7 +21,7 @@ const AnnouncementsPage = () => {
     try {
       
       // real request (axios)
-      let { data } = await axios.get("http://localhost:8080/api/announcements");
+      let { data } = await axios.get("https://studenthub.bhsi.xyz/api/announcements");
       setAnnouncements(data);
     
       // Fake request

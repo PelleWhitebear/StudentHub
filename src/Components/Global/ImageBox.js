@@ -3,7 +3,7 @@ const ImageBox = (props) => {
     <>
      <br />
         <div className="imageBox">
-        <img 
+        <img className="imageSize"
         src={props.imageSrc} 
         alt="Sorry! An internal server error occured"
          />

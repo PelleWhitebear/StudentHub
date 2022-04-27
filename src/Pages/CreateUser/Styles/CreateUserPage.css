@@ -2,7 +2,7 @@
     padding: 10px;
     margin-left: 30%;
     margin-right: 30%;
-    background-color: rgba(190, 3, 3, 0.35);
+    background-color: var(--transparentColor);
     box-shadow: -1px 4px 28px 0px rgba(110, 110, 110, 0.35);
     border-radius: 20px;
 }

@@ -8,3 +8,12 @@
     width: 100%;
     text-align: center;
 }
+
+.topHeader {
+    color: white;
+    padding-top: 1rem;
+}
+
+.backgroundColor {
+    background-color: var(--transparentColor)
+}
