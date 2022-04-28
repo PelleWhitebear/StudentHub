@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
@@ -16,12 +16,14 @@ import './Styles/Calendar.css'
 import SideBar from '../../Components/Global/SideBar';
 import AddAppointment from './components/addAppointment';
 import '../../Components/Global/Styles/SideBar.css';
+import { GetAppointmentsFromFirebase} from './components/Firebase';
 //const schedulerData = appointmentData.map(appointmentData => appointmentData.title);
 
-const schedulerData = [
+
+/*[
   { startDate: '2022-03-14T09:45', endDate: '2022-03-14T11:00', title: "Doctor's appointment" },
   { startDate: '2022-03-14T13:00', endDate: '2022-03-14T17:00', title: 'Front end web development' },
-];
+];*/
 
 const myAppointment = ({
   children, style, ...restProps
@@ -72,7 +74,8 @@ const [currentViewName, setCurrentViewName] = useState('month');
 
 
         <Scheduler 
-        data={schedulerData}>
+        data={GetAppointmentsFromFirebase()}>
+          
           
         <ViewState
           currentDate={currentDate}

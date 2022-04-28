@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import ChooseDate from './ChooseDate';
 import ChooseTime from './ChooseTime';
 import { Stack} from '@mui/material';
-import { addAppointmentToFirebase } from './Firebase'
+import { addAppointmentToFirebase, getAppointmentsFromFirebase } from './Firebase'
 
 const AddAppointmentBtn = styled.button`
     font-size: 15px;
@@ -42,7 +42,7 @@ function AddAppointmentOffCanvas () {
     let handleShow = () => setShow(true);
 
     let [appointmentTitle, setAppointmentTitle] = useState("");
-    let [Date, setDate] = useState("");
+    let [date, setDate] = useState("");
     let [startTime, setStartTime] = useState("");
     let [endTime, setEndTime] = useState("");
     let [location, setLocation] = useState("");
@@ -95,25 +95,6 @@ function AddAppointmentOffCanvas () {
                             <ChooseTime onChangeMethod={setEndTime}/>
                         </Stack>
                     </Stack>
-                   {/*  <label>Start Date</label>
-                     <br/>
-                    <Input
-                        type="text" 
-                        onChange={(event) => {
-                            setStartDate(event.target.value);
-                        }}
-                    />
-                    <br/>
-                    <br/>
-                     <label>End Date</label>
-                     <br/>
-                    <Input
-                        type="text" 
-                        onChange={(event) => {
-                            setEndDate(event.target.value);
-                        }}
-                    />
-                    */}
                     <br/>
                     <br/>
                      <label>Location</label>
@@ -127,12 +108,14 @@ function AddAppointmentOffCanvas () {
 
                     <br></br>
                     <div>
-                        <AddAppointmentBtn  onClick={addAppointmentToFirebase(
-                            appointmentTitle,
-                            Date,
-                            startTime,
-                            endTime,
-                            location)}
+                        <AddAppointmentBtn  onClick=
+                            { ()=> addAppointmentToFirebase(
+                                appointmentTitle, 
+                                date, 
+                                startTime, 
+                                endTime, 
+                                location
+                            )}
                             >
                                 Add Appointment
                         </AddAppointmentBtn>
