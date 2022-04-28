@@ -16,11 +16,13 @@ import CreateUserPage from "./Pages/CreateUser/CreateUserPage";
 import AlternativeLayout from "./Components/Layouts/AlternativeLayout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
-import customTheme from "./Pages/theme";
+import customTheme from "./theme";
 import UserSettingsPage from "./Pages/UserSettings/UserSettingsPage";
 
 
-export default function App() {
+export const App = () => {
+
+
     return (
       <ThemeProvider theme = {customTheme}>
       <BrowserRouter>
@@ -29,7 +31,7 @@ export default function App() {
             <Route path="/CreateUser" element={<CreateUserPage/>} />
             <Route index element={<LoginPage />} />
             <Route path="*" element={<NoPages />} />  
-          <Route path="/" element={<Layout />}>
+            <Route path="/" element={<Layout />}>
             <Route path="Calendar" element={<CalendarPage />} />
             <Route path="StudyGuidance" element={<StudyGuidancePage />} />
             <Route path="MyLessonPlan" element={<MyLessonPlanPage />} />
@@ -47,3 +49,4 @@ export default function App() {
       </ThemeProvider>
     );
   };
+  export default App;
