@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BACKEND_SERVICE_URL = "https://www.studenthub.bhsi.xyz/api/";
+const BACKEND_SERVICE_URL = "http://130.225.170.77//api//";
 
 export const getData = async (url) => {
   try {
