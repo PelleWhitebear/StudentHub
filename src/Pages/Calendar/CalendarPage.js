@@ -40,7 +40,7 @@ const myAppointment = ({ children, style, ...restProps }) => (
 const CalendarPage = () => {
   const [currentDate, setCurrentDate] = useState(Date().toLocaleString());
 
-  const [currentViewName, setCurrentViewName] = useState("week");
+  const [currentViewName, setCurrentViewName] = useState("month");
 
   const [newCourse, setNewCourse] = useState("");
 
@@ -55,6 +55,7 @@ const CalendarPage = () => {
     setSideBarData([...sideBarData, newCourse]);
     setNewCourse("");
   };
+
 
   return (
     <>
