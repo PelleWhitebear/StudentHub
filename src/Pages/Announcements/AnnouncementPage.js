@@ -16,7 +16,7 @@ const AnnouncementPage = () => {
     async function getData() {
         try{
 
-        let {data} = await axios.get(`http://studenthub.bhsi.xyz/api/announcements/${id}`)
+        let {data} = await axios.get(`https://www.studenthub.bhsi.xyz/api/announcements/${id}`)
         setData(data)
         setLoading(false)
 
@@ -25,7 +25,9 @@ const AnnouncementPage = () => {
         }
 
     }
-  }
+
+
+
 
   return (
     <>

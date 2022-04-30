@@ -24,12 +24,18 @@ const AnnouncementsPage = () => {
     try {
       
       // real request (axios) 
-      let { data } = await axios.get("http://studenthub.bhsi.xyz/api/announcements/getAll");
+      let { data } = await axios.get("https://www.studenthub.bhsi.xyz/api/announcements/getAll");
 
       setAnnouncements(data);
 
     } catch (error) { //catch if error in getting data.
-      console.log(error)
+      if(error.response){
+        console.log(error.response)
+      }else if(error.message){
+        console.log(error.message)
+      }else if(error.request){
+        console.log(error.request)
+      }
     }
   } 
 
@@ -42,7 +48,7 @@ const AnnouncementsPage = () => {
       isRead: read
       }
 
-      await axios.put(`http://studenthub.bhsi.xyz/api/announcements/update/${id}`, updateData);
+      await axios.put(`https://www.studenthub.bhsi.xyz/api/announcements/update/${id}`, updateData);
 
     } catch (error) { //catch if error in getting data.
       console.log(error)
@@ -73,7 +79,7 @@ let imgs = [
 ]
 
   return (
-
+   <>
     
     <Paper>
     <div className="split left">
@@ -91,7 +97,7 @@ let imgs = [
     </div>
   </div>
   </Paper>
-  
+  </>
   );
 };
 
