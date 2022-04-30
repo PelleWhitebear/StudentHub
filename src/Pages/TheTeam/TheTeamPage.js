@@ -4,11 +4,11 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import Pelle from "../../Resources/PFPs/Pelle.png";
-import Diamond from "../../Resources/PFPs/Diamond.jpg";
-import Seb from "../../Resources/PFPs/seb.png";
-import Steven from "../../Resources/PFPs/steven.png";
-import Mia from "../../Resources/PFPs/Mia.png";
+import Pelle from "../../assets/PFPs/Pelle.png";
+import Diamond from "../../assets/PFPs/Diamond.jpg";
+import Seb from "../../assets/PFPs/seb.png";
+import Steven from "../../assets/PFPs/steven.png";
+import Mia from "../../assets/PFPs/Mia.png";
 import "./Styles/TheTeamPage.css";
 
 const TheTeamPage = () => {
