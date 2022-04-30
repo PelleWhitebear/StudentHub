@@ -1,9 +1,10 @@
 import { Checkbox, FormControlLabel, Stack } from "@mui/material";
 import "./Styles/SideBar.css";
 import AddAppointment from "../../views/Calendar/components/addAppointment";
-import SymbolButton from './SymbolButton'
 import '../LoginForm/LoginForm.css'
-import InputField from './InputField'
+import { InputField, SymbolButton } from "../../index";
+
+
 
 const SideBar = (props) => {
 

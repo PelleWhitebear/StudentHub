@@ -1,12 +1,17 @@
-import Paper from "../../Components/Global/Paper";
+
 import "./Styles/UserSettings.css";
-import "../../Components/Global/Styles/ImageBox.css";
-import ImageBox from "../../Components/Global/ImageBox";
-import Title from "../../Components/Global/Title";
-import InputField from "../../Components/Global/InputField";
-import Image from "../../Components/Global/Image";
-import Button from "../../Components/Global/Button";
-import SymbolButton from "../../Components/Global/SymbolButton";
+import "../../components/Global/Styles/ImageBox.css";
+
+import { 
+  SymbolButton,
+  ImageBox,
+  Title,
+  InputField,
+  Image,
+  Paper,
+  Button
+} from "../../index";
+
 import { React, useState } from "react";
 
 const UserSettingsPage = () => {

@@ -1,4 +1,4 @@
-import  '../Global/Styles/Searchbar.css'
+import  './Styles/Searchbar.css'
 
 
 const Searchbar = (props) => {

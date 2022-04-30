@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Paper from "../../Components/Global/Paper";
+import Paper from "../../components/Global/Paper";
 import { ViewState } from "@devexpress/dx-react-scheduler";
 import {
   Scheduler,
@@ -12,9 +12,9 @@ import {
   Appointments,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import './Styles/Calendar.css'
-import SideBar from '../../Components/Global/SideBar';
+import SideBar from '../../components/Global/SideBar';
 import AddAppointment from './components/addAppointment';
-import '../../Components/Global/Styles/SideBar.css';
+import '../../components/Global/Styles/SideBar.css';
 import { GetAppointmentsFromFirebase} from './components/Firebase';
 //const schedulerData = appointmentData.map(appointmentData => appointmentData.title);
 
