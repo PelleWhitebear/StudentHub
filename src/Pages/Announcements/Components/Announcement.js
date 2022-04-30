@@ -2,21 +2,24 @@ import "../Styles/Announcements.css";
 
 function Announcement (props) {
   //constant for different values of the announcements(props)
-  const {id} = props;
+  const {title, message, sender, isRead} = props;
+  
 
     return (
-      <div onClick={props.onClick} className="Border">
-        <p>{id}</p>
-            {/*<section className="Time">
-            <p>{time}</p>
-            </section>
-            <br/>
-            <section className="Titel">
-            <h2>{title}</h2>
-            </section>
-            <br/>
-    <p>{text}</p>*/}
-      </div>
+      <>
+      {isRead && 
+      <div onClick={props.onClick} className="BorderRead" >
+        <h2 className="Titelt">{title} - {sender}</h2>
+        <p>{message}</p>
+        </div>
+        }
+      {!isRead &&
+       <div onClick={props.onClick} className="BorderUnRead" > 
+        <h2 className="Titelf">{title} - {sender}</h2>
+        <p>{message}</p>
+        </div>
+      }
+      </>
     )
   };
   
