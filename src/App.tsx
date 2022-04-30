@@ -1,23 +1,23 @@
 
 import Layout from "./Components/Layouts/Layout";
-import CalendarPage from "./Pages/Calendar/CalendarPage";
-import MyLessonPlanPage from "./Pages/MyLessonPlan/MyLessonPlanPage";
-import AnnouncementsPage from "./Pages/Announcements/AnnouncementsPage";
-import AnnouncementPage from "./Pages/Announcements/AnnouncementPage";
-import CourseDatabasePage from "./Pages/CourseDatabase/CourseDatabasePage";
-import StudyGuidancePage from "./Pages/StudyGuidance/StudyGuidancePage";
-import GradesPage from "./Pages/Grades/GradesPage";
-import NoPages from "./Pages/NoPages/NoPages";
-import LoginPage from "./Pages/Login/LoginPage";
-import ContactPage from "./Pages/Contact/ContactPage";
-import TheTeamPage from "./Pages/TheTeam/TheTeamPage";
-import AboutPage from "./Pages/About/AboutPage";
-import CreateUserPage from "./Pages/CreateUser/CreateUserPage";
+import CalendarPage from "./views/Calendar/CalendarPage";
+import MyLessonPlanPage from "./views/MyLessonPlan/MyLessonPlanPage";
+import AnnouncementsPage from "./views/Announcements/AnnouncementsPage";
+import AnnouncementPage from "./views/Announcements/AnnouncementPage";
+import CourseDatabasePage from "./views/CourseDatabase/CourseDatabasePage";
+import StudyGuidancePage from "./views/StudyGuidance/StudyGuidancePage";
+import GradesPage from "./views/Grades/GradesPage";
+import NoPages from "./views/NoPages/NoPages";
+import LoginPage from "./views/Login/LoginPage";
+import ContactPage from "./views/Contact/ContactPage";
+import TheTeamPage from "./views/TheTeam/TheTeamPage";
+import AboutPage from "./views/About/AboutPage";
+import CreateUserPage from "./views/CreateUser/CreateUserPage";
 import AlternativeLayout from "./Components/Layouts/AlternativeLayout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import customTheme from "./theme";
-import UserSettingsPage from "./Pages/UserSettings/UserSettingsPage";
+import UserSettingsPage from "./views/UserSettings/UserSettingsPage";
 
 
 export const App = () => {

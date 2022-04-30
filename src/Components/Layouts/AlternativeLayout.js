@@ -1,4 +1,4 @@
-import LoginPage from "../../Pages/Login/LoginPage";
+import LoginPage from "../../views/Login/LoginPage";
 import Footer from "../Footer/Footer";
 import { Outlet } from "react-router-dom";
 
