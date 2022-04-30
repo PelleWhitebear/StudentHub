@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CreateForm from './CreateForm'
 import {
     createUserWithEmailAndPassword,
@@ -8,12 +8,13 @@ import { auth } from "../../firebase-config.js";
 import '../LoginForm/LoginForm.css';
 import axios from 'axios';
 const CreateUserForm = () => {
+  const [emailValite, setEmailValite] = useState(false);
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerFirstName, setRegisterFirstName] =  useState("");
   const [registerLastName, setRegisterLastName] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [samePassword, setSamePassword] = useState("");
-  const [emailValite, setEmailValite] = useState(false);
+  
 
   const nav = useNavigate();
 
@@ -24,26 +25,35 @@ const CreateUserForm = () => {
 
   const validPassword = new RegExp(
   )
+  useEffect(() =>{
+    eventHandler()
+  }, [emailValite])
 
-  const eventHandler = () =>{
-    validate()
-
-    if(emailValite && registerPassword === samePassword){
-      registerStudent()
-    } else if(!emailValite){
-      console.log("email not valid")
-    } else if(registerPassword !== samePassword){
-      console.log("be sure to write the same password")
+  
+  const validate = () =>{
+    
+    if(!validEmail.test(registerEmail)){
+      return setEmailValite(false);
+    }else if(validEmail.test(registerEmail)){
+      return setEmailValite(true);
     }
+    
+
   }
 
-  const validate = () =>{
-    if(!validEmail.test(registerEmail)){
-      return setEmailValite(false)
-    }else if(validEmail.test(registerEmail)){
-      return setEmailValite(true)
+  const eventHandler = () =>{
+    validate();
+    
+    if(emailValite && registerPassword === samePassword){
+      return registerStudent();
     }
+    if(!emailValite){
+      console.log("email not valid")
+    } 
 
+    if(registerPassword !== samePassword){
+      console.log("be sure to write the same password")
+    }
   }
   
   //register user
