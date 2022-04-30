@@ -23,8 +23,8 @@ const AnnouncementPage = () => {
         }catch (error) { //catch if error in getting data.
             console.log(error);
         }
-
     }
+
 
 
 
