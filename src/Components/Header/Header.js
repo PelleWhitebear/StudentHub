@@ -1,6 +1,6 @@
 import './Header.css';
 import NavBarHeader from './NavBarHeader/NavBarHeader';
-import DtuLogo from "../../Resources/DTU_Logo.png";
+import DtuLogo from "../../assets/DTU_Logo.png";
 
 const Header = () => {
     return (
