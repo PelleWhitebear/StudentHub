@@ -23,8 +23,8 @@ const CreateUserForm = () => {
     '^[s][0-9]{6}@student.dtu.dk$'
   )
 
-  const validPassword = new RegExp(
-  )
+  //const validPassword = new RegExp(
+  //)
   useEffect(() =>{
     eventHandler()
   }, [emailValite])

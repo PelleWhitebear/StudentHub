@@ -10,7 +10,7 @@ const Header = () => {
         <div className="backgroundColor">
             <div className="topHeader">
                 <div className='dtuLogo'>
-                <img src={DtuLogo} style={{height:"80px", width:"60px"}} />
+                <img src={DtuLogo} style={{height:"80px", width:"60px"} } alt="DTULogo" />
                 </div>
                 <div className='SHTitle'>
                 <h2 style={{fontSize:"100px"}}>StudentHub.</h2>

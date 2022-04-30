@@ -1,4 +1,5 @@
 import "./Styles/Announcements.css";
+import "../../index.css"
 import { useEffect, useState } from "react";
 import Announcement from "./Components/Announcement";
 import { useNavigate } from "react-router-dom";
@@ -80,8 +81,9 @@ let imgs = [
 
   return (
    <>
-    
+    <div className="minHeight">
     <Paper>
+    
     <div className="split left">
       <div >
 
@@ -94,9 +96,11 @@ let imgs = [
       <div >
       <h1>News</h1>
       <img src={imgs[0]} alt="new"/>
-    </div>
-  </div>
+      </div>
+   </div>
+   
   </Paper>
+  </div>
   </>
   );
 };

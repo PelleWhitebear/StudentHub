@@ -70,7 +70,7 @@ h1 {
 .split{
   height: 50%;
   width: 50%;
-  position: fixed;
+  
   z-index: 1;
   top: 20px;
   overflow-x: hidden;
