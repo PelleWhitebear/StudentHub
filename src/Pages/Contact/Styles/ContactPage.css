@@ -1,0 +1,25 @@
+.DePageContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 60px 50px;
+    background-color: rgb(255, 255, 255, 1);
+    box-shadow: -1px 4px 28px 0px rgba(100, 100, 100, 0.5);
+    border-radius: 20px;
+}
+
+.DEh3 {
+    color: var(--primaryColor);
+    font-size: large;
+    text-align: center;
+}
+
+.Infobox {
+    position: absolute;
+    align-content: center;
+    padding: 60px 50px;
+    background-color: rgba(111, 111, 111, 0.8);
+    box-shadow: -1px 4px 28px 0px var(--primaryColor);
+    border-radius: 20px;
+}

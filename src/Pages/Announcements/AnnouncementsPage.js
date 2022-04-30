@@ -24,7 +24,8 @@ const AnnouncementsPage = () => {
     try {
       
       // real request (axios) 
-      let { data } = await axios.get("http://localhost:8080/api/announcements/getAll");
+      let { data } = await axios.get("http://studenthub.bhsi.xyz/api/announcements/getAll");
+
       setAnnouncements(data);
 
     } catch (error) { //catch if error in getting data.
@@ -41,7 +42,7 @@ const AnnouncementsPage = () => {
       isRead: read
       }
 
-      await axios.put(`http://localhost:8080/api/announcements/update/${id}`, updateData);
+      await axios.put(`http://studenthub.bhsi.xyz/api/announcements/update/${id}`, updateData);
 
     } catch (error) { //catch if error in getting data.
       console.log(error)
@@ -72,10 +73,12 @@ let imgs = [
 ]
 
   return (
+
     
     <Paper>
     <div className="split left">
       <div >
+
         <h1>Announcements</h1>
         {loadAnnouncements()}
       </div>

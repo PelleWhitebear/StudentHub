@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 
 const AnnouncementPage = () => {
+
     const { id } = useParams();
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -15,19 +16,20 @@ const AnnouncementPage = () => {
     async function getData() {
         try{
 
-        let {data} = await axios.get(`http://localhost:8080/api/announcements/${id}`)
+        let {data} = await axios.get(`http://studenthub.bhsi.xyz/api/announcements/${id}`)
         setData(data)
         setLoading(false)
 
         }catch (error) { //catch if error in getting data.
             console.log(error);
         }
+
     }
-   
+  }
 
-
-return (
+  return (
     <>
+
         
         {loading && <p>indlæser announcement..</p>}
         {!loading && <div>
@@ -39,7 +41,7 @@ return (
             </div>
             </div>}
     </>
-);
-  };
+  );
+};
 
 export default AnnouncementPage;

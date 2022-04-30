@@ -4,11 +4,11 @@ import './NavBarFooter.css';
     const NavBarFooter = () => {
         return (
             <>
-            <Navbar variant='dark' className="NBFooter">
+            <Navbar sticky="bottom" variant='dark' className="NBFooter sticky-bottom">
                 <Container>
                     <Navbar.Text>
                     <Navbar.Brand>StudentHub.</Navbar.Brand>
-                    By the students, for the students.
+                    By students, for students.
                     </Navbar.Text>               
                         <Nav>
                             <Nav.Link href="/Contact">Contact</Nav.Link>

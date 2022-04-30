@@ -9,20 +9,29 @@ import StudyGuidancePage from "./Pages/StudyGuidance/StudyGuidancePage";
 import GradesPage from "./Pages/Grades/GradesPage";
 import NoPages from "./Pages/NoPages/NoPages";
 import LoginPage from "./Pages/Login/LoginPage";
+import ContactPage from "./Pages/Contact/ContactPage";
+import TheTeamPage from "./Pages/TheTeam/TheTeamPage";
+import AboutPage from "./Pages/About/AboutPage";
+import CreateUserPage from "./Pages/CreateUser/CreateUserPage";
 import AlternativeLayout from "./Components/Layouts/AlternativeLayout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
-import customTheme from "./Pages/theme";
+import customTheme from "./theme";
+import UserSettingsPage from "./Pages/UserSettings/UserSettingsPage";
 
-export default function App() {
+
+export const App = () => {
+
+
     return (
       <ThemeProvider theme = {customTheme}>
       <BrowserRouter>
         <Routes>
           <Route path="/LoginPage" element={<AlternativeLayout />} />
+            <Route path="/CreateUser" element={<CreateUserPage/>} />
             <Route index element={<LoginPage />} />
             <Route path="*" element={<NoPages />} />  
-          <Route path="/" element={<Layout />}>
+            <Route path="/" element={<Layout />}>
             <Route path="Calendar" element={<CalendarPage />} />
             <Route path="StudyGuidance" element={<StudyGuidancePage />} />
             <Route path="MyLessonPlan" element={<MyLessonPlanPage />} />
@@ -30,9 +39,14 @@ export default function App() {
             <Route path="Announcements/:id" element={<AnnouncementPage />} />
             <Route path="CourseDatabase" element={<CourseDatabasePage />} />
             <Route path="Grades" element={<GradesPage />} />
+            <Route path="Contact" element={<ContactPage />} />
+            <Route path="Team" element={<TheTeamPage />} />
+            <Route path="About" element={<AboutPage />} />
+            <Route path="UserSettings" element={<UserSettingsPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
       </ThemeProvider>
     );
   };
+  export default App;

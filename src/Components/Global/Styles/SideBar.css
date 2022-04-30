@@ -1,0 +1,18 @@
+.courseTitle {
+    font: roboto;
+    font-size: 0.8rem;
+}
+
+.css-ahj2mt-MuiTypography-root {
+    font-size: 0.8rem !important;
+}
+
+.SideBar {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #FFFFFF;
+    height: 100%;
+    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 4px 0px 0px 4px;
+}
+

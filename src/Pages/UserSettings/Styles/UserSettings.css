@@ -1,0 +1,27 @@
+.box {
+    width: 600px;
+    height: 80%;
+    align-items: center;
+    padding: 20px;
+}
+
+.centerItems {
+    text-align: center;
+    align-content: center;
+}
+
+.button {
+    padding: 5px 10px 5px 10px;
+    border: 0px;
+    border-radius: 4px; 
+    color: white;
+    background-color: var(--primaryColor);
+}
+
+.button:hover {
+    opacity: 0.5;
+}
+
+.imageSize {
+    object-fit: cover;
+}
