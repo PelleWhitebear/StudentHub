@@ -3,7 +3,7 @@ import { OurTable, TableRow, Title } from "../../index";
 import { getData } from "../../backendClient";
 import { useState, useEffect } from "react";
 
-import "../../Components/Global/Styles/Table.css";
+import "../../components/Global/Styles/Table.css";
 
 const MyLessonPlanPage = () => {
   const [data, setData] = useState([]);
