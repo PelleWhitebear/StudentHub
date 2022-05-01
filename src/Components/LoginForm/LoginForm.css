@@ -1,4 +1,8 @@
-
+.FailText{
+    color: white;
+    font-size: medium;
+    margin-top: 5px;
+}
 .InputBox {
     margin-top: 30px;
     background: transparent;

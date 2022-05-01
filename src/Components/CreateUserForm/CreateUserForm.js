@@ -8,7 +8,8 @@ import { auth } from "../../firebase-config.js";
 import '../LoginForm/LoginForm.css';
 import axios from 'axios';
 const CreateUserForm = () => {
-  const [emailValite, setEmailValite] = useState(false);
+  const [emailValite, setEmailValite] = useState();
+  const [errorPassword, setErrorPassword] = useState();
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerFirstName, setRegisterFirstName] =  useState("");
   const [registerLastName, setRegisterLastName] = useState("");
@@ -18,13 +19,11 @@ const CreateUserForm = () => {
 
   const nav = useNavigate();
 
-  //regex for validating mail and password
+  //regex for validating email 
   const validEmail = new RegExp(
     '^[s][0-9]{6}@student.dtu.dk$'
   )
 
-  //const validPassword = new RegExp(
-  //)
   useEffect(() =>{
     eventHandler()
   }, [emailValite])
@@ -33,9 +32,9 @@ const CreateUserForm = () => {
   const validate = () =>{
     
     if(!validEmail.test(registerEmail)){
-      return setEmailValite(false);
+      setEmailValite(false);
     }else if(validEmail.test(registerEmail)){
-      return setEmailValite(true);
+      setEmailValite(true);
     }
     
 
@@ -47,12 +46,9 @@ const CreateUserForm = () => {
     if(emailValite && registerPassword === samePassword){
       return registerStudent();
     }
-    if(!emailValite){
-      console.log("email not valid")
-    } 
 
     if(registerPassword !== samePassword){
-      console.log("be sure to write the same password")
+      setErrorPassword(true);
     }
   }
   
@@ -108,12 +104,20 @@ const CreateUserForm = () => {
         repeatPasswordInputPlaceholder="Repeat Password"
         repeatPasswordOnChange={(e) => setSamePassword(e.target.value)}
       />
-      
-        <div>
+      <div>
           <button className="LoginButton" onClick={eventHandler}>Create User</button>
         </div>
-            
+        {!emailValite &&
+        <div>
+          <p className="FailText">email not valid</p>
         </div>
+        }
+        {!errorPassword &&
+          <div>
+          <p className="FailText">Passwords does not match</p>
+          </div>
+        }   
+      </div>
     )
   };
   
