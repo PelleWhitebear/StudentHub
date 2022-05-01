@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { Paper } from "../../index";
 import "./Styles/Announcement.css";
 import { useEffect, useState } from "react";
 import axios from 'axios';
@@ -35,12 +36,20 @@ const AnnouncementPage = () => {
         
         {loading && <p>indlæser announcement..</p>}
         {!loading && <div>
+            <Paper>
             <h1>Announcement</h1>
             <div className="borderBox">
-            <h3 className="title">{data.title}</h3>
-            <h4 className="sender">{data.sender}</h4>
-            <p>{data.message}</p>
+                <div className="item">
+                    <p className="title">{data.title}</p>
+                </div>
+                <div className="item">
+                    <p className="sender">{data.sender}</p>
+                </div>
+                <div className="item">
+                    <p className="message">{data.message}</p>
+                </div>
             </div>
+            </Paper>
             </div>}
     </>
   );
