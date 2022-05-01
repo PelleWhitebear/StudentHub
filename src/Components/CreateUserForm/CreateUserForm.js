@@ -93,6 +93,7 @@ const CreateUserForm = () => {
     return (
         <div action="#"> 
           <CreateForm
+          
         mailInputPlaceholder="Student mail"
         mailOnChange={(e) => setRegisterEmail(e.target.value)}
         firstNameInputPlaceholder="First Name"
@@ -107,16 +108,6 @@ const CreateUserForm = () => {
       <div>
           <button className="LoginButton" onClick={eventHandler}>Create User</button>
         </div>
-        {!emailValite &&
-        <div>
-          <p className="FailText">email not valid</p>
-        </div>
-        }
-        {!errorPassword &&
-          <div>
-          <p className="FailText">Passwords does not match</p>
-          </div>
-        }   
       </div>
     )
   };
