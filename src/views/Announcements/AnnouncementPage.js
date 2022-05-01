@@ -43,9 +43,9 @@ const AnnouncementPage = () => {
                     <p className="title">{data.title}</p>
                 </div>
                 <div className="item">
-                    <p className="sender">{data.sender}</p>
+                    <p className="sender"> Fra: {data.sender}</p>
                 </div>
-                <div className="item">
+                <div className="itemBottom">
                     <p className="message">{data.message}</p>
                 </div>
             </div>

@@ -19,6 +19,14 @@
     margin-left: 0px;
 }
 
+.Hello {
+    display:flex; 
+    flex-direction:row;
+    justify-content: center;
+    flex-wrap: wrap;
+   
+}
+
 .Time p{
     font-style: italic;
     font-size: small;
@@ -41,7 +49,11 @@ h1 {
     margin-left: 20px;
 }
 
+.centerAlign {
+    display: flex;
+    flex-direction: column;
 
+}
 .BorderUnRead {
     border: 1px solid darkgrey;
     margin: 20px 20px 20px 20px;
@@ -66,26 +78,6 @@ h1 {
 
 .BorderRead:hover{
     opacity: 0.9;
-}
-.split{
-  height: 50%;
-  width: 50%;
-  
-  z-index: 1;
-  top: 20px;
-  overflow-x: hidden;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.left{
-  left: 0;
-}
-
-.right{
-  right: 0;
 }
 
 .centered {

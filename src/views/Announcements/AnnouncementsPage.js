@@ -1,10 +1,10 @@
 import "./Styles/Announcements.css";
-import "../../index.css"
+import { Paper } from "../../index";
+import "../../index.css";
 import { useEffect, useState } from "react";
 import Announcement from "./Components/Announcement";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Paper from '@mui/material/Paper';
 
 
 const AnnouncementsPage = () => {
@@ -81,25 +81,24 @@ let imgs = [
 
   return (
    <>
-    <div className="minHeight">
-    <Paper>
-    
-    <div className="split left">
-      <div >
+    <div >
+      <div className="Hello">
+        <Paper>
+          <div >
+            <h1>Announcements</h1>
+            <div className="centerAlign">
+             {loadAnnouncements()}
+            </div>
+          </div>
+        </Paper>
 
-        <h1>Announcements</h1>
-        {loadAnnouncements()}
-      </div>
-    </div>
-
-    <div className="split right">
-      <div >
-      <h1>News</h1>
-      <img src={imgs[0]} alt="new"/>
-      </div>
+        <Paper>
+          <div >
+            <h1>News</h1>
+            <img src={imgs[0]} alt="new"/>
+          </div>
+        </Paper>
    </div>
-   
-  </Paper>
   </div>
   </>
   );
