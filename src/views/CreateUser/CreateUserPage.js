@@ -1,6 +1,6 @@
 
 import '../Login/Styles/LoginPage.css';
-import CreateUserForm from '../../component/CreateUserForm/CreateUserForm';
+import CreateUserForm from '../../components/CreateUserForm/CreateUserForm';
 import './Styles/CreateUserPage.css';
 
 const CreateUserPage = () => {

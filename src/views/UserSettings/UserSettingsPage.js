@@ -1,6 +1,6 @@
 
 import "./Styles/UserSettings.css";
-import "../../component/Global/Styles/ImageBox.css";
+import "../../components/Global/Styles/ImageBox.css";
 
 import { 
   SymbolButton,
