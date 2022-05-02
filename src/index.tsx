@@ -23,7 +23,6 @@ export {
     Paper,
     Searchbar,
     SideBar,
-    SymbolButton,
     Title
 }
 
