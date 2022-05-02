@@ -11,7 +11,6 @@ import { OurTable, TableRow } from "./Components/Global/OurTable";
 import Paper from "./Components/Global/Paper";
 import Searchbar from "./Components/Global/Searchbar";
 import SideBar from "./Components/Global/SideBar";
-import SymbolButton from "./Components/Global/SymbolButton";
 import Title from "./Components/Global/Title";
 
 export {
