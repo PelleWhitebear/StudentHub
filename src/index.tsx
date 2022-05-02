@@ -3,17 +3,17 @@ import ReactDOM from "react-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css';
 import App from './App';
-import Button from "./components/Global/Button";
-import Image from "./components/Global/Image";
-import ImageBox from "./components/Global/ImageBox";
-import InputField from "./components/Global/InputField";
-import { OurTable, TableRow } from "./components/Global/OurTable";
-import Paper from "./components/Global/Paper";
-import Searchbar from "./components/Global/Searchbar";
-import SideBar from "./components/Global/SideBar";
-import SymbolButton from "./components/Global/SymbolButton";
-import Title from "./components/Global/Title";
-import LoginForm from './components/LoginForm/LoginForm';
+import Button from "./component/Global/Button";
+import Image from "./component/Global/Image";
+import ImageBox from "./component/Global/ImageBox";
+import InputField from "./component/Global/InputField";
+import { OurTable, TableRow } from "./component/Global/OurTable";
+import Paper from "./component/Global/Paper";
+import Searchbar from "./component/Global/Searchbar";
+import SideBar from "./component/Global/SideBar";
+import SymbolButton from "./component/Global/SymbolButton";
+import Title from "./component/Global/Title";
+import LoginForm from './component/LoginForm/LoginForm';
 
 export {
     Button,
