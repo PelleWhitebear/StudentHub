@@ -1,5 +1,5 @@
 
-import Layout from "./components/Layouts/Layout";
+import Layout from "./component/Layouts/Layout";
 import CalendarPage from "./views/Calendar/CalendarPage";
 import MyLessonPlanPage from "./views/MyLessonPlan/MyLessonPlanPage";
 import AnnouncementsPage from "./views/Announcements/AnnouncementsPage";
@@ -13,7 +13,7 @@ import ContactPage from "./views/Contact/ContactPage";
 import TheTeamPage from "./views/TheTeam/TheTeamPage";
 import AboutPage from "./views/About/AboutPage";
 import CreateUserPage from "./views/CreateUser/CreateUserPage";
-import AlternativeLayout from "./components/Layouts/AlternativeLayout";
+import AlternativeLayout from "./component/Layouts/AlternativeLayout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import customTheme from "./theme";
