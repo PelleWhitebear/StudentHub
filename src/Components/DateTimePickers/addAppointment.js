@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import ChooseDate from './ChooseDate';
 import ChooseTime from './ChooseTime';
 import { Stack } from '@mui/material';
-import { addAppointmentToFirebase } from './Firebase'
-import { Button } from "../../../index";
-import {getEmail} from '../../../components/LoginForm/LoginForm';
+import { addAppointmentToFirebase } from '../../../src/firebase-config';
+import { Button } from "../../index";
+import {getEmail} from '../LoginForm/LoginForm';
 
 
 const AddAppointmentBtn = styled.button`

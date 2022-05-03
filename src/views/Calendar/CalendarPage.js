@@ -13,9 +13,8 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 import './Styles/Calendar.css'
 import SideBar from '../../components/Global/SideBar';
-import AddAppointment from './components/addAppointment';
 import '../../components/Global/Styles/SideBar.css';
-import { GetAppointmentsFromFirebase} from './components/Firebase';
+import { GetAppointmentsFromFirebase} from '../../firebase-config';
 //const schedulerData = appointmentData.map(appointmentData => appointmentData.title);
 
 
@@ -56,6 +55,12 @@ const CalendarPage = () => {
     setNewCourse("");
   };
 
+  const data = () => {
+    let d = GetAppointmentsFromFirebase();
+    console.log(d)
+    return d;
+  }
+
 
   return (
     <>
@@ -71,7 +76,10 @@ const CalendarPage = () => {
             />
           </div>
           <Paper>
-            <Scheduler data={GetAppointmentsFromFirebase()}>
+            <Scheduler 
+            data={data()}
+            locale='de-GR'>
+
               <ViewState
                 currentDate={currentDate}
                 onCurrentDateChange={setCurrentDate}
