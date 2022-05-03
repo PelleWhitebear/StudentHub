@@ -1,7 +1,7 @@
 import "./Styles/Announcements.css";
 import "../../index.css"
 import { useEffect, useState } from "react";
-import Announcement from "./components/Announcement";
+import Announcement from "./Components/Announcement";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Paper from '@mui/material/Paper';
