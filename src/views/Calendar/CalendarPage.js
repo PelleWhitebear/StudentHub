@@ -77,8 +77,7 @@ const CalendarPage = () => {
           </div>
           <Paper>
             <Scheduler 
-            data={data()}
-            locale='de-GR'>
+            data={data()}>
 
               <ViewState
                 currentDate={currentDate}
