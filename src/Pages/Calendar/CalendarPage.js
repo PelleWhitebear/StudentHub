@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Paper from "../../components/Global/Paper";
+//import Paper from "../../Components/Global/Paper";
 import { ViewState } from "@devexpress/dx-react-scheduler";
 import {
   Scheduler,
@@ -13,8 +13,9 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 import './Styles/Calendar.css'
 import SideBar from '../../components/Global/SideBar';
+import AddAppointment from './components/addAppointment';
 import '../../components/Global/Styles/SideBar.css';
-import { GetAppointmentsFromFirebase} from '../../firebase-config';
+import { GetAppointmentsFromFirebase} from './components/Firebase';
 //const schedulerData = appointmentData.map(appointmentData => appointmentData.title);
 
 
@@ -55,9 +56,10 @@ const CalendarPage = () => {
     setNewCourse("");
   };
 
-  const data = () => {
+  const data = () =>{ 
     let d = GetAppointmentsFromFirebase();
-    console.log(d)
+    console.log(d);
+
     return d;
   }
 
@@ -76,12 +78,9 @@ const CalendarPage = () => {
             />
           </div>
           <Paper>
-            <Scheduler 
-            data={data()}
-            locale='de-GR'>
-
+            <Scheduler data={data()}>
               <ViewState
-                currentDate={currentDate}
+                //currentDate={currentDate}
                 onCurrentDateChange={setCurrentDate}
                 currentViewName={currentViewName}
                 onCurrentViewNameChange={setCurrentViewName}

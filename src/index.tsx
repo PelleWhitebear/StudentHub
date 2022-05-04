@@ -11,9 +11,10 @@ import { OurTable, TableRow } from "./components/Global/OurTable";
 import Paper from "./components/Global/Paper";
 import Searchbar from "./components/Global/Searchbar";
 import SideBar from "./components/Global/SideBar";
-import SymbolButton from "./components/Global/SymbolButton";
 import Title from "./components/Global/Title";
-import LoginForm from './components/LoginForm/LoginForm';
+import SymbolButton from "./components/Global/SymbolButton";
+import LoginForm from "./components/LoginForm/LoginForm";
+
 
 export {
     Button,
@@ -25,8 +26,8 @@ export {
     Paper,
     Searchbar,
     SideBar,
-    SymbolButton,
     Title,
+    SymbolButton,
     LoginForm
 }
 

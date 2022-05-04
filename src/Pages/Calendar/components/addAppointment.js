@@ -4,9 +4,9 @@ import Axios from 'axios';
 import styled from 'styled-components';
 import ChooseDate from './ChooseDate';
 import ChooseTime from './ChooseTime';
-import { Stack } from '@mui/material';
+import { Stack} from '@mui/material';
 import { addAppointmentToFirebase } from './Firebase'
-import { Button } from "../../../index";
+import Button from "../../../components/Global/Button"
 import {getEmail} from '../../../components/LoginForm/LoginForm';
 
 

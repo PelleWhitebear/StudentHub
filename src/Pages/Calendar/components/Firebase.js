@@ -75,6 +75,4 @@ export const GetAppointmentsFromFirebase = () => {
 };
 
 
-    
-
 
