@@ -44,7 +44,7 @@ export function addAppointmentToFirebase (appointmentTitle, date, startTime, end
     
         addDoc(colRef, {
             title: appointmentTitle,
-            startdate: startDate,
+            startDate: startDate,
             endDate: endDate,
             //location: location
         })
