@@ -4,9 +4,11 @@ import "./LoginForm.css";
 import { useState } from "react";
 import {
   signInWithEmailAndPassword,
+  getAuth
 } from "firebase/auth";
 import { auth } from "../../firebase-config.js";
 import Form from "./Form";
+
 
 const LoginForm = () => {
   const [loginEmail, setLoginEmail] = useState("");
@@ -21,6 +23,15 @@ const LoginForm = () => {
         loginEmail,
         loginPassword
       );
+
+      getAuth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+        // Send token to your backend via HTTPS
+        console.log(" token" + idToken);
+        // ...
+      }).catch(function(error) {
+        console.log(error)
+      });
+
       let path = "Calendar";
       nav(path);
     } catch (error) {

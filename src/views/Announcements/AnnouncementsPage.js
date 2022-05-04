@@ -15,6 +15,8 @@ const AnnouncementsPage = () => {
   const [data, setAnnouncements] = useState([]);
   const [read, setRead] = useState();
 
+  
+
 
   useEffect(() => {
     getAnnouncements();
