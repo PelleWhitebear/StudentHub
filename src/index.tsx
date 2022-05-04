@@ -27,7 +27,8 @@ export {
     Searchbar,
     SideBar,
     SymbolButton,
-    Title
+    Title,
+    LoginForm
 }
 
 ReactDOM.render(
