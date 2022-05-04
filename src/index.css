@@ -9,7 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   overflow: auto;
-  background-image: url(./Resources/background_img.jpg);
+  background-image: url(./assets/background_img.jpg);
   background-size: cover;
   --primaryColor: rgb(136, 0, 0);
   --secondaryColor: rgba(60, 96, 255, 0.75);

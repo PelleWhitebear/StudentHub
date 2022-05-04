@@ -1,5 +1,5 @@
 import './Styles/LoginPage.css';
-import LoginForm from '../LoginForm/LoginForm/LoginForm';
+import { LoginForm } from "../../index";
 
 const LoginPage = () => {
     return (

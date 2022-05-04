@@ -1,0 +1,37 @@
+.borderBox {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, minmax(10px , auto));
+    gap: 0em;
+    border-top: 1.5px solid grey;
+    border-left: 1.5px solid grey;
+    border-right: 1.5px solid grey;
+    border-radius: 20px;
+    max-width: 80%;
+    margin-left: 20px;
+}
+
+
+.item{
+    border-radius: 20px;
+    border-bottom: 1.5px solid grey;
+    margin-left: 0px;
+}
+
+.title{
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+.sender{
+    font-size: 35px;
+    margin-left: 20px;
+}
+
+.message{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    min-height: 300px;
+}
