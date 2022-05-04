@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   signInWithEmailAndPassword,
   getAuth
@@ -13,8 +13,12 @@ import Form from "./Form";
 const LoginForm = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [token, setToken] = useState("");
 
   const nav = useNavigate();
+  useEffect(()=>{
+    localStorage.setItem("token", token);
+  }, [token]);
 
   const login = async () => {
     try {
@@ -24,9 +28,9 @@ const LoginForm = () => {
         loginPassword
       );
 
-      getAuth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+      await getAuth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
         // Send token to your backend via HTTPS
-        console.log(" token" + idToken);
+        setToken(JSON.stringify(idToken));
         // ...
       }).catch(function(error) {
         console.log(error)
