@@ -32,6 +32,7 @@ import { onAuthStateChanged } from "firebase/auth";
 
         const logout = async () => {
             await signOut(auth);
+            localStorage.clear();
         }
         return (
             <>

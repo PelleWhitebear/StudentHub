@@ -14,6 +14,8 @@ const AnnouncementsPage = () => {
   //useState for data of announcements
   const [data, setAnnouncements] = useState([]);
   const [read, setRead] = useState();
+  
+  
 
 
   useEffect(() => {
@@ -23,6 +25,8 @@ const AnnouncementsPage = () => {
   async function getAnnouncements() {
     
     try {
+      const getToken = localStorage.getItem("token")
+      console.log(JSON.parse(getToken));
       
       // real request (axios) 
       let { data } = await axios.get("https://www.studenthub.bhsi.xyz/api/announcements/getAll");

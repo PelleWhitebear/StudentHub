@@ -1,18 +1,25 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   signInWithEmailAndPassword,
+  getAuth
 } from "firebase/auth";
 import { auth } from "../../firebase-config.js";
 import Form from "./Form";
 
+
+
 const LoginForm = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [token, setToken] = useState("");
 
   const nav = useNavigate();
+  useEffect(()=>{
+    localStorage.setItem("token", token);
+  }, [token]);
 
   const login = async () => {
     try {
@@ -21,6 +28,15 @@ const LoginForm = () => {
         loginEmail,
         loginPassword
       );
+
+      await getAuth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+        // Send token to your backend via HTTPS
+        setToken(JSON.stringify(idToken));
+        // ...
+      }).catch(function(error) {
+        console.log(error)
+      });
+
       let path = "Calendar";
       nav(path);
     } catch (error) {

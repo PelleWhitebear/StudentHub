@@ -1,6 +1,6 @@
 import { Checkbox, FormControlLabel, Stack } from "@mui/material";
 import "./Styles/SideBar.css";
-import AddAppointment from "../DateTimePickers/addAppointment";
+import AddAppointment from "./addAppointment";
 import '../LoginForm/LoginForm.css'
 import { InputField, SymbolButton } from "../../index";
 
