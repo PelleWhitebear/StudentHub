@@ -70,7 +70,7 @@ const CreateUserForm = () => {
       );
 
 
-      await axios.post("http://localhost:8080/api/student/createStudent", data)
+      await axios.post("https://www.studenthub.bhsi.xyz/api/student/createStudent", data)
       .then((result) => {
         console.log(result.data)
       }).catch((error) =>{
@@ -82,7 +82,7 @@ const CreateUserForm = () => {
           console.log(error.request)
         }
       })
-      let path = "Calendar"
+      let path = ""
       nav(path);
     } catch (error) {
       console.log(error.message);
