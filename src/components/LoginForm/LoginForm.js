@@ -6,8 +6,8 @@ import {
   signInWithEmailAndPassword,
   getAuth
 } from "firebase/auth";
+import { addUserToFirestore } from "../../firebase-config.js";
 import Form from "./Form";
-import { setPersistence, browserSessionPersistence } from "firebase/auth";
 
 
 
@@ -19,20 +19,6 @@ const LoginForm = () => {
   
 
 const auth = getAuth();
-setPersistence(auth, browserSessionPersistence)
-  .then(() => {
-    // Existing and future Auth states are now persisted in the current
-    // session only. Closing the window would clear any existing state even
-    // if a user forgets to sign out.
-    // ...
-    // New sign-in will be persisted with session persistence.
-    return signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-  })
-  .catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
 
   const nav = useNavigate();
   useEffect(()=>{
@@ -74,7 +60,11 @@ setPersistence(auth, browserSessionPersistence)
       />
 
       <div>
-          <button className="LoginButton" onClick={login}>
+          <button 
+          className="LoginButton" 
+          onClick={
+            () => {login();
+            addUserToFirestore()}}>
             Login
           </button>
       </div>
@@ -82,8 +72,8 @@ setPersistence(auth, browserSessionPersistence)
            <p> {user?.email} </p>
             </div> */}
       <div>
-        <Link to="/CreateUser">
-          <button className="CreateUserButton" >
+        <Link to="/">
+          <button className="CreateUserButton">
             Create User
           </button>
         </Link>

@@ -11,9 +11,7 @@ import {
     getDocs, 
     addDoc, 
     setDoc, 
-    doc, 
-    where,
-    query } from 'firebase/firestore';
+    doc } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyCJtckBTE3-ub4JP6NcEJX_PKao7r0YJRw",
@@ -47,22 +45,19 @@ setPersistence(auth, browserSessionPersistence)
 
 const db = getFirestore();
 
-export function AddUserToFirestore(){
+export function addUserToFirestore(){
     document.querySelector('.add');
     const userDoc = doc(db, 'users', auth.currentUser.uid);
-
-    useEffect(() => {
-
+    
     setDoc(userDoc, {
     })
-
-}, []); 
 
 };
 
 
 export function addAppointmentToFirebase (appointmentTitle, date, startTime, endTime, location) {
-    document.querySelector('.add')
+    document.querySelector('.add');
+
     const appointmentColRef = collection(db, 'users', auth.currentUser.uid, 'appointments');
 
     let formattedDate = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(date);
@@ -94,7 +89,6 @@ export function addAppointmentToFirebase (appointmentTitle, date, startTime, end
 
 export const GetAppointmentsFromFirebase = () => {
     const appointmentColRef = collection(db, 'users', auth.currentUser.uid, 'appointments');
-    const q = query(collection(db, 'users', 'userId', 'appointments'), where("userId", "==", auth.currentUser.uid));
     let [schedulerData, setSchedulerData] = useState([])
     useEffect(() => {
     getDocs(appointmentColRef)

@@ -1,6 +1,5 @@
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import {useState} from 'react';
-import Axios from 'axios';
 import styled from 'styled-components';
 import ChooseDate from './ChooseDate';
 import ChooseTime from './ChooseTime';
