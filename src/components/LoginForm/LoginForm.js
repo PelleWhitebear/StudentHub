@@ -6,8 +6,8 @@ import {
   signInWithEmailAndPassword,
   getAuth
 } from "firebase/auth";
-import { auth } from "../../firebase-config.js";
 import Form from "./Form";
+import { setPersistence, browserSessionPersistence } from "firebase/auth";
 
 
 
@@ -15,6 +15,24 @@ const LoginForm = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [token, setToken] = useState("");
+
+  
+
+const auth = getAuth();
+setPersistence(auth, browserSessionPersistence)
+  .then(() => {
+    // Existing and future Auth states are now persisted in the current
+    // session only. Closing the window would clear any existing state even
+    // if a user forgets to sign out.
+    // ...
+    // New sign-in will be persisted with session persistence.
+    return signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
 
   const nav = useNavigate();
   useEffect(()=>{
@@ -28,6 +46,8 @@ const LoginForm = () => {
         loginEmail,
         loginPassword
       );
+      let userUid = auth.currentUser.uid 
+      localStorage.setItem('uid', userUid);
 
       await getAuth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
         // Send token to your backend via HTTPS

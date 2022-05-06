@@ -1,8 +1,19 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth} from "firebase/auth";
+import {
+     getAuth, 
+    setPersistence,
+    browserSessionPersistence } from "firebase/auth";
 import { useState, useEffect} from "react";
-import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore';
+import { 
+    getFirestore, 
+    collection, 
+    getDocs, 
+    addDoc, 
+    setDoc, 
+    doc, 
+    where,
+    query } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyCJtckBTE3-ub4JP6NcEJX_PKao7r0YJRw",
@@ -17,16 +28,43 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-export const auth = getAuth(app)
+export const auth = getAuth(app);
 
+setPersistence(auth, browserSessionPersistence)
+  .then(() => {
+    // Existing and future Auth states are now persisted in the current
+    // session only. Closing the window would clear any existing state even
+    // if a user forgets to sign out.
+    // ...
+    // New sign-in will be persisted with session persistence.
+    return auth.currentUser.uid;
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
 
 const db = getFirestore();
 
-const colRef = collection(db, 'appointments');
+export function AddUserToFirestore(){
+    document.querySelector('.add');
+    const userDoc = doc(db, 'users', auth.currentUser.uid);
+
+    useEffect(() => {
+
+    setDoc(userDoc, {
+    })
+
+}, []); 
+
+};
 
 
 export function addAppointmentToFirebase (appointmentTitle, date, startTime, endTime, location) {
     document.querySelector('.add')
+    const appointmentColRef = collection(db, 'users', auth.currentUser.uid, 'appointments');
+
     let formattedDate = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(date);
     let formattedEndTime = new Intl.DateTimeFormat('en-GB', {hour: '2-digit', minute: '2-digit'}).format(endTime);
     let formattedStartTime = new Intl.DateTimeFormat('en-GB', {hour: '2-digit', minute: '2-digit'}).format(startTime); 
@@ -43,7 +81,7 @@ export function addAppointmentToFirebase (appointmentTitle, date, startTime, end
     endDate = endDate + "T" + formattedEndTime;
     console.log(endDate);
     
-        addDoc(colRef, {
+        addDoc(appointmentColRef, {
             title: appointmentTitle,
             startDate: startDate,
             endDate: endDate,
@@ -55,9 +93,11 @@ export function addAppointmentToFirebase (appointmentTitle, date, startTime, end
 };
 
 export const GetAppointmentsFromFirebase = () => {
+    const appointmentColRef = collection(db, 'users', auth.currentUser.uid, 'appointments');
+    const q = query(collection(db, 'users', 'userId', 'appointments'), where("userId", "==", auth.currentUser.uid));
     let [schedulerData, setSchedulerData] = useState([])
     useEffect(() => {
-    getDocs(colRef)
+    getDocs(appointmentColRef)
         .then((snapshot) => {
             let appointmentData = []
             snapshot.docs.forEach((doc) => {

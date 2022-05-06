@@ -7,7 +7,6 @@ import ChooseTime from './ChooseTime';
 import { Stack } from '@mui/material';
 import { addAppointmentToFirebase } from '../../../src/firebase-config';
 import { Button } from "../../index";
-import {getEmail} from '../LoginForm/LoginForm';
 
 
 const AddAppointmentBtn = styled.button`
@@ -115,14 +114,15 @@ function AddAppointmentOffCanvas () {
                     <br></br>
                     <div>
                         <AddAppointmentBtn  onClick=
-                            { ()=> {addAppointmentToFirebase(
+                             { ()=> {addAppointmentToFirebase(
                                 appointmentTitle, 
                                 date, 
                                 startTime, 
                                 endTime, 
                                 location
                             );
-                            handleClose();}}
+                        
+                             handleClose();}}
                             >
                                 Add Appointment
                         </AddAppointmentBtn>
