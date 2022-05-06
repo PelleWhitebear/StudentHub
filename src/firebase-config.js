@@ -46,7 +46,7 @@ export function addAppointmentToFirebase (appointmentTitle, date, startTime, end
             title: appointmentTitle,
             startDate: startDate,
             endDate: endDate,
-            //location: location
+            location: location
         })
         .then(( ) => {
     
