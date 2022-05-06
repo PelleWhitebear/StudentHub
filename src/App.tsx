@@ -5,7 +5,7 @@ import MyLessonPlanPage from "./views/MyLessonPlan/MyLessonPlanPage";
 import AnnouncementsPage from "./views/Announcements/AnnouncementsPage";
 import AnnouncementPage from "./views/Announcements/AnnouncementPage";
 import CourseDatabasePage from "./views/CourseDatabase/CourseDatabasePage";
-import StudyGuidancePage from "./views/StudyGuidance/StudyGuidancePage";
+import StudyGuidancePage from "./views/StudyGuidance/components/StudyGuidancePage";
 import PrivateRoute from "./components/PrivatRoute/PrivateRoute";
 import GradesPage from "./views/Grades/GradesPage";
 import NoPages from "./views/NoPages/NoPages";
