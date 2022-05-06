@@ -1,0 +1,104 @@
+.Titelf {
+    font-style: italic;
+    font-weight: bold;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+
+.Titelt {
+    font-style: italic;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+
+.Time p{
+    font-style: italic;
+    font-size: small;
+    color: gray;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+p {
+    font-style: normal;
+    margin-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 20px;
+}
+
+h1 {
+    font-size: 50px;
+    margin-left: 20px;
+}
+
+
+.BorderUnRead {
+    border: 1px solid darkgrey;
+    margin: 20px 20px 20px 20px;
+    border-radius: 20px;
+    padding-bottom: 20px;
+    opacity: 0.8;
+    max-width: 50%;
+}
+
+.BorderRead {
+    border: 1px solid lightgrey;
+    margin: 20px 20px 20px 20px;
+    border-radius: 20px;
+    padding-bottom: 20px;
+    opacity: 0.7;
+    max-width: 50%;
+}
+
+.BorderUnRead:hover {
+    opacity: 1;
+}
+
+.BorderRead:hover{
+    opacity: 0.9;
+}
+.split{
+  height: 50%;
+  width: 50%;
+  
+  z-index: 1;
+  top: 20px;
+  overflow-x: hidden;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.left{
+  left: 0;
+}
+
+.right{
+  right: 0;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .centered img {
+    width: 150px;
+    border-radius: 50%;
+  }
+
+

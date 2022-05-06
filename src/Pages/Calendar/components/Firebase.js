@@ -1,7 +1,6 @@
-    // Import the functions you need from the SDKs you need
+import { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore'
-import appintmentData from './addAppointment';
+import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore';
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -27,24 +26,53 @@ const db = getFirestore();
 const colRef = collection(db, 'appointments');
 
 
-export function addAppointmentToFirebase(appointmentTitle, startDate, startTime, endTime, location) {
+export function addAppointmentToFirebase (appointmentTitle, date, startTime, endTime, location) {
     document.querySelector('.add')
-    const formattedStartDate = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(startDate);
-    const formattedEndTime = new Intl.DateTimeFormat('en-US', {hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(endTime);
-    const formattedStartTime = new Intl.DateTimeFormat('en-US', {hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(startTime); 
+    let formattedDate = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(date);
+    let formattedEndTime = new Intl.DateTimeFormat('en-GB', {hour: '2-digit', minute: '2-digit'}).format(endTime);
+    let formattedStartTime = new Intl.DateTimeFormat('en-GB', {hour: '2-digit', minute: '2-digit'}).format(startTime); 
+
+    //to timestamp
+    var startDate = formattedDate.split("/");
+    startDate = startDate[2] + "-" + startDate[1] + "-" + startDate[0];
+    startDate = startDate + "T" + formattedStartTime;
+    console.log(startDate);
+
+    //to timestamp
+    var endDate = formattedDate.split("/");
+    endDate = endDate[2] + "-" + endDate[1] + "-" + endDate[0];
+    endDate = endDate + "T" + formattedEndTime;
+    console.log(endDate);
     
         addDoc(colRef, {
-            appointmentTitle: appointmentTitle,
-            Date: formattedStartDate,
-            startTime: formattedStartTime,
-            endTime: formattedEndTime,
-            location: location
+            title: appointmentTitle,
+            startDate: startDate,
+            endDate: endDate,
+            //location: location
         })
         .then(( ) => {
     
         })
 };
 
-    
+export const GetAppointmentsFromFirebase = () => {
+    let [schedulerData, setSchedulerData] = useState([])
+    useEffect(() => {
+    getDocs(colRef)
+        .then((snapshot) => {
+            let appointmentData = []
+            snapshot.docs.forEach((doc) => {
+                appointmentData.push({ ...doc.data() })
+                })
+            setSchedulerData(appointmentData);
+            console.log(appointmentData)
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
+        }, []); 
+    return schedulerData;
+};
+
 
 
