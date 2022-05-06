@@ -15,7 +15,6 @@ import Title from "./components/Global/Title";
 import SymbolButton from "./components/Global/SymbolButton";
 import LoginForm from "./components/LoginForm/LoginForm";
 
-
 export {
     Button,
     Image,

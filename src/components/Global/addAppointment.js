@@ -1,42 +1,11 @@
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import {useState} from 'react';
-import Axios from 'axios';
-import styled from 'styled-components';
 import ChooseDate from './ChooseDate';
 import ChooseTime from './ChooseTime';
 import { Stack } from '@mui/material';
 import { addAppointmentToFirebase } from '../../../src/firebase-config';
-import { Button } from "../../index";
-import {getEmail} from '../LoginForm/LoginForm';
-
-
-const AddAppointmentBtn = styled.button`
-    font-size: 15px;
-    text-align: center;
-    background-color: var(--primaryColor);
-    border-color: var(--primaryColor);
-    color: white;
-    float: right;
-    border-radius: 4px;
-    padding: 8px;
-
-    &:hover {
-        opacity: 80%;
-     }
-`;
-
-const Input = styled.input`
-    border-color: var(--primaryColor);
-    color: var(--primaryColor);
-    box-sizing: border-box;
-    height: 51px;
-    width: 100%;
-    padding: 5px;
-    border-radius: 4px;
-    border: 1px solid;
-`;
-
-
+import { Button, InputField } from "../../index";
+import { Input } from './TextBox';
 
 
 function AddAppointmentOffCanvas () {
@@ -79,6 +48,7 @@ function AddAppointmentOffCanvas () {
                      <label>Appointment Title</label>
                      <br/>
                     <Input
+                        className='largeInputBox'
                         type="text" 
                         onChange={(event) => {
                             setAppointmentTitle(event.target.value);
@@ -114,18 +84,18 @@ function AddAppointmentOffCanvas () {
 
                     <br></br>
                     <div>
-                        <AddAppointmentBtn  onClick=
-                            { ()=> {addAppointmentToFirebase(
+                        <Button  
+                        buttonText="Add Appointment"
+                        onClick=
+                             { ()=> {addAppointmentToFirebase(
                                 appointmentTitle, 
                                 date, 
                                 startTime, 
                                 endTime, 
                                 location
                             );
-                            handleClose();}}
-                            >
-                                Add Appointment
-                        </AddAppointmentBtn>
+                             handleClose();}}
+                            />
                     </div>
                     
                 </Offcanvas.Body>
