@@ -8,18 +8,19 @@ import {
 } from "firebase/auth";
 import { auth } from "../../firebase-config.js";
 import Form from "./Form";
+import axios from "axios";
 
 
 
 const LoginForm = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [token, setToken] = useState("");
+  const [jwtToken, setJwtToken] = useState("");
 
   const nav = useNavigate();
   useEffect(()=>{
-    localStorage.setItem("token", token);
-  }, [token]);
+    localStorage.setItem("token", jwtToken);
+  }, [jwtToken]);
 
   const login = async () => {
     try {
@@ -29,10 +30,18 @@ const LoginForm = () => {
         loginPassword
       );
 
-      await getAuth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-        // Send token to your backend via HTTPS
-        setToken(JSON.stringify(idToken));
-        // ...
+      let id = loginEmail.substring(0,7)
+
+      await getAuth().currentUser.getIdToken(/* forceRefresh */ true).then(async function(idToken) {
+        const token = JSON.stringify(idToken);
+        console.log(token);
+        const data = {
+          token: token
+        }
+        // Send token to backend
+        await axios.put(`http://localhost:8080/api/student/changeToken/${id}`, data);
+        setJwtToken(token);
+        
       }).catch(function(error) {
         console.log(error)
       });

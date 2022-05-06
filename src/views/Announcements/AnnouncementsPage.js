@@ -26,10 +26,13 @@ const AnnouncementsPage = () => {
     
     try {
       const getToken = localStorage.getItem("token")
-      console.log(JSON.parse(getToken));
+
+      const tokenData = {
+        token: getToken
+      }
       
       // real request (axios) 
-      let { data } = await axios.get("https://www.studenthub.bhsi.xyz/api/announcements/getAll");
+      let { data } = await axios.get("http://localhost:8080/api/student/", tokenData);
 
       setAnnouncements(data);
 
