@@ -2,8 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {
      getAuth, 
-    setPersistence,
-    browserSessionPersistence } from "firebase/auth";
+     onAuthStateChanged } from "firebase/auth";
 import { useState, useEffect} from "react";
 import { 
     getFirestore, 
@@ -28,27 +27,11 @@ const analytics = getAnalytics(app);
 
 export const auth = getAuth(app);
 
-setPersistence(auth, browserSessionPersistence)
-  .then(() => {
-    // Existing and future Auth states are now persisted in the current
-    // session only. Closing the window would clear any existing state even
-    // if a user forgets to sign out.
-    // ...
-    // New sign-in will be persisted with session persistence.
-    return auth.currentUser.uid;
-  })
-  .catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
-
 const db = getFirestore();
 
 export function addUserToFirestore(){
     document.querySelector('.add');
     const userDoc = doc(db, 'users', auth.currentUser.uid);
-    
     setDoc(userDoc, {
     })
 
@@ -88,6 +71,19 @@ export function addAppointmentToFirebase (appointmentTitle, date, startTime, end
 };
 
 export const GetAppointmentsFromFirebase = () => {
+    let [userId, setUserId] = useState('gg');
+    
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    setUserId(user.uid);
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
     const appointmentColRef = collection(db, 'users', auth.currentUser.uid, 'appointments');
     let [schedulerData, setSchedulerData] = useState([])
     useEffect(() => {
