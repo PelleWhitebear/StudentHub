@@ -8,6 +8,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../../firebase-config.js";
 import Form from "./Form";
+import axios from "axios";
 
 
 
@@ -29,10 +30,13 @@ const LoginForm = () => {
         loginPassword
       );
 
+      let id = loginEmail.substring(0,7)
+
       await getAuth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-        // Send token to your backend via HTTPS
+        // Send token to backend
+        //await axios.put(`https://www.studenthub.bhsi.xyz/api/student/changeToken/${id}`, JSON.stringify(idToken));
         setToken(JSON.stringify(idToken));
-        // ...
+        
       }).catch(function(error) {
         console.log(error)
       });

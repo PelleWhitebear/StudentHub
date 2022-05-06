@@ -15,6 +15,7 @@ const CreateUserForm = () => {
   const [registerLastName, setRegisterLastName] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [samePassword, setSamePassword] = useState("");
+  const [token, setToken] = useState("");
   
 
   const nav = useNavigate();
@@ -54,13 +55,6 @@ const CreateUserForm = () => {
   
   //register user
   const registerStudent = async () => {
-    const data = {
-      id: registerEmail.substring(0,7),
-      firstName: registerFirstName,
-      lastName: registerLastName,
-      mail: registerEmail,
-      studyclassId: ""
-    }
 
     try {
       await createUserWithEmailAndPassword(
@@ -68,6 +62,23 @@ const CreateUserForm = () => {
         registerEmail,
         registerPassword
       );
+
+      await getAuth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+        //data
+        setToken(JSON.stringify(idToken));
+        
+      }).catch(function(error) {
+        console.log(error)
+      });
+
+      const data = {
+        id: registerEmail.substring(0,7),
+        firstName: registerFirstName,
+        lastName: registerLastName,
+        mail: registerEmail,
+        studyclassId: "",
+        token: token
+      }
 
 
       await axios.post("http://localhost:8080/api/student/createStudent", data)

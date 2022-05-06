@@ -15,6 +15,7 @@ import './Styles/Calendar.css'
 import SideBar from '../../components/Global/SideBar';
 import '../../components/Global/Styles/SideBar.css';
 import { GetAppointmentsFromFirebase} from '../../firebase-config';
+import { getAuth } from "firebase/auth";
 //const schedulerData = appointmentData.map(appointmentData => appointmentData.title);
 
 

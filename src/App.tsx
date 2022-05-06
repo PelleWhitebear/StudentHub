@@ -19,13 +19,13 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import customTheme from "./theme";
 import UserSettingsPage from "./views/UserSettings/UserSettingsPage";
+import { useEffect } from "react";
 
 
 
 
 
 export const App = () => {
-
 
     return (
       <ThemeProvider theme = {customTheme}>
