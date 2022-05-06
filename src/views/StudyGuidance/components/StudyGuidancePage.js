@@ -1,8 +1,7 @@
 import '../Styles/StudyGuidance.css';
 import emailjs from "emailjs-com"
 import InputField from '../../../components/Global/InputField';
-import Button from '../../../components/Global/Button';
-
+import AddAppointment from '../../../components/Global/addAppointment';
 
 const StudyGuidance = () => {
 
@@ -19,22 +18,27 @@ const StudyGuidance = () => {
 }
 
     return (
-        <div>
-           <div className="container">
-            <form onSubmit={sendEmail}>
-              <div className="inputFieldContainer" >
-                <InputField placeholder="Subject" name="Subject"></InputField>
-                <InputField type="email" placeholder="Enter your email for reply" name="reply_email"></InputField>
-              </div>
-              <div className="messageBox">
-                <textarea placeholder="Your message" name="message"></textarea>
-              </div>
-              <div>
-               <InputField type="submit" value="Send Message" name="reply_email"></InputField>
-               </div>
-            </form>
-          </div>
+    <div>
+     <div>
+       <form onSubmit={sendEmail}>      
+         <div className="containerInputFields">
+           <InputField placeholder="Subject" name="Subject"></InputField>
         </div>
+        <div className='containerInputFields'>
+          <InputField type="email" placeholder="Enter your email for reply" name="reply_email"></InputField>
+        </div>
+        <div>
+          <textarea className="textareaMessage" placeholder="Your message" name="message"></textarea>
+        </div>
+        <div className="inputButton">
+          <InputField type="submit" value="Send Message" name="reply_email"></InputField>
+        </div>
+      </form>
+    </div>
+    <div className='bookMettingBtn'>
+      <AddAppointment></AddAppointment>
+    </div>
+    </div>
     )
   }
   ;
