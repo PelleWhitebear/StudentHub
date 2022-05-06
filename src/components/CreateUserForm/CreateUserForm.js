@@ -82,7 +82,7 @@ const CreateUserForm = () => {
           console.log(error.request)
         }
       })
-      let path = "Calendar"
+      let path = ""
       nav(path);
     } catch (error) {
       console.log(error.message);
