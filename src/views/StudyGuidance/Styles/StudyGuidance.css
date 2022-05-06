@@ -1,0 +1,13 @@
+  .inputFieldContainer{
+    position: relative;
+    width: 1000px;
+    height: 40px;
+    left: 50%;
+  }
+
+  .messageBox{
+    resize: none;
+    position: relative;
+    width: 800px;
+    height: 150px;
+  }
