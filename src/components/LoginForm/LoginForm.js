@@ -15,12 +15,12 @@ import axios from "axios";
 const LoginForm = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [token, setToken] = useState("");
+  const [jwtToken, setJwtToken] = useState("");
 
   const nav = useNavigate();
   useEffect(()=>{
-    localStorage.setItem("token", token);
-  }, [token]);
+    localStorage.setItem("token", jwtToken);
+  }, [jwtToken]);
 
   const login = async () => {
     try {
@@ -32,10 +32,15 @@ const LoginForm = () => {
 
       let id = loginEmail.substring(0,7)
 
-      await getAuth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+      await getAuth().currentUser.getIdToken(/* forceRefresh */ true).then(async function(idToken) {
+        const token = JSON.stringify(idToken);
+        console.log(token);
+        const data = {
+          token: token
+        }
         // Send token to backend
-        //await axios.put(`https://www.studenthub.bhsi.xyz/api/student/changeToken/${id}`, JSON.stringify(idToken));
-        setToken(JSON.stringify(idToken));
+        await axios.put(`http://localhost:8080/api/student/changeToken/${id}`, data);
+        setJwtToken(token);
         
       }).catch(function(error) {
         console.log(error)

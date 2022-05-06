@@ -3,19 +3,20 @@ import { useEffect, useState } from 'react';
 import CreateForm from './CreateForm'
 import {
     createUserWithEmailAndPassword,
+    getAuth
   } from "firebase/auth";
 import { auth } from "../../firebase-config.js";
 import '../LoginForm/LoginForm.css';
 import axios from 'axios';
 const CreateUserForm = () => {
-  const [emailValite, setEmailValite] = useState();
-  const [errorPassword, setErrorPassword] = useState();
+  const [emailValite, setEmailValite] = useState(true);
+  const [errorPassword, setErrorPassword] = useState("");
+  const [errorEmail, setErrorEmail] = useState("")
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerFirstName, setRegisterFirstName] =  useState("");
   const [registerLastName, setRegisterLastName] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [samePassword, setSamePassword] = useState("");
-  const [token, setToken] = useState("");
   
 
   const nav = useNavigate();
@@ -48,13 +49,28 @@ const CreateUserForm = () => {
       return registerStudent();
     }
 
+    if(!emailValite){
+      setErrorEmail("Email not valid")
+    }
+
+    if(registerPassword === samePassword){
+      setErrorPassword("");
+    }
+
     if(registerPassword !== samePassword){
-      setErrorPassword(true);
+      setErrorPassword("Not same password");
     }
   }
   
   //register user
   const registerStudent = async () => {
+    const data = {
+      id: registerEmail.substring(0,7),
+      firstName: registerFirstName,
+      lastName: registerLastName,
+      mail: registerEmail,
+      studyclassId: ""
+    }
 
     try {
       await createUserWithEmailAndPassword(
@@ -62,23 +78,6 @@ const CreateUserForm = () => {
         registerEmail,
         registerPassword
       );
-
-      await getAuth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-        //data
-        setToken(JSON.stringify(idToken));
-        
-      }).catch(function(error) {
-        console.log(error)
-      });
-
-      const data = {
-        id: registerEmail.substring(0,7),
-        firstName: registerFirstName,
-        lastName: registerLastName,
-        mail: registerEmail,
-        studyclassId: "",
-        token: token
-      }
 
 
       await axios.post("http://localhost:8080/api/student/createStudent", data)
@@ -93,7 +92,7 @@ const CreateUserForm = () => {
           console.log(error.request)
         }
       })
-      let path = "Calendar"
+      let path = "/loginPage"
       nav(path);
     } catch (error) {
       console.log(error.message);
@@ -104,7 +103,6 @@ const CreateUserForm = () => {
     return (
         <div action="#"> 
           <CreateForm
-          
         mailInputPlaceholder="Student mail"
         mailOnChange={(e) => setRegisterEmail(e.target.value)}
         firstNameInputPlaceholder="First Name"
@@ -117,8 +115,13 @@ const CreateUserForm = () => {
         repeatPasswordOnChange={(e) => setSamePassword(e.target.value)}
       />
       <div>
-          <button className="LoginButton" onClick={eventHandler}>Create User</button>
-        </div>
+        <button className="LoginButton" onClick={eventHandler}>Create User</button>
+      </div>
+      
+      <div>
+      <p>{errorEmail}/{errorPassword}</p>
+      </div>
+      
       </div>
     )
   };
