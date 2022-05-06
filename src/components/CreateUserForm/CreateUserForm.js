@@ -70,7 +70,7 @@ const CreateUserForm = () => {
       );
 
 
-      await axios.post("http://localhost:8080/api/student/createStudent", data)
+      await axios.post("https://www.studenthub.bhsi.xyz/api/student/createStudent", data)
       .then((result) => {
         console.log(result.data)
       }).catch((error) =>{

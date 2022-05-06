@@ -72,7 +72,7 @@ const auth = getAuth();
            <p> {user?.email} </p>
             </div> */}
       <div>
-        <Link to="/">
+        <Link to="/CreateUser">
           <button className="CreateUserButton">
             Create User
           </button>
