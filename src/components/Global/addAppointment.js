@@ -4,8 +4,8 @@ import ChooseDate from './ChooseDate';
 import ChooseTime from './ChooseTime';
 import { Stack } from '@mui/material';
 import { addAppointmentToFirebase } from '../../../src/firebase-config';
-import { Button } from "../../index";
-import { AddAppointmentBtn, Input } from './Styles/addAppointmentStyle';
+import { Button, InputField } from "../../index";
+import { Input } from './TextBox';
 
 
 function AddAppointmentOffCanvas () {
@@ -48,6 +48,7 @@ function AddAppointmentOffCanvas () {
                      <label>Appointment Title</label>
                      <br/>
                     <Input
+                        className='largeInputBox'
                         type="text" 
                         onChange={(event) => {
                             setAppointmentTitle(event.target.value);
@@ -83,7 +84,9 @@ function AddAppointmentOffCanvas () {
 
                     <br></br>
                     <div>
-                        <AddAppointmentBtn  onClick=
+                        <Button  
+                        buttonText="Add Appointment"
+                        onClick=
                              { ()=> {addAppointmentToFirebase(
                                 appointmentTitle, 
                                 date, 
@@ -91,11 +94,8 @@ function AddAppointmentOffCanvas () {
                                 endTime, 
                                 location
                             );
-                             handleClose();
-                            }}
-                            >
-                                Add Appointment
-                        </AddAppointmentBtn>
+                             handleClose();}}
+                            />
                     </div>
                     
                 </Offcanvas.Body>

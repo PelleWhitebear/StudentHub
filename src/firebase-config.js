@@ -70,6 +70,7 @@ export function addAppointmentToFirebase (appointmentTitle, date, startTime, end
         })
 };
 
+
 export const GetAppointmentsFromFirebase = () => {
     let [userId, setUserId] = useState('gg');
     
