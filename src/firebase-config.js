@@ -29,6 +29,7 @@ export const auth = getAuth(app);
 
 const db = getFirestore();
 
+
 export function addUserToFirestore(){
     document.querySelector('.add');
     const userDoc = doc(db, 'users', auth.currentUser.uid);
@@ -40,6 +41,7 @@ export function addUserToFirestore(){
 
 export function addAppointmentToFirebase (appointmentTitle, date, startTime, endTime, location) {
     document.querySelector('.add');
+    Count();
 
     const appointmentColRef = collection(db, 'users', auth.currentUser.uid, 'appointments');
 
@@ -70,37 +72,39 @@ export function addAppointmentToFirebase (appointmentTitle, date, startTime, end
         })
 };
 
+const Count = () => {
+    const [count, setCount] = useState(0);
+    setCount(count+1);
+    return count;
+};
+
 
 export const GetAppointmentsFromFirebase = () => {
-    let [userId, setUserId] = useState('gg');
-    
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    setUserId(user.uid);
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-});
-    const appointmentColRef = collection(db, 'users', auth.currentUser.uid, 'appointments');
+    const [user, setUser] = useState({});
     let [schedulerData, setSchedulerData] = useState([])
+  
     useEffect(() => {
-    getDocs(appointmentColRef)
-        .then((snapshot) => {
-            let appointmentData = []
-            snapshot.docs.forEach((doc) => {
-                appointmentData.push({ ...doc.data() })
-                })
-            setSchedulerData(appointmentData);
-            console.log(appointmentData)
-            })
-            .catch(err => {
-                console.log(err.message)
-            })
-        }, []); 
+      onAuthStateChanged(auth, async (currentUser) => {
+        // Check if currentUser is null
+        if (currentUser) {
+          setUser(currentUser);
+  
+          // Read user ID directly from user object
+          const appointmentColRef = collection(db, 'users', currentUser.uid, 'appointments');
+          const snapshot = await getDocs(appointmentColRef)
+  
+          const data = snapshot.docs.map((d) => ({
+            id: d.id,
+            ...d.data()
+          }))
+  
+          setSchedulerData(data);
+          console.log(data);
+        } else {
+          console.log("No user logged in")
+        }
+      });
+    }, []);
     return schedulerData;
-};
+  };
 
