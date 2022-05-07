@@ -24,6 +24,8 @@ const LoginForm = () => {
 
   const login = async () => {
     try {
+      localStorage.clear();
+
       const user = await signInWithEmailAndPassword(
         auth,
         loginEmail,

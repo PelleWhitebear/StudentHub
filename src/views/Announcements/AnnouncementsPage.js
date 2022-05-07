@@ -16,6 +16,7 @@ const AnnouncementsPage = () => {
   const [read, setRead] = useState();
   
   
+  
 
 
   useEffect(() => {
@@ -25,14 +26,10 @@ const AnnouncementsPage = () => {
   async function getAnnouncements() {
     
     try {
-      const getToken = localStorage.getItem("token")
-
-      const tokenData = {
-        token: getToken
-      }
+      const token = localStorage.getItem("token")
       
       // real request (axios) 
-      let { data } = await axios.get("http://localhost:8080/api/student/", tokenData);
+      let { data } = await axios.get(`http://localhost:8080/api/student/${token}`);
 
       setAnnouncements(data);
 
