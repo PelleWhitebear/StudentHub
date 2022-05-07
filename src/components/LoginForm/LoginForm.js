@@ -2,13 +2,9 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { useState, useEffect } from "react";
-import {
-  signInWithEmailAndPassword,
-  getAuth
-} from "firebase/auth";
 import { addUserToFirestore } from "../../firebase-config.js";
 import Form from "./Form";
-import login from '../../services/firebase';
+import firebaseService from '../../services/firebase';
 
 
 
@@ -17,9 +13,6 @@ const LoginForm = () => {
   const [loginPassword, setLoginPassword] = useState("");
   const [token, setToken] = useState("");
 
-
-const auth = getAuth();
-
   const nav = useNavigate();
   useEffect(()=>{
     localStorage.setItem("token", token);
@@ -27,18 +20,16 @@ const auth = getAuth();
 
   const login = async () => {
     try {
-      await login.login(loginEmail, loginPassword)
-      let userUid = auth.currentUser.uid 
-      localStorage.setItem('uid', userUid);
-
-      await getAuth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-        // Send token to your backend via HTTPS
-        setToken(JSON.stringify(idToken));
-        // ...
-      }).catch(function(error) {
-        console.log(error)
-      });
-      addUserToFirestore()
+      await firebaseService.login(loginEmail, loginPassword)
+      .then(() => {
+        try { 
+          setToken(JSON.stringify( firebaseService.getUserToken())) 
+          addUserToFirestore()
+        }
+        catch (e) {
+          console.log(e)
+        };
+      })
       let path = "Calendar";
       nav(path);
     } catch (error) {

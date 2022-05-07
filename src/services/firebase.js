@@ -4,9 +4,11 @@ import {
 } from "firebase/auth";
 
 const auth = getAuth();
+let token = null
 
-const baseUrl = 'https://www.studenthub.bhsi.xyz/api/createUser'
-const localBaseUrl = 'http://localhost:8080/api/createUser'
+const setToken = newToken => {
+  token = `bearer ${newToken}`
+}
 
 const login = async (email, password) => {
     try {
@@ -17,11 +19,17 @@ const login = async (email, password) => {
       );
       let userUid = auth.currentUser.uid 
       localStorage.setItem('uid', userUid);
+      
 
     } catch (error) {
       console.log(error.message);
     }
   };
+
+  const getUserToken = async () => {
+    if (auth.currentUser)
+    return await auth.currentUser.getIdToken(true);
+  };
   
-  export { login }
+  export default { login, getUserToken, setToken };
 
