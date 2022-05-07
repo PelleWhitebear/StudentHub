@@ -3,13 +3,15 @@ import { useEffect, useState } from 'react';
 import CreateForm from './CreateForm'
 import {
     createUserWithEmailAndPassword,
+    getAuth
   } from "firebase/auth";
 import { auth } from "../../firebase-config.js";
 import '../LoginForm/LoginForm.css';
 import axios from 'axios';
 const CreateUserForm = () => {
-  const [emailValite, setEmailValite] = useState();
-  const [errorPassword, setErrorPassword] = useState();
+  const [emailValite, setEmailValite] = useState(true);
+  const [errorPassword, setErrorPassword] = useState("");
+  const [errorEmail, setErrorEmail] = useState("")
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerFirstName, setRegisterFirstName] =  useState("");
   const [registerLastName, setRegisterLastName] = useState("");
@@ -47,8 +49,16 @@ const CreateUserForm = () => {
       return registerStudent();
     }
 
+    if(!emailValite){
+      setErrorEmail("Email not valid")
+    }
+
+    if(registerPassword === samePassword){
+      setErrorPassword("");
+    }
+
     if(registerPassword !== samePassword){
-      setErrorPassword(true);
+      setErrorPassword("Not same password");
     }
   }
   
@@ -82,7 +92,8 @@ const CreateUserForm = () => {
           console.log(error.request)
         }
       })
-      let path = ""
+
+      let path = "/loginPage"
       nav(path);
     } catch (error) {
       console.log(error.message);
@@ -93,7 +104,6 @@ const CreateUserForm = () => {
     return (
         <div action="#"> 
           <CreateForm
-          
         mailInputPlaceholder="Student mail"
         mailOnChange={(e) => setRegisterEmail(e.target.value)}
         firstNameInputPlaceholder="First Name"
@@ -106,8 +116,13 @@ const CreateUserForm = () => {
         repeatPasswordOnChange={(e) => setSamePassword(e.target.value)}
       />
       <div>
-          <button className="LoginButton" onClick={eventHandler}>Create User</button>
-        </div>
+        <button className="LoginButton" onClick={eventHandler}>Create User</button>
+      </div>
+      
+      <div>
+      <p>{errorEmail}/{errorPassword}</p>
+      </div>
+      
       </div>
     )
   };

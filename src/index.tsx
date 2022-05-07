@@ -13,7 +13,8 @@ import Searchbar from "./components/Global/Searchbar";
 import SideBar from "./components/Global/SideBar";
 import Title from "./components/Global/Title";
 import SymbolButton from "./components/Global/SymbolButton";
-import LoginForm from './components/LoginForm/LoginForm';
+import LoginForm from "./components/LoginForm/LoginForm";
+
 
 export {
     Button,

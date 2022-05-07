@@ -4,25 +4,35 @@ import "./LoginForm.css";
 import { useState, useEffect } from "react";
 import { addUserToFirestore } from "../../firebase-config.js";
 import Form from "./Form";
+import axios from "axios";
 import firebaseService from '../../services/firebase';
-
-
 
 const LoginForm = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [token, setToken] = useState("");
+  const [jwtToken, setJwtToken] = useState("");
 
   const nav = useNavigate();
   useEffect(()=>{
-    localStorage.setItem("token", token);
-  }, [token]);
+    localStorage.setItem("token", jwtToken);
+  }, [jwtToken]);
 
   const login = async () => {
     try {
+   localStorage.clear();
       await firebaseService.login(loginEmail, loginPassword)
       .then(() => {
+      let userUid = auth.currentUser.uid 
+      localStorage.setItem('uid', userUid);
+
+      let id = loginEmail.substring(0,7)
+
         try { 
+          const data = {
+          token: token
+        }
+        // Send token to backend
+        await axios.put(`http://localhost:8080/api/student/changeToken/${id}`, data);
           setToken(JSON.stringify( firebaseService.getUserToken())) 
           addUserToFirestore()
         }
