@@ -8,6 +8,7 @@ import {
 } from "firebase/auth";
 import { addUserToFirestore } from "../../firebase-config.js";
 import Form from "./Form";
+import login from '../../services/firebase';
 
 
 
@@ -16,7 +17,6 @@ const LoginForm = () => {
   const [loginPassword, setLoginPassword] = useState("");
   const [token, setToken] = useState("");
 
-  
 
 const auth = getAuth();
 
@@ -27,11 +27,7 @@ const auth = getAuth();
 
   const login = async () => {
     try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
+      await login.login(loginEmail, loginPassword)
       let userUid = auth.currentUser.uid 
       localStorage.setItem('uid', userUid);
 
@@ -42,7 +38,7 @@ const auth = getAuth();
       }).catch(function(error) {
         console.log(error)
       });
-
+      addUserToFirestore()
       let path = "Calendar";
       nav(path);
     } catch (error) {
@@ -63,8 +59,8 @@ const auth = getAuth();
           <button 
           className="LoginButton" 
           onClick={
-            () => {login();
-            addUserToFirestore()}}>
+            () => {
+              login();}}>
             Login
           </button>
       </div>
