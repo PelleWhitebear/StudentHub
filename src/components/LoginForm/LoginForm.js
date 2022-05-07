@@ -24,12 +24,9 @@ const LoginForm = () => {
       .then(async () => {
         try {
           const token  = await getUserToken();
-          console.log(token);
           setJwtToken(token);
-          console.log(jwtToken);
           let id = loginEmail.substring(0,7)
-          console.log(id)
-          await updateTokenInDatabase(id, jwtToken)
+          await updateTokenInDatabase(id, token)
         }
         catch (e) {
           console.log(e)

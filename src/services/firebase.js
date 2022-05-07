@@ -32,7 +32,6 @@ let token = null
     let token = "";
     if (auth.currentUser){
     let getToken = await auth.currentUser.getIdToken(true);
-    console.log(getToken);
     token = getToken;
     }
     return token;
@@ -41,7 +40,6 @@ let token = null
     
   const updateTokenInDatabase = async (id, newObject) => {
     try {
-      console.log(newObject);
       let object = {
         token: newObject
       }
