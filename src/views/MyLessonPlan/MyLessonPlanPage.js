@@ -1,7 +1,7 @@
 import { Box, InputLabel, MenuItem, FormControl, Select } from "@mui/material";
 import { OurTable, TableRow, Title } from "../../index";
-import { getData } from "../../backendClient";
 import { useState, useEffect } from "react";
+import lessonPlanService from '../../services/mylessonplan';
 
 import "../../components/Global/Styles/Table.css";
 
@@ -9,12 +9,15 @@ const MyLessonPlanPage = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async (url) => {
-      let { data } = await getData(url);
+    const fetchData = async () => {
+      let { data } = await lessonPlanService
+      .getAll();
       setData(data);
     };
-    fetchData("lessonplan");
+    fetchData();
   }, []);
+
+
 
   const headerData = [
     "  Week  ",
