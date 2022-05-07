@@ -3,16 +3,17 @@ import {
   signInWithEmailAndPassword,
   getAuth
 } from "firebase/auth";
+import { useState } from 'react';
 
 const studentUrl = 'http://localhost:8080/api/student/changeToken';
 const auth = getAuth();
 let token = null
 
-const setToken = newToken => {
-  token = `bearer ${newToken}`
-}
+  const setToken = newToken => {
+    token = `bearer ${newToken}`
+  }
 
-const login = async (email, password) => {
+  const loginHandler = async (email, password) => {
     try {
       const user = await signInWithEmailAndPassword(
         auth,
@@ -28,13 +29,19 @@ const login = async (email, password) => {
   };
 
   const getUserToken = async () => {
-    if (auth.currentUser)
-    return await auth.currentUser.getIdToken(true);
+    let token = "";
+    if (auth.currentUser){
+    let getToken = await auth.currentUser.getIdToken(true);
+    console.log(getToken);
+    token = getToken;
+    }
+    return token;
   };
 
     
   const updateTokenInDatabase = async (id, newObject) => {
     try {
+      console.log(newObject);
       let object = {
         token: newObject
       }
@@ -46,7 +53,7 @@ const login = async (email, password) => {
 
   };
   
-  export default { login, getUserToken, setToken, updateTokenInDatabase };
+  export { loginHandler, getUserToken, setToken, updateTokenInDatabase };
 
   
 

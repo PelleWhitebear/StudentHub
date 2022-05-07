@@ -1,7 +1,7 @@
 import { Box, InputLabel, MenuItem, FormControl, Select } from "@mui/material";
 import { OurTable, TableRow, Title } from "../../index";
 import { useState, useEffect } from "react";
-import lessonPlanService from '../../services/mylessonplan';
+import lessonPlanService from '../../services/MyLessonplan';
 
 import "../../components/Global/Styles/Table.css";
 

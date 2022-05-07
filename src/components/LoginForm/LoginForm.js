@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { addUserToFirestore } from "../../firebase-config.js";
 import Form from "./Form";
 
-import firebaseService from '../../services/firebase';
+import {  loginHandler, getUserToken, setToken, updateTokenInDatabase }from '../../services/firebase';
 
 const LoginForm = () => {
   const [loginEmail, setLoginEmail] = useState("");
@@ -20,14 +20,16 @@ const LoginForm = () => {
   const login = async () => {
     try {
    localStorage.clear();
-      await firebaseService.login(loginEmail, loginPassword)
+      await loginHandler(loginEmail, loginPassword)
       .then(async () => {
         try {
-          setJwtToken(JSON.stringify( firebaseService.getUserToken())) 
-          addUserToFirestore()
+          const token  = await getUserToken();
+          console.log(token);
+          setJwtToken(token);
+          console.log(jwtToken);
           let id = loginEmail.substring(0,7)
           console.log(id)
-          await firebaseService.updateTokenInDatabase(id, jwtToken)
+          await updateTokenInDatabase(id, jwtToken)
         }
         catch (e) {
           console.log(e)
