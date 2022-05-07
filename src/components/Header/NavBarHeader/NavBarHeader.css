@@ -13,3 +13,13 @@
     width: 100%;
 }
 
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+ }
+
+ .dropdown-menu {
+    border-radius: 0px;
+    background:var(--beige);
+    min-width: 200px;
+}

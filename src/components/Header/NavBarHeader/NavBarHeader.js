@@ -35,8 +35,8 @@ import { onAuthStateChanged } from "firebase/auth";
             localStorage.clear();
         }
         return (
-            <>
-            <Navbar variant="dark" className="NBHeader">
+            <> 
+            <Navbar  variant="dark" className="NBHeader">
                 <Container className="alignCenter">
                     <Navbar.Brand as={Link} to="/Calendar">
                     </Navbar.Brand>
@@ -50,7 +50,7 @@ import { onAuthStateChanged } from "firebase/auth";
                         </Nav>
                         
                         <Nav>
-                            <NavDropdown title= {user?.email}>
+                            <NavDropdown  title= {user?.email}>
                                 <NavDropdown.Item as={Link} to="/UserSettings">Settings</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item as={Link} 

@@ -1,6 +1,6 @@
 import axios from 'axios';
-const baseUrl = 'https://www.studenthub.bhsi.xyz/api/grades'
-const localBaseUrl = 'http://localhost:8080/api/grades'
+const baseUrl = 'https://www.studenthub.bhsi.xyz/api/grade'
+const localBaseUrl = 'http://localhost:8080/api/grade'
 
 let token = null
 
