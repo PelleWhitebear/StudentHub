@@ -58,7 +58,6 @@ const CalendarPage = () => {
 
   const data = () => {
     let d = GetAppointmentsFromFirebase();
-    console.log(d)
     return d;
   }
 

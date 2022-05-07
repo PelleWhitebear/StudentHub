@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   getAuth
 } from "firebase/auth";
-import { auth } from "../../firebase-config.js";
+import { addUserToFirestore } from "../../firebase-config.js";
 import Form from "./Form";
 import axios from "axios";
 
@@ -16,6 +16,10 @@ const LoginForm = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [jwtToken, setJwtToken] = useState("");
+
+  
+
+const auth = getAuth();
 
   const nav = useNavigate();
   useEffect(()=>{
@@ -31,6 +35,8 @@ const LoginForm = () => {
         loginEmail,
         loginPassword
       );
+      let userUid = auth.currentUser.uid 
+      localStorage.setItem('uid', userUid);
 
       let id = loginEmail.substring(0,7)
 
@@ -65,7 +71,11 @@ const LoginForm = () => {
       />
 
       <div>
-          <button className="LoginButton" onClick={login}>
+          <button 
+          className="LoginButton" 
+          onClick={
+            () => {login();
+            addUserToFirestore()}}>
             Login
           </button>
       </div>
@@ -74,7 +84,7 @@ const LoginForm = () => {
             </div> */}
       <div>
         <Link to="/CreateUser">
-          <button className="CreateUserButton" >
+          <button className="CreateUserButton">
             Create User
           </button>
         </Link>
