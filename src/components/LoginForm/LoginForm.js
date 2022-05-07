@@ -2,24 +2,15 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { useState, useEffect } from "react";
-import {
-  signInWithEmailAndPassword,
-  getAuth
-} from "firebase/auth";
 import { addUserToFirestore } from "../../firebase-config.js";
 import Form from "./Form";
 import axios from "axios";
-
-
+import firebaseService from '../../services/firebase';
 
 const LoginForm = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [jwtToken, setJwtToken] = useState("");
-
-  
-
-const auth = getAuth();
 
   const nav = useNavigate();
   useEffect(()=>{
@@ -28,32 +19,27 @@ const auth = getAuth();
 
   const login = async () => {
     try {
-      localStorage.clear();
-
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
+   localStorage.clear();
+      await firebaseService.login(loginEmail, loginPassword)
+      .then(() => {
       let userUid = auth.currentUser.uid 
       localStorage.setItem('uid', userUid);
 
       let id = loginEmail.substring(0,7)
 
-      await getAuth().currentUser.getIdToken(/* forceRefresh */ true).then(async function(idToken) {
-        const token = JSON.stringify(idToken);
-        console.log(token);
-        const data = {
+        try { 
+          const data = {
           token: token
         }
         // Send token to backend
         await axios.put(`http://localhost:8080/api/student/changeToken/${id}`, data);
-        setJwtToken(token);
-        
-      }).catch(function(error) {
-        console.log(error)
-      });
-
+          setToken(JSON.stringify( firebaseService.getUserToken())) 
+          addUserToFirestore()
+        }
+        catch (e) {
+          console.log(e)
+        };
+      })
       let path = "Calendar";
       nav(path);
     } catch (error) {
@@ -74,8 +60,8 @@ const auth = getAuth();
           <button 
           className="LoginButton" 
           onClick={
-            () => {login();
-            addUserToFirestore()}}>
+            () => {
+              login();}}>
             Login
           </button>
       </div>
