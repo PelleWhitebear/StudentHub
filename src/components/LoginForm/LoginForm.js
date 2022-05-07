@@ -4,7 +4,7 @@ import "./LoginForm.css";
 import { useState, useEffect } from "react";
 import { addUserToFirestore } from "../../firebase-config.js";
 import Form from "./Form";
-import axios from "axios";
+
 import firebaseService from '../../services/firebase';
 
 const LoginForm = () => {
@@ -21,20 +21,13 @@ const LoginForm = () => {
     try {
    localStorage.clear();
       await firebaseService.login(loginEmail, loginPassword)
-      .then(() => {
-      let userUid = auth.currentUser.uid 
-      localStorage.setItem('uid', userUid);
-
-      let id = loginEmail.substring(0,7)
-
-        try { 
-          const data = {
-          token: token
-        }
-        // Send token to backend
-        await axios.put(`http://localhost:8080/api/student/changeToken/${id}`, data);
-          setToken(JSON.stringify( firebaseService.getUserToken())) 
+      .then(async () => {
+        try {
+          setJwtToken(JSON.stringify( firebaseService.getUserToken())) 
           addUserToFirestore()
+          let id = loginEmail.substring(0,7)
+          console.log(id)
+          await firebaseService.updateTokenInDatabase(id, jwtToken)
         }
         catch (e) {
           console.log(e)
