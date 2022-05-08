@@ -1,44 +1,33 @@
-import './Styles/StudyGuidance.css';
-import emailjs from "emailjs-com"
-import InputField from '../../components/Global/InputField';
-import AddAppointment from '../../components/Global/addAppointment'
+import './StudyGuidance.css';
+
+
+//TODO: sæt "send" button ind i textarea, fjern skygger fra knapper, skriv tekst i text area lav baggrundsfarve/billede
 
 const StudyGuidance = () => {
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs.sendForm('gmail', 'study_guidance', e.target, 'rdIjZOLKAKD5GZlb8')
-     .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-        console.log(error.text);
-      });
-     e.target.reset()
-}
+  const openNav = () => {
+    document.getElementById("mySidepanel").style.width = "250px";
+  } 
+  const closeNav = () => {
+    document.getElementById("mySidepanel").style.width = "0";
+  } 
+  
 
     return (
-    <div>
-     <div>
-       <form onSubmit={sendEmail}>      
-         <div className="containerInputFields">
-           <InputField placeholder="Subject" name="Subject"></InputField>
-        </div>
-        <div className='containerInputFields'>
-          <InputField type="email" placeholder="Enter your email for reply" name="reply_email"></InputField>
-        </div>
-        <div>
-          <textarea className="textareaMessage" placeholder="Your message" name="message"></textarea>
-        </div>
-        <div className="inputButton">
-          <InputField type="submit" value="Send Message" name="reply_email"></InputField>
-        </div>
-      </form>
+    <>
+    <h1 className='Welcome'>Study Guidance</h1>
+    <div id="mySidepanel" class="sidepanel">
+      <a href="javascript:void(0)" class="closebtn" onClick={closeNav}>&times;</a>
+      <h7 className='sidepanel_Header'>Book a meeting</h7>
     </div>
-    <div className='bookMettingBtn'>
-      <AddAppointment></AddAppointment>
+    <button class="openbtn" onClick={openNav}>Book a meeting</button>
+    <br></br> 
+    <h4 className='minor_Tekst'>Number:  +45 45 25 11 99</h4>
+    <h6 className='minor_Tekst'>Email:  studvejl@adm.dtu.dk</h6>
+    <div class="textarea-container">
+      <textarea name="foo">Dear Study Guidance</textarea>
+      <button id = "send_btn">Send</button>
     </div>
-    </div>
+    </>
     )
   }
   ;

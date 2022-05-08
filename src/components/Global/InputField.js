@@ -1,10 +1,10 @@
+
 import './Styles/InputField.css'
 const InputField = (props) => {
     return (
         <div>
             <label className="alignLeft">{props.inputLabel}</label>
-            <input className="inputBox" value={props.value} onChange={props.onChange} type={props.type} 
-                    placeholder={props.placeholder} disabled={props.disabled} name={props.name}></input>
+            <input className="inputBox" value={props.value} onChange={props.onChange} type="input" disabled={props.disabled}></input>
         </div>
       
     );
