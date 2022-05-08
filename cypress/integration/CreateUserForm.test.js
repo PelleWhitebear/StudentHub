@@ -44,8 +44,8 @@
             // Should have button
             cy.get('button').should('have.length', 1)
 
-            /*// Click create user button and go to /Calendar
-            cy.get('button').click()*/
+            // Click create user button and go to /Calendar
+            cy.get('button').click()
           })
 
         // Login with new user

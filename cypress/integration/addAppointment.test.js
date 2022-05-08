@@ -42,13 +42,13 @@ describe('Add appointment to calendar (addAppointment component)', () => {
         
         cy.get('button').eq(7).click()
         
-        // Go to may
+        /*// Go to may
         cy.get('button').eq(12).click()
         cy.get('button').eq(12).click()
-        cy.get('button').eq(12).click()
+        cy.get('button').eq(12).click()*/
 		
 		    // Date
-        cy.get('button').eq(29).click()
+        cy.get('button').eq(25).click()
         
         // Start time
         cy.get('input').eq(8).click().type("12:30 pm")
@@ -57,16 +57,24 @@ describe('Add appointment to calendar (addAppointment component)', () => {
         cy.get('input').eq(9).click().type("01:45 pm")
 
         // Location 
-        cy.get('input').eq(10).click().type("Building 322 room 105")
+        cy.get('input').eq(10).click().type("Building 322, room 105")
 
         // Add the appointment
         cy.get("button").contains("Add Appointment").click()
     })
 
       // Check if /Calendar contain new appointment
-      it('Check if appointment added', () => {
+      it('Check if appointment added to calendar', () => {
+        // Reload React app
+        cy.reload()
 
-        // Should contain HorizontalAppointment-title "Front end exam"
-        cy.get('div').should('have.class', 'HorizontalAppointment-title').contains("Front end exam")
+        // Login again
+        cy.get('span').should('have.length', 2)
+        cy.get('span').first().type('s205339@student.dtu.dk')
+        cy.get('span').last().type('hej1234')
+        cy.get('button').first().click()
+
+        // class VerticalAppointment-title that contain "Front end exam"
+        cy.get('div').should('have.class', 'VerticalAppointment-title').contains("Front end exam")
       })
   })
