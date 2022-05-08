@@ -3,10 +3,9 @@ import {useState} from 'react';
 import ChooseDate from './ChooseDate';
 import ChooseTime from './ChooseTime';
 import { Stack } from '@mui/material';
-import { addAppointmentToFirebase } from '../../../src/firebase-config';
-import { Button, InputField } from "../../index";
+import { addAppointmentToFirebase } from '../../services/firebase';
+import { Button } from "../../index";
 import { Input } from './TextBox';
-
 
 function AddAppointmentOffCanvas () {
     let [show, setShow] = useState(false);
@@ -35,7 +34,6 @@ function AddAppointmentOffCanvas () {
         <Button 
         onClick = {handleShow}
         buttonText="Create Appointment" />
-         {/*<AddAppointmentBtn onClick = {handleShow}> Create Appointment </AddAppointmentBtn>*/}
      <div>
         <Offcanvas show={show} onHide={handleClose} placement='end'>
         <Offcanvas.Header closeButton>

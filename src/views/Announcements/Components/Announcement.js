@@ -10,13 +10,13 @@ function Announcement (props) {
       {isRead && 
       <div onClick={props.onClick} className="BorderRead" >
         <h2 className="Titelt">{title} - {sender}</h2>
-        <p>{message}</p>
+        <p className="messaget">{message}</p>
         </div>
         }
       {!isRead &&
        <div onClick={props.onClick} className="BorderUnRead" > 
         <h2 className="Titelf">{title} - {sender}</h2>
-        <p>{message}</p>
+        <p className="messagef">{message}</p>
         </div>
       }
       </>

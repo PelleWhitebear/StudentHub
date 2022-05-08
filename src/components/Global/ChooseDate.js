@@ -8,7 +8,7 @@ import moment from 'moment';
 
 
 export const ChooseDate = (props) => {
-    let [selectedDate, setSelectedDate] = useState(moment().format("DD-MM-YYYY"))
+    let [selectedDate, setSelectedDate] = useState(moment().format("MM-DD-YYYY"))
 
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
