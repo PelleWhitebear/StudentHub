@@ -85,6 +85,7 @@ const CalendarPage = () => {
               data={sideBarData}
             />
           </div>
+          <div className="calendarWidth">
           <Paper>
             <Scheduler 
             data={data()}>
@@ -126,8 +127,9 @@ const CalendarPage = () => {
               <Appointments appointmentComponent={MyAppointment} />
             </Scheduler>
           </Paper>
+          </div>
         </div>
-      </div>
+        </div>
     </>
   );
 };
