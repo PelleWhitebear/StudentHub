@@ -25,6 +25,10 @@
 }
 
 .fontSize {
-    font-size: 1.6vw;
+    font-size: 1rem;
     padding: 0.5vw;
 }
+
+@media (max-width:800px) {
+    .fontSize { font-size: 0.7rem; }
+  }

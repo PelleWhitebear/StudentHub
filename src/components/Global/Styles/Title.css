@@ -1,0 +1,5 @@
+.titleTextCss {
+    text-align: center;
+    color: var(--primaryColor);
+    font-size: 2.5rem;
+}
