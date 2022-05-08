@@ -47,10 +47,9 @@ describe('Add appointment to calendar (addAppointment component)', () => {
         cy.get('button').eq(12).click()
         cy.get('button').eq(12).click()
 		
-		// Date
+		    // Date
         cy.get('button').eq(29).click()
         
-
         // Start time
         cy.get('input').eq(8).click().type("12:30 pm")
         
@@ -60,19 +59,14 @@ describe('Add appointment to calendar (addAppointment component)', () => {
         // Location 
         cy.get('input').eq(10).click().type("Building 322 room 105")
 
+        // Add the appointment
         cy.get("button").contains("Add Appointment").click()
-
-
-
-
-        
-        //cy.get('button').eq(44).click()
-
-
-        /*cy.visit('http://localhost:3000/Calendar')
-        cy.contain
-        ...*/
     })
-    
 
+      // Check if /Calendar contain new appointment
+      it('Check if appointment added', () => {
+
+        // Should contain HorizontalAppointment-title "Front end exam"
+        cy.get('div').should('have.class', 'HorizontalAppointment-title').contains("Front end exam")
+      })
   })
