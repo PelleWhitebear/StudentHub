@@ -14,8 +14,8 @@ import {
 import './Styles/Calendar.css'
 import SideBar from '../../components/Global/SideBar';
 import '../../components/Global/Styles/SideBar.css';
-import { GetAppointmentsFromFirebase} from '../../firebase-config';
-import { getAuth } from "firebase/auth";
+import { GetAppointmentsFromFirebase} from '../../services/firebase';
+import SimpleDialogDemo from '../../components/Global/Dialog';
 //const schedulerData = appointmentData.map(appointmentData => appointmentData.title);
 
 
@@ -24,23 +24,33 @@ import { getAuth } from "firebase/auth";
   { startDate: '2022-03-14T13:00', endDate: '2022-03-14T17:00', title: 'Front end web development' },
 ];*/
 
-const myAppointment = ({ children, style, ...restProps }) => (
+
+const MyAppointment = ({ children, style, ...restProps }) => {
+  
+  return (
   <Appointments.Appointment
     {...restProps}
     style={{
       ...style,
       backgroundColor: "#a02d37",
       borderRadius: "8px",
+    }} 
+    onClick={()=>{
+      return (
+        <SimpleDialogDemo />
+        )
+    
     }}
   >
     {children}
   </Appointments.Appointment>
 );
+  }
 
 const CalendarPage = () => {
   const [currentDate, setCurrentDate] = useState(Date().toLocaleString());
 
-  const [currentViewName, setCurrentViewName] = useState("month");
+  const [currentViewName, setCurrentViewName] = useState("week");
 
   const [newCourse, setNewCourse] = useState("");
 
@@ -108,13 +118,12 @@ const CalendarPage = () => {
                 endDayHour={18}
                 onDoubleClick /*={}*/
               />
-              <Appointments />
+              <Appointments/>
               <Toolbar />
 
               <ViewSwitcher />
               <DateNavigator />
-
-              <Appointments appointmentComponent={myAppointment} />
+              <Appointments appointmentComponent={MyAppointment} />
             </Scheduler>
           </Paper>
         </div>
