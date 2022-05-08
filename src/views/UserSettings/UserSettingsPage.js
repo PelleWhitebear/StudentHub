@@ -1,6 +1,8 @@
 
 import "./Styles/UserSettings.css";
 import "../../components/Global/Styles/ImageBox.css";
+import userSettingsPage from '../../services/userSettings';
+
 
 import { 
   SymbolButton,
@@ -12,7 +14,7 @@ import {
   Button
 } from "../../index";
 
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 
 const UserSettingsPage = () => {
   const [firstName, setFirstName] = useState("Mia");
@@ -21,6 +23,17 @@ const UserSettingsPage = () => {
   const [study, setStudy] = useState("BEng IT and Economics");
 
   const [editState, setEditState] = useState(false);
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let { data } = await userSettingsPage
+      .getAll();
+      setData(data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -45,22 +58,22 @@ const UserSettingsPage = () => {
                 {!editState && (
                   <>
                     <InputField
-                    value={firstName}
+                    value={data.firstName}
                     disabled="true"
                       inputLabel="First Name"
                     />
                     <InputField
-                    value={lastName}
+                    value={data.lastName}
                     disabled="true"
                       inputLabel="Last Name"
                     />
                     <InputField
-                    value={studentId}
+                    value={data.mail}
                     disabled="true"
-                      inputLabel="Student ID"
+                      inputLabel="Student mail"
                     />
                     <InputField
-                    value={study}
+                    value={data.studyclassId}
                     disabled="true"
                       inputLabel="Study Field"
                     />
