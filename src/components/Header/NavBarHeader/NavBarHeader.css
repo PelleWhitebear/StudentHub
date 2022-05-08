@@ -6,7 +6,7 @@
 }
 
 .navlink {
-    margin-right: 40px;
+    margin: 0.2w;
 }
 
 .dtu-logo {
@@ -22,4 +22,9 @@
     border-radius: 0px;
     background:var(--beige);
     min-width: 200px;
+}
+
+.fontSize {
+    font-size: 1.6vw;
+    padding: 0.5vw;
 }
