@@ -14,11 +14,16 @@ body {
   --primaryColor: rgb(136, 0, 0);
   --secondaryColor: rgba(60, 96, 255, 0.75);
   --transparentColor: rgba(127, 38, 38, 0.705);
+  --beige: rgba(235, 225, 214, 0.849);;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.minWidth {
+  min-width: 700px;
 }
 
 .minHeight {

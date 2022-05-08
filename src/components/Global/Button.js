@@ -3,9 +3,12 @@ const Button = (props) => {
       <>
         <br />
         <br />
-        <button onClick={props.onClick} className="button">
-          {props.buttonText}
+        <a style={{fontWeight: "normal"}} href={props.url} 
+       target="_blank"
+       rel="noopener noreferrer"> <button onClick={props.onClick} className="button">
+        {props.buttonText}
         </button>
+        </a> 
         <br />
         <br />
       </>

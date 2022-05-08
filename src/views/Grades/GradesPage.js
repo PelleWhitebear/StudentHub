@@ -1,56 +1,61 @@
-import { useEffect , useState } from 'react';
-import { OurTable, TableRow, Title } from "../../index";
-import axios from "axios";
+import { useEffect, useState } from "react";
+import { OurTable, TableRow, Title, Button, Paper, Image } from "../../index";
+import gradesService from "../../services/grades";
 
 const GradesPage = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    getGrades();
+    const fetchData = async () => {
+      let { data } = await gradesService.getAll();
+      setData(data);
+    };
+    fetchData();
   }, []);
 
-  const getGrades = async () =>{
-    try {
-      
-        const token = localStorage.getItem("token")
-      
-      
-      // real request (axios) 
-      let { data } = await axios.get(`http://localhost:8080/api/grade/getGrades/${token}`);
-
-      setData(data);
-
-    } catch (error) { //catch if error in getting data.
-      if(error.response){
-        console.log(error.response)
-      }else if(error.message){
-        console.log(error.message)
-      }else if(error.request){
-        console.log(error.request)
-      }
-    }
-  }
-
-  const headerData = ["StudentID","CourseName","Course ID", "Grade", "ETCS", ""];
+  const headerData = [
+    "StudentID",
+    "CourseName",
+    "Course ID",
+    "Grade",
+    "ETCS",
+    "",
+  ];
 
   return (
     <>
-      <div className="minHeight">
-        <Title title="Grades" />
-        <OurTable headerData={headerData}>
-          {data?.map((element) => (
-            /*The column names correspond 
+      <Title title="Grades" />
+      <div className="rows alignCenter minHeight minWidth">
+        <div>
+          <Paper>
+          <div className="alignCenter">
+              <Button
+                url="https://cn.inside.dtu.dk/cnnet/Grades/Grades.aspx"
+                buttonText="Download as pdf"
+              />
+            </div>
+
+          </Paper>
+        </div>
+
+        <div>
+          <Paper>
+            <OurTable headerData={headerData}>
+              {data?.map((element) => (
+                /*The column names correspond 
                       to the ones in the database*/
-            <TableRow
-              firstColumn={element.studentId}
-              secondColumn={element.course.courseName}
-              thirdColumn={element.courseId}
-              fourthColumn={element.gradeDK}
-              fifthColumn={element.course.ects}
-              key={data.indexOf(element)}
-            />
-          ))}
-        </OurTable>
+                <TableRow
+                  firstColumn={element.studentId}
+                  secondColumn={element.course.courseName}
+                  thirdColumn={element.courseId}
+                  fourthColumn={element.gradeDK}
+                  fifthColumn={element.course.ects}
+                  key={data.indexOf(element)}
+                />
+              ))}
+            </OurTable>
+          </Paper>
+        </div>
       </div>
     </>
   );
