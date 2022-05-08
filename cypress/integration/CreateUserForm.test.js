@@ -3,7 +3,7 @@
     // failing the test
     return false})*/
 
-    describe('CreateUser component', () => {
+    describe('CreateUserForm component', () => {
         it('Visit StudentHub (landing page)', () => {
           cy.visit('https://www.studenthub.bhsi.xyz/')
           cy.url().should('eq', "https://www.studenthub.bhsi.xyz/") 
@@ -19,6 +19,9 @@
         })
 
         it('User can create new user', () => {
+
+            // Should be on /CreateUser path
+            cy.url().should('eq', "https://www.studenthub.bhsi.xyz/CreateUser")
 
             // Should have 5x InputBox
             cy.get('span').should('have.length', 5)
