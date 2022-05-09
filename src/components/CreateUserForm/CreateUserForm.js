@@ -7,7 +7,8 @@ import {
   } from "firebase/auth";
 import { auth } from "../../firebase-config.js";
 import '../LoginForm/LoginForm.css';
-import axios from 'axios';
+import {postStudent} from '../../services/createUser';
+
 const CreateUserForm = () => {
   const [emailValite, setEmailValite] = useState(true);
   const [errorPassword, setErrorPassword] = useState("");
@@ -80,18 +81,7 @@ const CreateUserForm = () => {
       );
 
 
-      await axios.post("https://www.studenthub.bhsi.xyz/api/student/createStudent", data)
-      .then((result) => {
-        console.log(result.data)
-      }).catch((error) =>{
-        if(error.response){
-          console.log(error.response)
-        }else if(error.message){
-          console.log(error.message)
-        }else if(error.request){
-          console.log(error.request)
-        }
-      })
+        postStudent(data)
 
       let path = "/loginPage"
       nav(path);
@@ -122,7 +112,6 @@ const CreateUserForm = () => {
       <div>
       <p>{errorEmail}/{errorPassword}</p>
       </div>
-      
       </div>
     )
   };

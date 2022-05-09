@@ -1,22 +1,22 @@
 import axios from 'axios';
-const baseUrl = 'https://www.studenthub.bhsi.xyz/api/createUser'
-const localBaseUrl = 'http://localhost:8080/api/createUser'
+const baseUrl = "https://www.studenthub.bhsi.xyz/api/student/createStudent"
+const localBaseUrl = 'http://localhost:8080/api/createStudent'
 
-let token = null
 
-const setToken = newToken => {
-  token = newToken;
-}
-
-const getAll = async () => {
-    try {
-      let { data } = await axios.get(localBaseUrl);
-      return { data };
-    } catch (error) {
-      console.log(error);
-      console.log("Error with fetching data from backend server");
-    }
-  };
+export const postStudent = async (data) => {
+await axios.post(baseUrl, data)
+      .then((result) => {
+        console.log(result.data)
+      }).catch((error) =>{
+        if(error.response){
+          console.log(error.response)
+        }else if(error.message){
+          console.log(error.message)
+        }else if(error.request){
+          console.log(error.request)
+        }
+      })
+    };
    
   
-export default { getAll, setToken }
+export default { postStudent }
