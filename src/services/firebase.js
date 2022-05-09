@@ -22,6 +22,11 @@ let token = null
     token = newToken;
   }
 
+  let count = 0;
+  function incrementCount(){
+      count = count+1;
+  }
+
   const loginHandler = async (email, password) => {
     try {
       const user = await signInWithEmailAndPassword(
@@ -86,9 +91,7 @@ export function addAppointmentToFirebase (appointmentTitle, date, startTime, end
             endDate: endDate,
             location: location
         })
-        .then(( ) => {
-    
-        })
+        .then( incrementCount())
 };
 
 
@@ -117,14 +120,17 @@ export const GetAppointmentsFromFirebase = () => {
           console.log("No user logged in")
         }
       });
-    }, []);
+    }, [count]);
     return schedulerData;
   };
 
 
   export const deleteAppointmentFromFirebase = (id) => {
           const appointmentDocRef = doc(db, 'users', auth.currentUser.uid, 'appointments', id.appointmentId);
-          deleteDoc(appointmentDocRef);
+          deleteDoc(appointmentDocRef)
+          .then( 
+            incrementCount()
+          );
   };
 
 
