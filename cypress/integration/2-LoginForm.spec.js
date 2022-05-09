@@ -1,5 +1,9 @@
 
 describe('LoginForm component', () => {
+
+    const Email = "s205339@student.dtu.dk";
+    const Pwd = "hej1234";
+
     it('Visit StudentHub (landing page)', () => {
 
       // Go to landing page
@@ -16,10 +20,10 @@ describe('LoginForm component', () => {
       cy.get('span').should('have.length', 2)
        
       // Typing in e-mail: s205339@student.dtu.dk
-      cy.get('span').first().type('s205339@student.dtu.dk')
+      cy.get('span').first().type(Email)
 
       // Typing in password: hej1234
-      cy.get('span').last().type('hej1234')
+      cy.get('span').last().type(Pwd)
 
       // Click LoginButton
       cy.get('button').first().click()
