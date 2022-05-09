@@ -1,22 +1,40 @@
+
+.containerpage{
+  width: 100%;
+  height: 100%;
+}
+
 .containerInputFields{
-  width: 1000px;
+  width: 100%;
   height: 45px;
-  margin-left: 20%;
+    margin-left: 10%;
 }
 
 .textareaMessage{
   resize: none;
-  width: 800px;
-  height: 300px;
-  margin-left: 20.7%;
+  width: 80%;
+  height: 100%;
+  margin-left: 10px;
+
 }
 
-.inputButton{
-  margin-left:40%;
-  width: 200px;
+.containerTextarea{
+  width: 100%;
+  height: 250px;
+  margin-left: 10%;
+}
+
+.containerInputButton{
+  width: 10%;
+  margin-left: 45%;
   text-align-last: center;
 }
 
-.bookMettingBtn{
-  margin-left: 43%;
+.InputButton{
+  background-color: brown;
 }
+
+.containerBookMeetingBtn{
+  margin-left: 11%;
+}
+
