@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const baseUrl = 'https://www.studenthub.bhsi.xyz/api/lessonplan'
+const studentBaseUrl = 'https://www.studenthub.bhsi.xyz/api/student'
 const localBaseUrl = 'http://localhost:8080/api/announcements'
 const localStudentBaseUrl = 'http://localhost:8080/api/student'
 
@@ -13,7 +14,7 @@ const setToken = newToken => {
 
 const getAll = async () => {
     try {
-      let { data } = await axios.get(localBaseUrl);
+      let { data } = await axios.get(baseUrl);
       return { data };
     } catch (error) {
       console.log(error);
@@ -23,7 +24,7 @@ const getAll = async () => {
    
   const getAllByToken = async () => {
     try {
-      let { data } = await axios.get(`${localStudentBaseUrl}/${token}/announcements`);
+      let { data } = await axios.get(`${studentBaseUrl}/${token}/announcements`);
       return { data };
     } catch (error) {
       console.log(error);

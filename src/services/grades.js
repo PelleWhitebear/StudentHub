@@ -10,7 +10,7 @@ const setToken = newToken => {
 
 const getAll = async () => {
     try {
-      let { data } = await axios.get(`${localBaseUrl}`);
+      let { data } = await axios.get(`${baseUrl}`);
       return { data };
     } catch (error) {
       console.log(error);
@@ -20,7 +20,7 @@ const getAll = async () => {
    
   const getAllByToken = async () => {
     try {
-      let { data } = await axios.get(`${localBaseUrl}/getGrades/${token}`);
+      let { data } = await axios.get(`${baseUrl}/getGrades/${token}`);
       return { data };
     } catch (error) {
       console.log(error);
