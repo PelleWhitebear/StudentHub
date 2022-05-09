@@ -54,8 +54,8 @@ import { onAuthStateChanged } from "firebase/auth";
                             <NavDropdown className="fontSize" title= {user?.email}>
                                 <NavDropdown.Item as={Link} to="/UserSettings">Settings</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href='https://learn.inside.dtu.dk/d2l/home'>Learn</NavDropdown.Item>
-                                <NavDropdown.Item href='https://www.inside.dtu.dk/da/undervisning'>Inside</NavDropdown.Item>
+                                <NavDropdown.Item href='https://learn.inside.dtu.dk/d2l/home' target="_blank">Learn</NavDropdown.Item>
+                                <NavDropdown.Item href='https://www.inside.dtu.dk/da/undervisning' target="_blank">Inside</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item as={Link} 
                                 to="/"
