@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Paper from '@mui/material/Paper';
 import announcementService from '../../services/announcements'
+import { Title } from '../../index'
 
 const AnnouncementsPage = () => {
   //varialbe for navigate
@@ -69,26 +70,23 @@ let imgs = [
 
   return (
    <>
-    <div className="minHeight">
-    <Paper>
-    
-    <div className="split left">
-      <div >
-
-        <h1>Announcements</h1>
+      <div className="rows alignCenter">
+        <div style={{padding: 30}}>
+        <Paper >
+        <div style={{padding: 10}} className="minHeight">
+        <Title title="Announcements" />
         {loadAnnouncements()}
-      </div>
-    </div>
-
-    <div className="split right">
-      <div >
-      <h1>News</h1>
+        </div>
+        </Paper>
+        </div>
+        <Paper>
+        <div style={{padding: 10}} className="minHeight">
+        <Title title="News" />
       <img src={imgs[0]} alt="new"/>
+      </div>      
+          </Paper>
       </div>
-   </div>
-   
-  </Paper>
-  </div>
+    
   </>
   );
 };

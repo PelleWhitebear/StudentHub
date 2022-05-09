@@ -14,12 +14,16 @@ import {
  doc } from 'firebase/firestore';
 
 const db = getFirestore();
-const studentUrl = 'http://localhost:8080/api/student/changeToken';
 const auth = getAuth();
 let token = null
 
   const setToken = newToken => {
     token = newToken;
+  }
+
+  let count = 0;
+  function incrementCount(){
+      count = count+1;
   }
 
   const loginHandler = async (email, password) => {
@@ -45,19 +49,6 @@ let token = null
     }
     return token;
   };
-
-    
-  const updateTokenInDatabase = async (id, newObject) => {
-    try {
-      let object = {
-        token: newObject
-      }
-      return await axios.put(`${studentUrl}/${id}`, object)
-    } catch {
-      
-    }
-  };
-
 
 export function addAppointmentToFirebase (appointmentTitle, date, startTime, endTime, location) {
     document.querySelector('.add');
@@ -86,9 +77,7 @@ export function addAppointmentToFirebase (appointmentTitle, date, startTime, end
             endDate: endDate,
             location: location
         })
-        .then(( ) => {
-    
-        })
+        .then( incrementCount())
 };
 
 
@@ -117,20 +106,23 @@ export const GetAppointmentsFromFirebase = () => {
           console.log("No user logged in")
         }
       });
-    }, []);
+    }, [count]);
     return schedulerData;
   };
 
 
   export const deleteAppointmentFromFirebase = (id) => {
           const appointmentDocRef = doc(db, 'users', auth.currentUser.uid, 'appointments', id.appointmentId);
-          deleteDoc(appointmentDocRef);
+          deleteDoc(appointmentDocRef)
+          .then( 
+            incrementCount()
+          );
   };
 
 
 
   
-  export { loginHandler, getUserToken, setToken, updateTokenInDatabase };
+  export { loginHandler, getUserToken, setToken };
 
   
 

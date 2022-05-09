@@ -1,14 +1,11 @@
 import axios from 'axios';
+import tokenService from './tokenService';
+
 const baseUrl = 'https://www.studenthub.bhsi.xyz/api/lessonplan'
 const studentBaseUrl = 'https://www.studenthub.bhsi.xyz/api/student'
 const localBaseUrl = 'http://localhost:8080/api/lessonplan'
 const localStudentBaseUrl = 'http://localhost:8080/api/student'
 
-let token = null;
-
-const setToken = newToken => {
-  token = newToken;
-}
 
 const getAll = async () => {
     try {
@@ -22,7 +19,7 @@ const getAll = async () => {
    
   const getAllByToken = async () => {
     try {
-      let { data } = await axios.get(`${studentBaseUrl}/${token}/mylessonplan`);
+      let { data } = await axios.get(`${studentBaseUrl}/${tokenService.getToken()}/mylessonplan`);
       return { data };
     } catch (error) {
       console.log(error);
@@ -30,18 +27,5 @@ const getAll = async () => {
     }
   };
 
-  const create = async newObject => {
-    const config = {
-      headers: { Authorization: token },
-    }
   
-    const response = await axios.post(baseUrl, newObject, config)
-    return response.data
-  };
-  
-  const update = (id, newObject) => {
-    const request = axios.put(`${baseUrl}/${id}`, newObject)
-    return request.then(response => response.data)
-  };
-  
-export default { getAll, create, update, setToken, getAllByToken }
+export default { getAll, getAllByToken }
