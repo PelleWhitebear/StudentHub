@@ -25,4 +25,15 @@
   color: white;
   font-size: small;
   align-items: flex-start;
+
+
+}
+  .calendarWidth {
+  width: 90%;
+}
+
+@media (max-width: 800){
+  .calendarWidth {
+      width: 40vw;
+  } 
 }

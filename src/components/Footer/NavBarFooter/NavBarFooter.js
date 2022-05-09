@@ -8,7 +8,7 @@ import './NavBarFooter.css';
             <Navbar sticky="bottom" variant='dark' className="NBFooter sticky-bottom">
                 <Container>
                     <Navbar.Text>
-                    <Navbar.Brand as={Link} to="/Calendar">StudentHub.</Navbar.Brand>
+                    <Navbar.Brand  as={Link} to="/Calendar">StudentHub.</Navbar.Brand>
                     By students, for students.
                     </Navbar.Text>               
                         <Nav>

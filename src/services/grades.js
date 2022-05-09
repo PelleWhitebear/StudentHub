@@ -17,6 +17,18 @@ const getAll = async () => {
       console.log("Error with fetching data from backend server");
     }
   };
+
+const WeigthGrades = async () => {
+  //let data = await getAll()
+  let mockData = { gradeDK: [4, 7, 10], etcs: [5, 5, 10]}
+
+  const [valueSum, weightSum] = mockData.reduce(([valueSum, weightSum], [value, weight]) =>
+    ([valueSum + value.gradeDK * weight.etcs, weightSum + weight.etcs]), [0, 0]);
+
+  let weigthedAverage = valueSum/weightSum;
+
+  return weigthedAverage;
+}
    
   const create = async newObject => {
     const config = {
@@ -32,4 +44,4 @@ const getAll = async () => {
     return request.then(response => response.data)
   };
   
-export default { getAll, create, update, setToken }
+export default { getAll, create, update, setToken, WeigthGrades }
