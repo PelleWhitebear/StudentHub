@@ -1,5 +1,5 @@
 import './Styles/StudyGuidance.css';
-import emailjs from "emailjs-com"
+import emailjs from '@emailjs/browser';
 import InputField from '../../components/Global/InputField';
 import AddAppointment from '../../components/Global/addAppointment'
 
