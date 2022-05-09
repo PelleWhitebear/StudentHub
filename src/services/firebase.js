@@ -19,7 +19,7 @@ const auth = getAuth();
 let token = null
 
   const setToken = newToken => {
-    token = `bearer ${newToken}`
+    token = newToken;
   }
 
   const loginHandler = async (email, password) => {
