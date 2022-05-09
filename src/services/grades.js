@@ -19,15 +19,19 @@ const getAll = async () => {
   };
 
 const WeigthGrades = async () => {
-  //let data = await getAll()
-  let mockData = { gradeDK: [4, 7, 10], etcs: [5, 5, 10]}
+  
+  let {data} = await getAll()
 
-  const [valueSum, weightSum] = mockData.reduce(([valueSum, weightSum], [value, weight]) =>
-    ([valueSum + value.gradeDK * weight.etcs, weightSum + weight.etcs]), [0, 0]);
+  const {valueSum, weightSum} = data.reduce((previous, value) =>{
+      previous.valueSum = previous.valueSum + (value.gradeDK * value.course.ects);
+      previous.weightSum += value.course.ects;
+      return previous;
+    }, {valueSum: 0, weightSum: 0});
 
-  let weigthedAverage = valueSum/weightSum;
+  const weigthedAverage = valueSum/weightSum;
 
-  return weigthedAverage;
+  return [weigthedAverage, weightSum];
+  
 }
    
   const getAllByToken = async () => {
