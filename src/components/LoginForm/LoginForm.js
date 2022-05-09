@@ -3,12 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { useState, useEffect } from "react";
 import Form from "./Form";
-import announcementService from '../../services/announcements';
-import courseDatabaseService from '../../services/courseDatabase';
-import createUserService from '../../services/createUser';
-import gradesService from '../../services/grades';
-import mylessonplanService from '../../services/mylessonplan';
-import userSettings from '../../services/userSettings'
 import tokenService from '../../services/tokenService'
 import {  loginHandler, getUserToken, updateTokenInDatabase }from '../../services/firebase';
 
@@ -20,7 +14,7 @@ const LoginForm = () => {
   const nav = useNavigate();
   useEffect(()=>{
     localStorage.setItem("token", jwtToken);
-    announcementService.setToken(localStorage.getItem("token"));
+    tokenService.setToken(jwtToken)
   }, [jwtToken]);
 
   const login = async () => {
@@ -31,12 +25,7 @@ const LoginForm = () => {
         try {
           const token  = await getUserToken();
           setJwtToken(token)
-          announcementService.setToken(token);
-          courseDatabaseService.setToken(token);
-          createUserService.setToken(token);
-          gradesService.setToken(token);
-          mylessonplanService.setToken(token);
-          userSettings.setToken(token);
+          tokenService.setToken(token);
           let id = loginEmail.substring(0,7)
           await tokenService.updateTokenInDatabase(id, token)
         }

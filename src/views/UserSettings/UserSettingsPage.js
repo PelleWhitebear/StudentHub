@@ -52,7 +52,7 @@ const UserSettingsPage = () => {
         <Paper>
             <div>
               <div className="alignCenter">
-                <ImageBox imageSrc="https://firebasestorage.googleapis.com/v0/b/dtustudenthub.appspot.com/o/miadong.jpg?alt=media&token=b8a1d722-999a-47ce-894e-ce12fc12594a" />
+                <ImageBox imageSrc="https://firebasestorage.googleapis.com/v0/b/dtustudenthub.appspot.com/o/profilePicutre.jpg?alt=media&token=39b0b112-44db-4c26-b411-de05261d62de" />
               </div>
               <div className="centerItems">
                 {!editState && (
