@@ -9,7 +9,7 @@ import createUserService from '../../services/createUser';
 import gradesService from '../../services/grades';
 import mylessonplanService from '../../services/mylessonplan';
 import userSettings from '../../services/userSettings'
-
+import tokenService from '../../services/tokenService'
 import {  loginHandler, getUserToken, updateTokenInDatabase }from '../../services/firebase';
 
 const LoginForm = () => {
@@ -38,7 +38,7 @@ const LoginForm = () => {
           mylessonplanService.setToken(token);
           userSettings.setToken(token);
           let id = loginEmail.substring(0,7)
-          await updateTokenInDatabase(id, token)
+          await tokenService.updateTokenInDatabase(id, token)
         }
         catch (e) {
           console.log(e)

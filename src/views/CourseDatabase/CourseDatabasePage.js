@@ -6,6 +6,8 @@ const CourseDatabasePage = () => {
   //useState for data of courses
   const [data, setData] = useState([]);
 
+  const DTU_COURSES_LINK = "https://kurser.dtu.dk/course/";
+
   useEffect(() => {
     const fetchData = async () => {
       let { data } = await courseDatabaseService
@@ -46,7 +48,7 @@ const CourseDatabasePage = () => {
               return (
                 <TableRow
                   firstColumn={element.id}
-                  url={"https://kurser.dtu.dk/course/".concat(element.id)}
+                  url={DTU_COURSES_LINK.concat(element.id)}
                   methodInput={element.id}
                   secondColumn={element.courseName}
                   thirdColumn={element.courseDescription}
