@@ -5,7 +5,7 @@ import Announcement from "./Components/Announcement";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Paper from '@mui/material/Paper';
-
+import announcementService from '../../services/announcements'
 
 const AnnouncementsPage = () => {
   //varialbe for navigate
@@ -20,29 +20,13 @@ const AnnouncementsPage = () => {
 
 
   useEffect(() => {
-    getAnnouncements();
-  }, []) 
-
-  async function getAnnouncements() {
-    
-    try {
-      const token = localStorage.getItem("token")
-      
-      // real request (axios) 
-      let { data } = await axios.get(`http://localhost:8080/api/student/${token}`);
-
+    const fetchData = async () => {
+      let { data } = await announcementService
+      .getAllByToken();
       setAnnouncements(data);
-
-    } catch (error) { //catch if error in getting data.
-      if(error.response){
-        console.log(error.response)
-      }else if(error.message){
-        console.log(error.message)
-      }else if(error.request){
-        console.log(error.request)
-      }
-    }
-  } 
+    };
+    fetchData();
+  }, []);
 
   //update read
   async function updateRead(id) {

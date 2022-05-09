@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
 import { Title , Searchbar, OurTable, TableRow } from "../../index";
-import { getData } from "../../backendClient";
+import courseDatabaseService from '../../services/courseDatabase'
 
 const CourseDatabasePage = () => {
   //useState for data of courses
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async (url) => {
-      let { data } = await getData(url);
+    const fetchData = async () => {
+      let { data } = await courseDatabaseService
+      .getAllByToken();
       setData(data);
     };
-    fetchData("CourseDatabase");
+    fetchData();
   }, []);
+
 
   const headerData = [
     "ID",

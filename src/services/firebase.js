@@ -9,8 +9,8 @@ import {
  getFirestore,
  collection, 
  getDocs, 
- addDoc, 
- setDoc, 
+ addDoc,
+ deleteDoc,
  doc } from 'firebase/firestore';
 
 const db = getFirestore();
@@ -19,7 +19,7 @@ const auth = getAuth();
 let token = null
 
   const setToken = newToken => {
-    token = `bearer ${newToken}`
+    token = newToken;
   }
 
   const loginHandler = async (email, password) => {
@@ -56,17 +56,7 @@ let token = null
     } catch {
       
     }
-   
-
   };
-
-  export function addUserToFirestore(){
-    document.querySelector('.add');
-    const userDoc = doc(db, 'users', auth.currentUser.uid);
-    setDoc(userDoc, {
-    })
-
-};
 
 
 export function addAppointmentToFirebase (appointmentTitle, date, startTime, endTime, location) {
@@ -130,6 +120,14 @@ export const GetAppointmentsFromFirebase = () => {
     }, []);
     return schedulerData;
   };
+
+
+  export const deleteAppointmentFromFirebase = (id) => {
+          const appointmentDocRef = doc(db, 'users', auth.currentUser.uid, 'appointments', id.appointmentId);
+          deleteDoc(appointmentDocRef);
+  };
+
+
 
   
   export { loginHandler, getUserToken, setToken, updateTokenInDatabase };

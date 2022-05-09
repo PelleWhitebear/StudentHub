@@ -15,7 +15,7 @@ import './Styles/Calendar.css'
 import SideBar from '../../components/Global/SideBar';
 import '../../components/Global/Styles/SideBar.css';
 import { GetAppointmentsFromFirebase} from '../../services/firebase';
-import SimpleDialogDemo from '../../components/Global/Dialog';
+import SimpleDialogDemo from "../../components/Global/Dialog";
 //const schedulerData = appointmentData.map(appointmentData => appointmentData.title);
 
 
@@ -25,34 +25,12 @@ import SimpleDialogDemo from '../../components/Global/Dialog';
 ];*/
 
 
-const MyAppointment = ({ children, style, ...restProps }) => {
-  
-  return (
-  <Appointments.Appointment
-    {...restProps}
-    style={{
-      ...style,
-      backgroundColor: "#a02d37",
-      borderRadius: "8px",
-    }} 
-    onClick={()=>{
-      return (
-        <SimpleDialogDemo />
-        )
-    
-    }}
-  >
-    {children}
-  </Appointments.Appointment>
-);
-  }
-
 const CalendarPage = () => {
   const [currentDate, setCurrentDate] = useState(Date().toLocaleString());
-
   const [currentViewName, setCurrentViewName] = useState("week");
-
   const [newCourse, setNewCourse] = useState("");
+  const [showDialog, setShowDialog] = useState(false);
+  const [appointmentId, setAppointmentId] = useState();
 
   const [sideBarData, setSideBarData] = useState([
     "Course1",
@@ -71,6 +49,40 @@ const CalendarPage = () => {
     return d;
   }
 
+  const MyAppointment = ({ children, style, ...restProps }) => {
+     
+     const appointMentClickHandler = () => {
+      if (showDialog){
+        setShowDialog(false);
+        }
+      else {
+           setAppointmentId(restProps.data.id)
+           setShowDialog(true);  
+      }
+     }
+  
+    return (
+    <Appointments.Appointment
+      {...restProps}
+      style={{
+        ...style,
+        backgroundColor: "#a02d37",
+        borderRadius: "8px",
+      }} 
+      onClick={()=> {
+        appointMentClickHandler(); }}     
+    >
+
+      {children}
+      <div className="appointmentContent">
+        Location: {restProps.data.location}
+      </div>
+      
+     {showDialog && (<SimpleDialogDemo appointmentId={appointmentId}/>)}
+    </Appointments.Appointment>
+    );
+    }
+
 
   return (
     <>
@@ -85,6 +97,7 @@ const CalendarPage = () => {
               data={sideBarData}
             />
           </div>
+          <div className="calendarWidth">
           <Paper>
             <Scheduler 
             data={data()}>
@@ -126,8 +139,9 @@ const CalendarPage = () => {
               <Appointments appointmentComponent={MyAppointment} />
             </Scheduler>
           </Paper>
+          </div>
         </div>
-      </div>
+        </div>
     </>
   );
 };

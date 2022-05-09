@@ -5,7 +5,7 @@ const localBaseUrl = 'http://localhost:8080/api/calendar'
 let token = null
 
 const setToken = newToken => {
-  token = `bearer ${newToken}`
+  token = newToken;
 }
 
 const getAll = async () => {

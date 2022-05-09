@@ -7,7 +7,7 @@ import { addAppointmentToFirebase } from '../../services/firebase';
 import { Button } from "../../index";
 import { Input } from './TextBox';
 
-function AddAppointmentOffCanvas () {
+function AddAppointmentOffCanvas (props) {
     let [show, setShow] = useState(false);
     let handleClose = () => setShow(false);
     let handleShow = () => setShow(true);
@@ -17,6 +17,8 @@ function AddAppointmentOffCanvas () {
     let [startTime, setStartTime] = useState("");
     let [endTime, setEndTime] = useState("");
     let [location, setLocation] = useState("");
+
+    let addAppointmentText = props;
     
 
     /*const addAppointment = () => {
@@ -28,16 +30,15 @@ function AddAppointmentOffCanvas () {
         
     };*/
 
-
     return (
         <>
         <Button 
         onClick = {handleShow}
-        buttonText="Create Appointment" />
+        buttonText={props.buttonText} />
      <div>
         <Offcanvas show={show} onHide={handleClose} placement='end'>
         <Offcanvas.Header closeButton>
-                <Offcanvas.Title>Create Appointment</Offcanvas.Title>
+                <Offcanvas.Title>{props.addAppointmentText}</Offcanvas.Title>
             </Offcanvas.Header>
                 <Offcanvas.Body>
              

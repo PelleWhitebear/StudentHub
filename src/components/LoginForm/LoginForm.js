@@ -2,10 +2,15 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { useState, useEffect } from "react";
-import { addUserToFirestore } from "../../firebase-config.js";
 import Form from "./Form";
+import announcementService from '../../services/announcements';
+import courseDatabaseService from '../../services/courseDatabase';
+import createUserService from '../../services/createUser';
+import gradesService from '../../services/grades';
+import mylessonplanService from '../../services/mylessonplan';
+import userSettings from '../../services/userSettings'
 
-import {  loginHandler, getUserToken, setToken, updateTokenInDatabase }from '../../services/firebase';
+import {  loginHandler, getUserToken, updateTokenInDatabase }from '../../services/firebase';
 
 const LoginForm = () => {
   const [loginEmail, setLoginEmail] = useState("");
@@ -15,6 +20,7 @@ const LoginForm = () => {
   const nav = useNavigate();
   useEffect(()=>{
     localStorage.setItem("token", jwtToken);
+    announcementService.setToken(localStorage.getItem("token"));
   }, [jwtToken]);
 
   const login = async () => {
@@ -24,7 +30,13 @@ const LoginForm = () => {
       .then(async () => {
         try {
           const token  = await getUserToken();
-          setJwtToken(token);
+          setJwtToken(token)
+          announcementService.setToken(token);
+          courseDatabaseService.setToken(token);
+          createUserService.setToken(token);
+          gradesService.setToken(token);
+          mylessonplanService.setToken(token);
+          userSettings.setToken(token);
           let id = loginEmail.substring(0,7)
           await updateTokenInDatabase(id, token)
         }

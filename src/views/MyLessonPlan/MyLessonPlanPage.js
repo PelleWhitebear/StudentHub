@@ -11,12 +11,11 @@ const MyLessonPlanPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       let { data } = await lessonPlanService
-      .getAll();
+      .getAllByToken();
       setData(data);
     };
     fetchData();
   }, []);
-
 
 
   const headerData = [
