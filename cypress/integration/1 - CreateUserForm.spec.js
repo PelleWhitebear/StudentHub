@@ -1,6 +1,7 @@
 
     describe('CreateUserForm component', () => {
 
+        // New user
         const Email = "s205339@student.dtu.dk";
         const Pwd = "hej1234";
 

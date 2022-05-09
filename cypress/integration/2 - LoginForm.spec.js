@@ -1,8 +1,9 @@
 
 describe('LoginForm component', () => {
 
-    const Email = "s205339@student.dtu.dk";
-    const Pwd = "hej1234";
+    // Existing user
+    const Email = "s205353@student.dtu.dk";
+    const Pwd = "test1234";
 
     it('Visit StudentHub (landing page)', () => {
 
