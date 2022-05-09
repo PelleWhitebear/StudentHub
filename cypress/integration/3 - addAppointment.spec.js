@@ -64,6 +64,7 @@ describe('Add appointment to calendar (addAppointment component)', () => {
       cy.get("button").contains("Add Appointment").click()
     })
 
+    /*
     // Check if /Calendar contain new appointment
     it('Check if appointment added to calendar', () => {
       
@@ -84,6 +85,6 @@ describe('Add appointment to calendar (addAppointment component)', () => {
       cy.get('div').contains("Month").click()      
 
       // Appointment contain "Front end exam"
-      // cy.get('div').contains("Front end exam")
-    })
+      cy.get('div').contains("Front end exam")
+    })*/
   })
