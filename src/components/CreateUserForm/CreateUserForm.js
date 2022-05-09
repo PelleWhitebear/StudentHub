@@ -83,7 +83,7 @@ const CreateUserForm = () => {
 
         postStudent(data)
 
-      let path = "/loginPage"
+      let path = "/"
       nav(path);
     } catch (error) {
       console.log(error.message);
