@@ -1,6 +1,8 @@
 
 .NBFooter {
-    margin-top: 100px;
-    padding: 150px;
+    margin-top: 10vw;
+    padding: 10vw;
+    width: 100%;
     background-color: var(--transparentColor);
 }
+

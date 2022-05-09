@@ -20,3 +20,13 @@
 .space {
   padding: 30px;
 }
+
+.calendarWidth {
+  width: 90%;
+}
+
+@media (max-width: 800){
+  .calendarWidth {
+      width: 40vw;
+  } 
+}

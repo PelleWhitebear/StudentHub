@@ -36,21 +36,22 @@ import { onAuthStateChanged } from "firebase/auth";
         }
         return (
             <> 
+            
             <Navbar  variant="dark" className="NBHeader">
                 <Container className="alignCenter">
                     <Navbar.Brand as={Link} to="/Calendar">
-                    </Navbar.Brand>
+                    </Navbar.Brand>     
                         <Nav>
-                            <Nav.Link as={Link} to="/Calendar" className='navlink'>Calendar</Nav.Link>
-                            <Nav.Link as={Link} to="/MyLessonPlan" className='navlink'>My Lesson Plan</Nav.Link>
-                            <Nav.Link as={Link} to="/StudyGuidance" className='navlink'>Study Guidance</Nav.Link>
-                            <Nav.Link as={Link} to="/Announcements" className='navlink'>Announcements</Nav.Link>
-                            <Nav.Link as={Link} to="/CourseDatabase" className='navlink'>Course Database</Nav.Link>
-                            <Nav.Link as={Link} to="/Grades" className='navlink'>Grades</Nav.Link>
+                            <Nav.Link as={Link} to="/Calendar" className='navlink fontSize'>Calendar</Nav.Link>
+                            <Nav.Link as={Link} to="/MyLessonPlan" className='navlink fontSize'>My Lesson Plan</Nav.Link>
+                            <Nav.Link as={Link} to="/StudyGuidance" className='navlink fontSize'>Study Guidance</Nav.Link>
+                            <Nav.Link as={Link} to="/Announcements" className='navlink fontSize'>Announcements</Nav.Link>
+                            <Nav.Link as={Link} to="/CourseDatabase" className='navlink fontSize'>Course Database</Nav.Link>
+                            <Nav.Link as={Link} to="/Grades" className='navlink fontSize'>Grades</Nav.Link>
                         </Nav>
                         
                         <Nav>
-                            <NavDropdown  title= {user?.email}>
+                            <NavDropdown className="fontSize" title= {user?.email}>
                                 <NavDropdown.Item as={Link} to="/UserSettings">Settings</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item as={Link} 
@@ -62,7 +63,6 @@ import { onAuthStateChanged } from "firebase/auth";
                 </Container>
                 
             </Navbar>
-
          
             </>
             )
