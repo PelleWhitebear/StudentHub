@@ -7,7 +7,8 @@ const GradesPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let { data } = await gradesService.getAll();
+      let { data } = await gradesService
+      .getAllByToken();
       setData(data);
     };
     fetchData();
