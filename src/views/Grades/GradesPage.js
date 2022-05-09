@@ -54,6 +54,7 @@ const GradesPage = () => {
                 />
               ))}
             </OurTable>
+            <p>{gradesService.WeigthGrades}</p>
           </Paper>
         </div>
       </div>
