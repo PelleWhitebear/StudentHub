@@ -47,4 +47,4 @@ const WeigthGrades = async () => {
     return request.then(response => response.data)
   };
   
-export default { getAll, create, update, setToken, getAllByToken, WeigthGrades }
+export default { getAll, update, setToken, getAllByToken, WeigthGrades }
