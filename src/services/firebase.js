@@ -14,7 +14,6 @@ import {
  doc } from 'firebase/firestore';
 
 const db = getFirestore();
-const studentUrl = 'http://localhost:8080/api/student/changeToken';
 const auth = getAuth();
 let token = null
 
@@ -50,19 +49,6 @@ let token = null
     }
     return token;
   };
-
-    
-  const updateTokenInDatabase = async (id, newObject) => {
-    try {
-      let object = {
-        token: newObject
-      }
-      return await axios.put(`${studentUrl}/${id}`, object)
-    } catch {
-      
-    }
-  };
-
 
 export function addAppointmentToFirebase (appointmentTitle, date, startTime, endTime, location) {
     document.querySelector('.add');
@@ -136,7 +122,7 @@ export const GetAppointmentsFromFirebase = () => {
 
 
   
-  export { loginHandler, getUserToken, setToken, updateTokenInDatabase };
+  export { loginHandler, getUserToken, setToken };
 
   
 

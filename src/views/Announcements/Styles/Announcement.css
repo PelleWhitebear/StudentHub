@@ -6,30 +6,28 @@
     border-top: 1.5px solid grey;
     border-left: 1.5px solid grey;
     border-right: 1.5px solid grey;
-    border-radius: 20px;
+    border-radius: 8px;
     max-width: 80%;
     margin-left: 20px;
 }
 
-
 .item{
-    border-radius: 20px;
+    border-radius: 8px;
     border-bottom: 1.5px solid grey;
     margin-left: 0px;
 }
 
 .title{
-    font-size: 30px;
-    margin-left: 20px;
+    font-size: 20px;
 }
 
 .sender{
-    font-size: 35px;
+    font-size: 16px;
     margin-left: 20px;
 }
 
 .message{
-    font-size: 20px;
+    font-size: 16px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 20px;

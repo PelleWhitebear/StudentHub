@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'https://www.studenthub.bhsi.xyz/api/lessonplan'
+const baseUrl = 'https://www.studenthub.bhsi.xyz/api/announcements'
 const studentBaseUrl = 'https://www.studenthub.bhsi.xyz/api/student'
 const localBaseUrl = 'http://localhost:8080/api/announcements'
 const localStudentBaseUrl = 'http://localhost:8080/api/student'
