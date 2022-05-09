@@ -2,15 +2,15 @@ import axios from 'axios';
 const baseUrl = 'https://www.studenthub.bhsi.xyz/api/student'
 const localBaseUrl = 'http://localhost:8080/api/student'
 
-let token = localStorage.getItem("token");
+let token = null;
 
 const setToken = newToken => {
-  token = `bearer ${newToken}`
+  token = newToken;
 }
 
 const getAll = async () => {
     try {
-      let { data } = await axios.get(`${localBaseUrl}/${token}`);
+      let { data } = await axios.get(`${baseUrl}/${token}`);
       return { data };
     } catch (error) {
       console.log(error);

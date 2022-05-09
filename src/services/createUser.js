@@ -5,7 +5,7 @@ const localBaseUrl = 'http://localhost:8080/api/createUser'
 let token = null
 
 const setToken = newToken => {
-  token = `bearer ${newToken}`
+  token = newToken;
 }
 
 const getAll = async () => {
