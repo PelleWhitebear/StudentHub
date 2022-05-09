@@ -36,7 +36,7 @@ const StudyGuidance = () => {
       </form>
     </div>
     <div className='bookMettingBtn'>
-      <AddAppointment></AddAppointment>
+      <AddAppointment addAppointmentText='Book Meeting' buttonText='Book Meeting'/>
     </div>
     </div>
     )

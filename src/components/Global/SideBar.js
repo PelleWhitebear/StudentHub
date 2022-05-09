@@ -11,7 +11,7 @@ const SideBar = (props) => {
   return (
     <>
       <div className="SideBar">
-        <AddAppointment />
+        <AddAppointment addAppointmentText='Create Appointment' buttonText='Create Appointment'/>
         <Stack direction="column" spacing={1}>
           <h3>My Calendars</h3>
           {props?.data?.map((element) => {
