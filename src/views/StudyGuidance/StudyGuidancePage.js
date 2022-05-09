@@ -1,27 +1,14 @@
 import './Styles/StudyGuidance.css';
-import emailjs from "emailjs-com"
 import InputField from '../../components/Global/InputField';
 import AddAppointment from '../../components/Global/addAppointment'
-import { Container } from '@mui/material';
 import { Button, Title } from '../../index'
+import StudyGuidanceService from '../../services/studyGuidance'
 
 const StudyGuidance = () => {
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs.sendForm('gmail', 'study_guidance', e.target, 'rdIjZOLKAKD5GZlb8')
-     .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-        console.log(error.text);
-      });
-     e.target.reset()
-}
-
     return (
       <div className='containerpage'>
-        <form onSubmit={sendEmail}>
+        <form onSubmit={ (e) => StudyGuidanceService.sendEmail(e) }>
           <Title title="StudyGuidance" />  
           <div className='containerBookMeetingBtn'>
             <AddAppointment addAppointmentText='Book Meeting' buttonText='Book Meeting'/>
