@@ -28,7 +28,6 @@ function AddAppointmentOffCanvas () {
         
     };*/
 
-
     return (
         <>
         <Button 

@@ -20,3 +20,9 @@
 .space {
   padding: 30px;
 }
+
+.appointmentContent {
+  color: white;
+  font-size: small;
+  align-items: flex-start;
+}

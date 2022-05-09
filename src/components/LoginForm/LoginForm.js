@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { useState, useEffect } from "react";
-import { addUserToFirestore } from "../../firebase-config.js";
 import Form from "./Form";
 
 import {  loginHandler, getUserToken, setToken, updateTokenInDatabase }from '../../services/firebase';
