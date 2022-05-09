@@ -1,9 +1,13 @@
+
+import { Divider } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { OurTable, TableRow, Title, Button, Paper, Image } from "../../index";
 import gradesService from "../../services/grades";
 
 const GradesPage = () => {
   const [data, setData] = useState([]);
+  const [weigthedGrades, setWeigthedGrades] = useState();
+  const [Sum, setSum] = useState()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,6 +17,14 @@ const GradesPage = () => {
     fetchData();
   }, []);
 
+
+  gradesService.WeigthGrades().then(x => {
+    setWeigthedGrades(x[0]);
+    setSum(x[1]);
+  });
+  
+  
+
   const headerData = [
     "StudentID",
     "CourseName",
@@ -20,6 +32,14 @@ const GradesPage = () => {
     "Grade",
     "ETCS",
     "",
+  ];
+  const headerWeigthedAverage = [
+    "",
+    "Student ID",
+    "",
+    "Total ECTS",
+    "",
+    "Weigthed Grades",
   ];
 
   return (
@@ -52,9 +72,21 @@ const GradesPage = () => {
                   fifthColumn={element.course.ects}
                   key={data.indexOf(element)}
                 />
+                
               ))}
+              
+              <TableRow
+                
+                fourthColumn={"w.GPA."}
+                fifthColumn={"Total"}
+                />
+              <TableRow
+                
+                fourthColumn={weigthedGrades}
+                fifthColumn={Sum}
+              />
             </OurTable>
-            <p>{gradesService.WeigthGrades}</p>
+            
           </Paper>
         </div>
       </div>
